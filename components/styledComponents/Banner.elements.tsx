@@ -3,13 +3,12 @@ import styled from "styled-components";
 
 export const BannerContainer = styled.div`
   display: flex;
+  height: max-content;
+  width: 100%;
+  height: 100vh;
 `;
 
-export const BackgroundBannerModal = styled.div`
-  /* position: fixed;
-  width: 100%;
-  height: 100%; */
-`;
+export const BackgroundBannerModal = styled.div``;
 
 export const BannerImageContainer = styled.div`
   position: absolute;
@@ -937,23 +936,36 @@ export const TitleInfo = styled.div`
 export const TitleImageContainer = styled.div``;
 
 export const ModalWrapper = styled.div`
-  height: 100%;
   width: 100%;
+  height: 100%;
   z-index: 10;
   display: flex;
   justify-content: center;
   position: absolute;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const ModalContainer = styled.div`
   z-index: 10;
   top: 2em;
   background-color: #181818;
+  overflow: hidden;
+  height: max-content;
   width: 850px;
+  box-sizing: border-box;
   border-radius: 6px;
   position: relative;
-  margin-right: 1rem;
-  margin-left: 1rem;
+
+  @media screen and (max-width: 900px) {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin-right: 0.2rem;
+    margin-left: 0.2rem;
+  }
 `;
 
 export const ModalImageContainer = styled.div`
@@ -970,7 +982,7 @@ export const ImageModal = styled(Image)`
 `;
 
 export const InformationModalContainer = styled.div`
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   height: 100%;
   top: 0;
@@ -981,6 +993,8 @@ export const TitleModalContainer = styled.div`
   height: 10rem;
   width: 22rem;
   margin-top: 13rem;
+  /* position: absolute; */
+  top: 0;
 
   @media screen and (max-width: 850px) {
     margin-top: 11.5rem;
@@ -991,15 +1005,12 @@ export const TitleModalContainer = styled.div`
   }
 
   @media screen and (max-width: 650px) {
-    margin-top: 5rem;
+    height: 7rem;
+    width: 15rem;
   }
 
   @media screen and (max-width: 570px) {
-    margin-top: 2rem;
-  }
-
-  @media screen and (max-width: 500px) {
-    margin-top: 0.5rem;
+    margin-top: 4rem;
   }
 `;
 
@@ -1070,21 +1081,24 @@ export const PlayAndActionButtons = styled.div`
 `;
 
 export const DescriptionModal = styled.div`
-  margin-top: 5rem;
   margin-bottom: 3rem;
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 500px) {
+    margin-top: 3.5rem;
+  }
 `;
 
 export const InfoLeft = styled.div`
   margin-right: 2rem;
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
-  div:nth-child(1) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
+  /* div:nth-child(1) {
     span {
       margin-right: 0.5rem;
       cursor: default;
@@ -1093,20 +1107,6 @@ export const InfoLeft = styled.div`
     span:nth-child(1) {
       color: #46d369;
       font-weight: bold;
-    }
-
-    span:nth-child(3) {
-      border: 1px solid white;
-      padding: 0.1rem 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-
-    span:nth-child(5) {
-      font-size: 0.6rem;
-      padding: 0.1rem 0.5rem 0rem 0.5rem;
-      border: 1px solid white;
-      border-radius: 4px;
     }
 
     span:nth-child(6) {
@@ -1119,16 +1119,36 @@ export const InfoLeft = styled.div`
     }
   }
 
+  div:nth-child(2) {
+    span:nth-child(2) {
+      border: 1px solid white;
+      padding: 0.1rem 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    span:nth-child(4) {
+      font-size: 0.6rem;
+      padding: 0.1rem 0.5rem 0rem 0.5rem;
+      border: 1px solid white;
+      border-radius: 4px;
+    }
+  } */
+
   p {
     margin-top: 2rem;
     font-size: 0.85rem;
     line-height: 23px;
+    text-align: left;
   }
 `;
 
 export const InfoRight = styled.div`
   cursor: default;
-  p {
+  display: flex;
+  flex-direction: column;
+
+  div {
     font-size: 0.8rem;
 
     span:first-child {
@@ -1140,7 +1160,7 @@ export const InfoRight = styled.div`
     }
   }
 
-  p:nth-child(1) {
+  div:nth-child(1) {
     margin-bottom: 1rem;
     span:nth-child(2) {
       &:hover {
@@ -1168,7 +1188,7 @@ export const InfoRight = styled.div`
     }
   }
 
-  p:nth-child(2) {
+  div:nth-child(2) {
     margin-bottom: 1rem;
 
     span:nth-child(2) {
@@ -1185,9 +1205,8 @@ export const InfoRight = styled.div`
     }
   }
 
-  p:nth-child(3) {
+  div:nth-child(3) {
     margin-bottom: 1rem;
-    white-space: nowrap;
 
     span:nth-child(2) {
       &:hover {
@@ -1216,32 +1235,30 @@ export const GridMovies = styled.div`
   margin-top: 0.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  max-height: 63rem;
+  /* max-height: 63rem; */
+  max-height: max-content;
   overflow: hidden;
+  grid-column-gap: 1.3rem;
+  grid-row-gap: 1rem;
   justify-items: center;
   width: 100%;
 
-  article:nth-child(2n) {
-    margin-left: 1.3rem;
-    margin-right: 1.3rem;
-  }
-
-  article:nth-child(-n + 3) {
-    margin-top: 0;
+  @media screen and (max-width: 550px) {
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
 export const GridCard = styled.div`
-  width: 15.5rem;
-  height: 21rem;
+  width: auto;
+  height: auto;
   background-color: #2f2f2f;
   border-radius: 4px;
-  margin-top: 1rem;
   position: relative;
 `;
 
 export const GridCardDescription = styled.div`
   margin: 1rem;
+  /* padding-bottom: 1rem; */
 
   p {
     margin-top: 1rem;
@@ -1265,10 +1282,10 @@ export const CardTitle = styled.div`
 export const BackgroundModal = styled.div`
   background-color: #000;
   opacity: 0.7;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  position: fixed;
 `;
 
 export const SeparatorAndActionButton = styled.div`
@@ -1355,7 +1372,7 @@ export const ShadowModal = styled.div`
   background: rgb(24, 24, 24);
   background: linear-gradient(
     0deg,
-    rgba(24, 24, 24, 1) 0%,
+    rgba(24, 24, 24, 1) 2%,
     rgba(24, 24, 24, 0) 100%
   );
   position: absolute;
@@ -1383,5 +1400,79 @@ export const CloseModal = styled.div`
   svg {
     width: 1.2rem;
     height: 1.2rem;
+  }
+`;
+
+export const ActionContentModal = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  color: white;
+
+  svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+`;
+
+export const DataAboutMovie = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+
+  div:nth-child(-n + 2) {
+    margin-right: 0.5em;
+    text-align: left;
+  }
+
+  div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    span {
+      margin-right: 0.5em;
+    }
+
+    span:nth-child(2) {
+      border: 1px solid white;
+      padding: 0.1rem 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    span:nth-child(3) {
+      white-space: nowrap;
+    }
+
+    span:nth-child(4) {
+      font-size: 0.6rem;
+      padding: 0.1rem 0.5rem 0rem 0.5rem;
+      border: 1px solid white;
+      border-radius: 4px;
+    }
+  }
+
+  div:first-child {
+    span {
+      color: #44cd66;
+      font-weight: bold;
+    }
+  }
+
+  div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    svg {
+      width: 2rem;
+      height: 2em;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
