@@ -609,6 +609,15 @@ export const ActionContent = styled.div`
       height: 0.7rem;
     }
   }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    padding: 0.3rem;
+
+    svg {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+  }
 `;
 
 export const Pegi = styled.div`
@@ -962,7 +971,7 @@ export const ModalContainer = styled.div`
     margin-left: 2rem;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 630px) {
     margin-right: 0.2rem;
     margin-left: 0.2rem;
   }
@@ -993,24 +1002,77 @@ export const TitleModalContainer = styled.div`
   height: 10rem;
   width: 22rem;
   margin-top: 13rem;
-  /* position: absolute; */
   top: 0;
 
-  @media screen and (max-width: 850px) {
-    margin-top: 11.5rem;
+  @media screen and (max-width: 870px) {
+    margin-top: 10rem;
   }
 
-  @media screen and (max-width: 770px) {
-    margin-top: 7.5rem;
+  @media screen and (max-width: 800px) {
+    margin-top: 8rem;
   }
 
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 720px) {
+    margin-top: 6rem;
+  }
+
+  @media screen and (max-width: 640px) {
     height: 7rem;
     width: 15rem;
   }
 
-  @media screen and (max-width: 570px) {
+  @media screen and (max-width: 500px) {
     margin-top: 4rem;
+  }
+
+  @media screen and (min-width: 400px) and (max-width: 415px) and (min-height: 880px) and (max-height: 915px) {
+    margin-top: 2rem;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 385px) and (min-height: 700px) and (max-height: 855px) {
+    margin-top: 3rem;
+    height: 4.5rem;
+    width: 10rem;
+  }
+
+  @media screen and (min-width: 388px) and (max-width: 390px) and (min-height: 840px) and (max-height: 845px) {
+    margin-top: 4rem;
+    height: 4.5rem;
+    width: 10rem;
+  }
+
+  @media screen and (min-width: 400px) and (max-width: 430px) and (min-height: 880px) and (max-height: 930px) {
+    margin-top: 5rem;
+    height: 4.5rem;
+    width: 10rem;
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 380px) and (min-height: 600px) and (max-height: 670px) {
+    margin-top: 3rem;
+    height: 4.5rem;
+    width: 10rem;
+  }
+
+  /* J7 */
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    margin-top: 3rem;
+    height: 4.5rem;
+    width: 10rem;
+  }
+
+  /* End J7 */
+
+  @media screen and (min-width: 375px) and (max-width: 385px) and (min-height: 625px) and (max-height: 640px) {
+    margin-top: 4rem;
+    height: 4.5rem;
+    width: 10rem;
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    margin-top: 3rem;
+    height: 3rem;
+    width: 7rem;
   }
 `;
 
@@ -1044,6 +1106,31 @@ export const PlayButtonModal = styled.button`
     background-color: rgba(255, 255, 255, 0.75);
     transition: background-color 0.2s ease-in-out;
   }
+
+  @media screen and (min-width: 320px) and (max-width: 390px) and (min-height: 700px) and (max-height: 855px) {
+    width: 5rem;
+    height: 2rem;
+  }
+
+  @media screen and (min-width: 400px) and (max-width: 430px) and (min-height: 880px) and (max-height: 930px) {
+    width: 5rem;
+    height: 2rem;
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 380px) and (min-height: 600px) and (max-height: 670px) {
+    width: 5rem;
+    height: 2rem;
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 385px) and (min-height: 560px) and (max-height: 640px) {
+    width: 5rem;
+    height: 2rem;
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    width: 4rem;
+    height: 1.5rem;
+  }
 `;
 
 export const ContentButtonModal = styled.div`
@@ -1062,6 +1149,76 @@ export const ContentButtonModal = styled.div`
     width: 1.5rem;
     height: 1.5rem;
     margin-right: 0.5rem;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 390px) and (min-height: 700px) and (max-height: 855px) {
+    span {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 400px) and (max-width: 430px) and (min-height: 880px) and (max-height: 930px) {
+    span {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 380px) and (min-height: 600px) and (max-height: 670px) {
+    span {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 385px) and (min-height: 560px) and (max-height: 640px) {
+    span {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    span {
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    svg {
+      width: 0.8rem;
+      height: 0.8rem;
+      margin-right: 0.5rem;
+    }
   }
 `;
 
@@ -1084,10 +1241,6 @@ export const DescriptionModal = styled.div`
   margin-bottom: 3rem;
   display: flex;
   flex-direction: row;
-
-  @media screen and (max-width: 500px) {
-    margin-top: 3.5rem;
-  }
 `;
 
 export const InfoLeft = styled.div`
@@ -1098,48 +1251,19 @@ export const InfoLeft = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-  /* div:nth-child(1) {
-    span {
-      margin-right: 0.5rem;
-      cursor: default;
-    }
-
-    span:nth-child(1) {
-      color: #46d369;
-      font-weight: bold;
-    }
-
-    span:nth-child(6) {
-      display: flex;
-      align-items: center;
-      svg {
-        width: 2rem;
-        height: 2em;
-      }
-    }
-  }
-
-  div:nth-child(2) {
-    span:nth-child(2) {
-      border: 1px solid white;
-      padding: 0.1rem 0.5rem;
-      display: flex;
-      align-items: center;
-    }
-
-    span:nth-child(4) {
-      font-size: 0.6rem;
-      padding: 0.1rem 0.5rem 0rem 0.5rem;
-      border: 1px solid white;
-      border-radius: 4px;
-    }
-  } */
-
   p {
     margin-top: 2rem;
     font-size: 0.85rem;
     line-height: 23px;
     text-align: left;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 360px) and (min-height: 700px) and (max-height: 800px) {
+    margin-right: 1rem;
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    margin-right: 1rem;
   }
 `;
 
@@ -1233,18 +1357,24 @@ export const MoreMoviesContainer = styled.div`
 
 export const GridMovies = styled.div`
   margin-top: 0.5rem;
+  max-height: 63rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  /* max-height: 63rem; */
-  max-height: max-content;
   overflow: hidden;
   grid-column-gap: 1.3rem;
   grid-row-gap: 1rem;
   justify-items: center;
   width: 100%;
+  transition: max-height 0.5s ease-in-out, margin-bottom 0.5s ease-in-out;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 560px) {
     grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0rem;
+    grid-row-gap: 1rem;
   }
 `;
 
@@ -1272,10 +1402,56 @@ export const CardTitle = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
   span:nth-child(1) {
     margin-right: 0.5rem;
     padding: 0.2rem 0.4rem;
     border: 1px solid white;
+  }
+
+  @media screen and (min-width: 320px) and (max-width: 375px) and (min-height: 700px) and (max-height: 812px) {
+    span:nth-child(1) {
+      margin-right: 0.5rem;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.8rem;
+      border: 1px solid white;
+    }
+
+    span:nth-child(2) {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 380px) and (min-height: 600px) and (max-height: 670px) {
+    span:nth-child(1) {
+      margin-right: 0.5rem;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.8rem;
+      border: 1px solid white;
+    }
+
+    span:nth-child(2) {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    span:nth-child(1) {
+      margin-right: 0.5rem;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.8rem;
+      border: 1px solid white;
+    }
+
+    span:nth-child(2) {
+      font-size: 0.8rem;
+    }
   }
 `;
 
@@ -1324,6 +1500,7 @@ export const Duration = styled.span`
 
 export const AboutWrapper = styled.div`
   margin-top: 3rem;
+  margin-bottom: 3rem;
   cursor: default;
 
   h3 {
@@ -1401,6 +1578,16 @@ export const CloseModal = styled.div`
     width: 1.2rem;
     height: 1.2rem;
   }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    width: 1.7rem;
+    height: 1.7rem;
+
+    svg {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
 `;
 
 export const ActionContentModal = styled.div`
@@ -1413,6 +1600,43 @@ export const ActionContentModal = styled.div`
     width: 1.125rem;
     height: 1.125rem;
   }
+
+  @media screen and (min-width: 320px) and (max-width: 390px) and (min-height: 700px) and (max-height: 855px) {
+    svg {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 400px) and (max-width: 430px) and (min-height: 880px) and (max-height: 930px) {
+    svg {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 380px) and (min-height: 600px) and (max-height: 670px) {
+    svg {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 385px) and (min-height: 560px) and (max-height: 640px) {
+    svg {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    padding: 0.4rem;
+
+    svg {
+      width: 0.65rem;
+      height: 0.65rem;
+    }
+  }
 `;
 
 export const DataAboutMovie = styled.div`
@@ -1421,11 +1645,6 @@ export const DataAboutMovie = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-
-  div:nth-child(-n + 2) {
-    margin-right: 0.5em;
-    text-align: left;
-  }
 
   div:nth-child(2) {
     display: flex;
@@ -1443,23 +1662,35 @@ export const DataAboutMovie = styled.div`
       align-items: center;
     }
 
-    span:nth-child(3) {
-      white-space: nowrap;
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
     }
 
-    span:nth-child(4) {
-      font-size: 0.6rem;
-      padding: 0.1rem 0.5rem 0rem 0.5rem;
-      border: 1px solid white;
-      border-radius: 4px;
+    div:nth-child(2) {
+      span:nth-child(1) {
+        white-space: nowrap;
+      }
+
+      span:nth-child(2) {
+        font-size: 0.6rem;
+        padding: 0.1rem 0.5rem 0rem 0.5rem;
+        border: 1px solid white;
+        border-radius: 4px;
+      }
     }
   }
 
-  div:first-child {
-    span {
-      color: #44cd66;
-      font-weight: bold;
-    }
+  p:first-child {
+    color: #44cd66;
+    font-weight: bold;
+    margin-top: 0;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    line-height: 23px;
+    text-align: left;
   }
 
   div:nth-child(3) {
@@ -1474,5 +1705,94 @@ export const DataAboutMovie = styled.div`
   @media screen and (max-width: 700px) {
     flex-direction: column;
     align-items: flex-start;
+
+    p:first-child {
+      margin-bottom: 0.5rem;
+    }
   }
+
+  @media screen and (min-width: 200px) and (max-width: 290px) and (min-height: 550px) and (max-height: 660px) {
+    div:nth-child(2) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: left;
+
+      span {
+        margin-right: 0em;
+      }
+
+      span:nth-child(2) {
+        border: 1px solid white;
+        padding: 0.1rem 0.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+      }
+
+      div:nth-child(1) {
+        display: flex;
+        margin: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 0.5em;
+
+        span:nth-child(2) {
+          font-size: 0.9rem;
+          margin-left: 0.5em;
+          margin-right: 0.5em;
+        }
+      }
+
+      div:nth-child(2) {
+        span:nth-child(1) {
+          white-space: nowrap;
+        }
+
+        span:nth-child(2) {
+          font-size: 0.6rem;
+          padding: 0.1rem 0.5rem 0rem 0.5rem;
+          border: 1px solid white;
+          border-radius: 4px;
+          margin-left: 0.5em;
+        }
+      }
+    }
+
+    p:first-child {
+      color: #44cd66;
+      font-weight: bold;
+      margin-top: 0;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      line-height: 23px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    div:nth-child(3) {
+      display: flex;
+      align-items: center;
+      svg {
+        width: 2rem;
+        height: 2em;
+      }
+    }
+  }
+`;
+
+export const ImageAndButtonsContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  padding: 0 2rem 0 2rem;
 `;

@@ -54,6 +54,7 @@ import {
   BackgroundBannerModal,
   ActionContentModal,
   DataAboutMovie,
+  ImageAndButtonsContainer,
 } from "./styledComponents/Banner.elements";
 import { useRef } from "react";
 
@@ -68,11 +69,19 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const [trailer, setTrailer] = useState(true);
 
+  const [trailerModal, setTrailerModal] = useState(true);
+
   const [modal, setModal] = useState(false);
+
+  const [grid, setGrid] = useState(false);
+
+  const [isOpenGrid, SetOpenGrid] = useState(false);
 
   // Refs
 
-  const movieTrailer = useRef<"video" | any | {} | never>(null);
+  const movieTrailerBanner = useRef<"video" | any | {} | never>(null);
+
+  const movieTrailerModal = useRef<"video" | any | {} | never>(null);
 
   const replayButton = useRef<"button" | any | {} | never>(null);
 
@@ -84,18 +93,81 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const BgdModal = useRef<"div" | any | {} | never>(null);
 
+  const MoviesGrid = useRef<"div" | any | {} | never>(null);
+
   // Functions
 
   const handleModal = () => {
     const Background = BgdModal.current;
+    const mute = muteButton.current;
+    const replay = replayButton.current;
 
-    if (modal == false) {
+    if (mute !== null) {
+      mute.style.display = "none";
+      replay.style.display = "flex";
+    }
+
+    if (modal === false) {
       Background.style.position = "fixed";
       Background.style.width = "100%";
       Background.style.height = "100%";
+      setTrailerModal(true);
     } else if (modal === true) {
       Background.removeAttribute("style");
     }
+  };
+
+  const handleMoviesGrid = () => {
+    const GridM = MoviesGrid.current;
+
+    if (grid === false) {
+      GridM.style.maxHeight = "5000px";
+      GridM.style.marginBottom = "3rem";
+      setGrid(true);
+      SetOpenGrid(true);
+    } else if (grid === true) {
+      GridM.style.maxHeight = "63rem";
+      GridM.style.marginBottom = "0rem";
+      setGrid(false);
+      SetOpenGrid(false);
+    }
+  };
+
+  const videoModal = () => {
+    const bannerTrailer = movieTrailerBanner.current;
+    const ModalTrailer = movieTrailerModal.current;
+    const replay = replayButton.current;
+    const mute = muteButton.current;
+    const imageTitle = titleImage.current;
+    const descriptionTitle = titleDescription.current;
+
+    const handleTrailerModal = () => {
+      setTrailerModal(false);
+    };
+
+    ModalTrailer.addEventListener("ended", handleTrailerModal);
+
+    if (bannerTrailer !== null) {
+      const VideoTime = bannerTrailer.currentTime;
+      ModalTrailer.currentTime = VideoTime;
+
+      if (trailer === true) {
+        setTrailer(false);
+        bannerTrailer.pause(true);
+        mute.style.display = "none";
+        replay.style.display = "flex";
+        imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
+        imageTitle.style.transition = "transform 1.5s ease";
+        descriptionTitle.style.transform = "translate(0, 0rem)";
+        descriptionTitle.style.opacity = "1";
+        descriptionTitle.style.transition =
+          "transform 1.5s ease, opacity 2s ease";
+      }
+    }
+
+    return () => {
+      ModalTrailer.removeEventListener("ended", handleTrailerModal);
+    };
   };
 
   useEffect(() => {
@@ -150,7 +222,7 @@ export default function Banner({ netflixOriginals }: Props) {
 
     // Currents
 
-    const movie = movieTrailer.current;
+    const movie = movieTrailerBanner.current;
     const replay = replayButton.current;
     const mute = muteButton.current;
     const imageTitle = titleImage.current;
@@ -191,7 +263,7 @@ export default function Banner({ netflixOriginals }: Props) {
         <BannerImageContainer>
           {trailer ? (
             <TrailerVideo
-              ref={movieTrailer}
+              ref={movieTrailerBanner}
               src="/theMummyTrailer.mp4"
               autoPlay={true}
               muted={true}
@@ -419,16 +491,17 @@ export default function Banner({ netflixOriginals }: Props) {
                 </svg>
               </CloseModal>
               <ModalImageContainer>
-                {trailer ? (
+                {trailerModal ? (
                   <>
                     <TrailerModal
-                      ref={movieTrailer}
+                      ref={movieTrailerModal}
                       src="/theMummyTrailer.mp4"
                       autoPlay={true}
                       muted={true}
                       controls={false}
                       disablePictureInPicture={false}
                       controlsList={"nodownload"}
+                      onPlay={() => videoModal()}
                     />
                     <ShadowModal></ShadowModal>
                   </>
@@ -446,15 +519,7 @@ export default function Banner({ netflixOriginals }: Props) {
                 )}
               </ModalImageContainer>
 
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  position: "absolute",
-                  top: "0",
-                  padding: "0 2rem 0 2rem",
-                }}
-              >
+              <ImageAndButtonsContainer>
                 <TitleModalContainer>
                   <Image
                     src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABRV8Rfaw8Jh_5TYMAmVkGaSeswqIbYCQw4z4BOTzlcDlVVNsLC6UBKrljog6M8xuv8zrP2ByzY7cRxHWxLksZP-6ZyYGdXOJKPIxZhpVELUZ.png?r=076"
@@ -575,20 +640,22 @@ export default function Banner({ netflixOriginals }: Props) {
                     </ActionButton>
                   </ReplayAndPegi>
                 </ButtonsModal>
-              </div>
+              </ImageAndButtonsContainer>
 
               <InformationModalContainer>
                 <DescriptionModal>
                   <InfoLeft>
                     <DataAboutMovie>
+                      <p>98% Match </p>
                       <div>
-                        <span>98% Match </span>
-                      </div>
-                      <div>
-                        <span>2017 </span>
-                        <span>16+</span>
-                        <span>1h 50m</span>
-                        <span>HD</span>
+                        <div>
+                          <span>2017 </span>
+                          <span>16+</span>
+                        </div>
+                        <div>
+                          <span>1h 50m</span>
+                          <span>HD</span>
+                        </div>
                       </div>
                       <div>
                         <span>
@@ -650,8 +717,8 @@ export default function Banner({ netflixOriginals }: Props) {
                   </InfoRight>
                 </DescriptionModal>
                 <MoreMoviesContainer>
-                  <p>More Like Thiss</p>
-                  <GridMovies>
+                  <p>More Like This</p>
+                  <GridMovies ref={MoviesGrid}>
                     <GridCard>
                       <Duration>1h 50m</Duration>
                       <Image
@@ -1205,23 +1272,39 @@ export default function Banner({ netflixOriginals }: Props) {
                     </GridCard>
                   </GridMovies>
                   <SeparatorAndActionButton>
-                    <ButtonsMoreMovies>
+                    <ButtonsMoreMovies onClick={() => handleMoviesGrid()}>
                       <ActionButton>
-                        <ActionContent>
-                          <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M19.293 7.29297L12.0001 14.5859L4.70718 7.29297L3.29297 8.70718L11.293 16.7072C11.4805 16.8947 11.7349 17.0001 12.0001 17.0001C12.2653 17.0001 12.5196 16.8947 12.7072 16.7072L20.7072 8.70718L19.293 7.29297Z"
-                              fill="currentColor"
-                            ></path>
-                          </svg>
-                        </ActionContent>
+                        <ActionContentModal>
+                          {isOpenGrid ? (
+                            <svg
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M19.293 16.7071L12.0001 9.41421L4.70718 16.7071L3.29297 15.2929L11.293 7.29289C11.4805 7.10536 11.7349 7 12.0001 7C12.2653 7 12.5196 7.10536 12.7072 7.29289L20.7072 15.2929L19.293 16.7071Z"
+                                fill="currentColor"
+                              ></path>
+                            </svg>
+                          ) : (
+                            <svg
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M19.293 7.29297L12.0001 14.5859L4.70718 7.29297L3.29297 8.70718L11.293 16.7072C11.4805 16.8947 11.7349 17.0001 12.0001 17.0001C12.2653 17.0001 12.5196 16.8947 12.7072 16.7072L20.7072 8.70718L19.293 7.29297Z"
+                                fill="currentColor"
+                              ></path>
+                            </svg>
+                          )}
+                        </ActionContentModal>
                       </ActionButton>
                     </ButtonsMoreMovies>
                   </SeparatorAndActionButton>
