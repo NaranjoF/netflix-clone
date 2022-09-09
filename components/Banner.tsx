@@ -240,10 +240,12 @@ export default function Banner({ netflixOriginals }: Props) {
       ModalTrailer.addEventListener("ended", handleTrailerModal);
     }, 2000);
 
-    if (endVideo !== true) {
+    if (endVideo === false) {
       const VideoTime = bannerTrailer.currentTime;
       ModalTrailer.currentTime = VideoTime;
       bannerTrailer.pause(true);
+    } else if (endVideo === true) {
+      setEndVideo(false);
     }
 
     return () => {
@@ -349,7 +351,7 @@ export default function Banner({ netflixOriginals }: Props) {
         <BannerImageContainer>
           <TrailerVideo
             ref={movieTrailerBanner}
-            src="/theMummyTrailer.mp4"
+            src="/corto.mp4"
             autoPlay={true}
             muted={true}
             controls={false}
@@ -578,7 +580,7 @@ export default function Banner({ netflixOriginals }: Props) {
               <ModalImageContainer>
                 <TrailerModal
                   ref={movieTrailerModal}
-                  src="/theMummyTrailer.mp4"
+                  src="/corto.mp4"
                   autoPlay={true}
                   muted={true}
                   controls={false}
