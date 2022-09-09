@@ -73,7 +73,7 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const [mute, setMute] = useState(false);
 
-  const [trailer, setTrailer] = useState(true);
+  const [endVideo, setEndVideo] = useState(false);
 
   const [trailerModal, setTrailerModal] = useState(true);
 
@@ -114,6 +114,7 @@ export default function Banner({ netflixOriginals }: Props) {
     const mute = muteButton.current;
     const replay = replayButton.current;
     const movieBanner = movieTrailerBanner.current;
+    const movieModal = movieTrailerModal.current;
     const imgBanner = ImageBanner.current;
 
     if (modal === false) {
@@ -131,6 +132,13 @@ export default function Banner({ netflixOriginals }: Props) {
       setTrailerModal(true);
     } else if (modal === true) {
       Background.removeAttribute("style");
+      if (endVideo !== true) {
+        const videoTime = movieModal.currentTime;
+        movieBanner.currentTime = videoTime;
+        movieBanner.play();
+        movieBanner.style.opacity = 1;
+        imgBanner.style.opacity = 0;
+      }
     }
   };
 
@@ -197,34 +205,28 @@ export default function Banner({ netflixOriginals }: Props) {
   const videoModal = () => {
     const bannerTrailer = movieTrailerBanner.current;
     const ModalTrailer = movieTrailerModal.current;
-    const replay = replayButton.current;
-    const mute = muteButton.current;
     const imageTitle = titleImage.current;
     const descriptionTitle = titleDescription.current;
 
     const handleTrailerModal = () => {
       setTrailerModal(false);
+      setEndVideo(true);
+      imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
+      imageTitle.style.transition = "transform 1.5s ease";
+      descriptionTitle.style.transform = "translate(0, 0rem)";
+      descriptionTitle.style.opacity = "1";
+      descriptionTitle.style.transition =
+        "transform 1.5s ease, opacity 2s ease";
+      ModalTrailer.currentTime = 0;
     };
 
     setTimeout(() => {
       ModalTrailer.addEventListener("ended", handleTrailerModal);
     }, 2000);
 
-    if (bannerTrailer !== null) {
-      const VideoTime = bannerTrailer.currentTime;
-      ModalTrailer.currentTime = VideoTime;
-
-      if (trailer === true) {
-        setTrailer(false);
-        bannerTrailer.pause(true);
-        imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
-        imageTitle.style.transition = "transform 1.5s ease";
-        descriptionTitle.style.transform = "translate(0, 0rem)";
-        descriptionTitle.style.opacity = "1";
-        descriptionTitle.style.transition =
-          "transform 1.5s ease, opacity 2s ease";
-      }
-    }
+    const VideoTime = bannerTrailer.currentTime;
+    ModalTrailer.currentTime = VideoTime;
+    bannerTrailer.pause(true);
 
     return () => {
       ModalTrailer.removeEventListener("ended", handleTrailerModal);
@@ -235,27 +237,23 @@ export default function Banner({ netflixOriginals }: Props) {
     // Function for ended event
 
     const handleTrailer = () => {
-      if (trailer === true) {
-        setTrailer(false);
-        imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
-        imageTitle.style.transition = "transform 1.5s ease";
-        imgBanner.style.opacity = 1;
-        movie.style.opacity = 0;
-        mute.style.opacity = 0;
-        mute.style.zIndex = 1;
-        replay.style.zIndex = 2;
-        replay.style.opacity = 1;
-        descriptionTitle.style.transform = "translate(0, 0rem)";
-        descriptionTitle.style.opacity = "1";
-        descriptionTitle.style.transition =
-          "transform 1.5s ease, opacity 2s ease";
-      }
+      imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
+      imageTitle.style.transition = "transform 1.5s ease";
+      imgBanner.style.opacity = 1;
+      movie.style.opacity = 0;
+      mute.style.opacity = 0;
+      mute.style.zIndex = 1;
+      replay.style.zIndex = 2;
+      replay.style.opacity = 1;
+      descriptionTitle.style.transform = "translate(0, 0rem)";
+      descriptionTitle.style.opacity = "1";
+      descriptionTitle.style.transition =
+        "transform 1.5s ease, opacity 2s ease";
     };
 
     // Function for Replay event
 
     const replayTrailer = () => {
-      setTrailer(true);
       movie.muted = true;
       mute.style.zIndex = 2;
       replay.style.zIndex = 1;
@@ -333,7 +331,7 @@ export default function Banner({ netflixOriginals }: Props) {
         <BannerImageContainer>
           <TrailerVideo
             ref={movieTrailerBanner}
-            src="/corto.mp4"
+            src="/theMummyTrailer.mp4"
             autoPlay={true}
             muted={true}
             controls={false}
