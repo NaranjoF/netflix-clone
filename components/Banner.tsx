@@ -75,13 +75,13 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const [endVideo, setEndVideo] = useState(false);
 
-  const [trailerModal, setTrailerModal] = useState(true);
-
   const [modal, setModal] = useState(false);
 
   const [grid, setGrid] = useState(false);
 
   const [isOpenGrid, SetOpenGrid] = useState(false);
+
+  const [dropDownTItle, setDropDownTitle] = useState(false);
 
   // Refs
 
@@ -111,7 +111,7 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const handleModal = () => {
     const Background = BgdModal.current;
-    const mute = muteButton.current;
+    const muteBanner = muteButton.current;
     const replay = replayButton.current;
     const movieBanner = movieTrailerBanner.current;
     const movieModal = movieTrailerModal.current;
@@ -123,21 +123,24 @@ export default function Banner({ netflixOriginals }: Props) {
       Background.style.height = "100%";
       movieBanner.style.opacity = 0;
       imgBanner.style.opacity = 1;
-      mute.style.zIndex = 1;
-      replay.style.zIndex = 2;
-      if (mute.style.opacity !== 0) {
-        mute.style.opacity = 0;
-      }
-      replay.style.opacity = 1;
-      setTrailerModal(true);
     } else if (modal === true) {
       Background.removeAttribute("style");
+
       if (endVideo !== true) {
         const videoTime = movieModal.currentTime;
         movieBanner.currentTime = videoTime;
         movieBanner.play();
         movieBanner.style.opacity = 1;
         imgBanner.style.opacity = 0;
+        muteBanner.style.zIndex = 2;
+        replay.style.zIndex = 1;
+        muteBanner.style.opacity = 1;
+        replay.style.opacity = 0;
+        if (mute === true) {
+          movieBanner.muted = false;
+        } else if (mute === false) {
+          movieBanner.muted = true;
+        }
       }
     }
   };
@@ -169,30 +172,19 @@ export default function Banner({ netflixOriginals }: Props) {
     }
   };
 
-  const endedVideo = () => {
-    const movieModal = movieTrailerModal.current;
-    const muteModal = muteButtonModal.current;
-    const replayModal = replayButtonModal.current;
-
-    const endMovie = () => {
-      muteModal.style.opacity = 0;
-      muteModal.style.zIndex = -1;
-      replayModal.style.opacity = 1;
-      movieModal.style.opacity = 0;
-    };
-
-    movieModal.addEventListener("ended", endMovie);
-
-    return () => {
-      movieModal.removeEventListener("ended", endMovie);
-    };
-  };
-
   const replayTrailerModal = () => {
     const muteModal = muteButtonModal.current;
     const replayModal = replayButtonModal.current;
     const movieModal = movieTrailerModal.current;
+    const imageTitle = titleImage.current;
+    const descriptionTitle = titleDescription.current;
+    const mute = muteButton.current;
+    const replay = replayButton.current;
 
+    mute.style.opacity = 1;
+    mute.style.zIndex = 2;
+    replay.style.zIndex = 0;
+    replay.style.opacity = 0;
     movieModal.play();
     movieModal.muted = true;
     movieModal.style.opacity = 1;
@@ -200,6 +192,12 @@ export default function Banner({ netflixOriginals }: Props) {
     muteModal.style.zIndex = 1;
     replayModal.style.opacity = 0;
     setMute(false);
+    setEndVideo(false);
+    imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
+    imageTitle.style.transition = "transform 1.5s ease";
+    descriptionTitle.style.transform = "translate(0, 0rem)";
+    descriptionTitle.style.opacity = "1";
+    descriptionTitle.style.transition = "transform 1.5s ease, opacity 2s ease";
   };
 
   const videoModal = () => {
@@ -207,10 +205,23 @@ export default function Banner({ netflixOriginals }: Props) {
     const ModalTrailer = movieTrailerModal.current;
     const imageTitle = titleImage.current;
     const descriptionTitle = titleDescription.current;
+    const muteModal = muteButtonModal.current;
+    const replayModal = replayButtonModal.current;
+    const muteBanner = muteButton.current;
+    const replay = replayButton.current;
+
+    if (mute === true) {
+      ModalTrailer.muted = false;
+    } else if (mute === false) {
+      ModalTrailer.muted = true;
+    }
 
     const handleTrailerModal = () => {
-      setTrailerModal(false);
       setEndVideo(true);
+      muteModal.style.opacity = 0;
+      muteModal.style.zIndex = -1;
+      replayModal.style.opacity = 1;
+      ModalTrailer.style.opacity = 0;
       imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
       imageTitle.style.transition = "transform 1.5s ease";
       descriptionTitle.style.transform = "translate(0, 0rem)";
@@ -218,15 +229,22 @@ export default function Banner({ netflixOriginals }: Props) {
       descriptionTitle.style.transition =
         "transform 1.5s ease, opacity 2s ease";
       ModalTrailer.currentTime = 0;
+      ModalTrailer.style.opacity = 0;
+      muteBanner.style.opacity = 0;
+      muteBanner.style.zIndex = 1;
+      replay.style.zIndex = 2;
+      replay.style.opacity = 1;
     };
 
     setTimeout(() => {
       ModalTrailer.addEventListener("ended", handleTrailerModal);
     }, 2000);
 
-    const VideoTime = bannerTrailer.currentTime;
-    ModalTrailer.currentTime = VideoTime;
-    bannerTrailer.pause(true);
+    if (endVideo !== true) {
+      const VideoTime = bannerTrailer.currentTime;
+      ModalTrailer.currentTime = VideoTime;
+      bannerTrailer.pause(true);
+    }
 
     return () => {
       ModalTrailer.removeEventListener("ended", handleTrailerModal);
@@ -561,7 +579,6 @@ export default function Banner({ netflixOriginals }: Props) {
                 <TrailerModal
                   ref={movieTrailerModal}
                   src="/theMummyTrailer.mp4"
-                  onPlaying={() => endedVideo()}
                   autoPlay={true}
                   muted={true}
                   controls={false}
