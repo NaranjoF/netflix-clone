@@ -113,11 +113,17 @@ export default function Banner({ netflixOriginals }: Props) {
     const Background = BgdModal.current;
     const mute = muteButton.current;
     const replay = replayButton.current;
+    const movieBanner = movieTrailerBanner.current;
+    const imgBanner = ImageBanner.current;
 
     if (modal === false) {
       Background.style.position = "fixed";
       Background.style.width = "100%";
       Background.style.height = "100%";
+      movieBanner.style.opacity = 0;
+      imgBanner.style.opacity = 1;
+      mute.style.zIndex = 1;
+      replay.style.zIndex = 2;
       if (mute.style.opacity !== 0) {
         mute.style.opacity = 0;
       }
