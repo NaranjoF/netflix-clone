@@ -73,7 +73,7 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const [mute, setMute] = useState(false);
 
-  const [endVideo, setEndVideo] = useState(false);
+  const [endVideoModal, setEndVideoModal] = useState(false);
 
   const [modal, setModal] = useState(false);
 
@@ -81,8 +81,9 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const [isOpenGrid, SetOpenGrid] = useState(false);
 
-  const [dropDownTItle, setDropDownTitle] = useState(false);
+  const [dropDownTitle, setDropDownTitle] = useState(false);
 
+  const [endVideoBanner, setEndVideoBanner] = useState(false);
   // Refs
 
   const movieTrailerBanner = useRef<"video" | any | {} | never>(null);
@@ -126,7 +127,7 @@ export default function Banner({ netflixOriginals }: Props) {
     } else if (modal === true) {
       Background.removeAttribute("style");
 
-      if (endVideo !== true) {
+      if (endVideoModal !== true) {
         const videoTime = movieModal.currentTime;
         movieBanner.currentTime = videoTime;
         movieBanner.play();
@@ -192,7 +193,7 @@ export default function Banner({ netflixOriginals }: Props) {
     muteModal.style.zIndex = 1;
     replayModal.style.opacity = 0;
     setMute(false);
-    setEndVideo(false);
+    setEndVideoModal(false);
     imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
     imageTitle.style.transition = "transform 1.5s ease";
     descriptionTitle.style.transform = "translate(0, 0rem)";
@@ -216,8 +217,19 @@ export default function Banner({ netflixOriginals }: Props) {
       ModalTrailer.muted = true;
     }
 
+    if (dropDownTitle === false) {
+      imageTitle.style.transform = "scale(0.7) translate(0, 80%)";
+      imageTitle.style.transition = "transform 2s ease";
+      imageTitle.style.transformOrigin = "bottom left";
+      descriptionTitle.style.transform = "translate(0, 90%)";
+      descriptionTitle.style.opacity = "0";
+      descriptionTitle.style.transition =
+        "transform 2s ease, opacity 0.5s ease";
+      setDropDownTitle(true);
+    }
+
     const handleTrailerModal = () => {
-      setEndVideo(true);
+      setEndVideoModal(true);
       muteModal.style.opacity = 0;
       muteModal.style.zIndex = -1;
       replayModal.style.opacity = 1;
@@ -234,18 +246,23 @@ export default function Banner({ netflixOriginals }: Props) {
       muteBanner.style.zIndex = 1;
       replay.style.zIndex = 2;
       replay.style.opacity = 1;
+      setDropDownTitle(false);
     };
 
     setTimeout(() => {
       ModalTrailer.addEventListener("ended", handleTrailerModal);
     }, 2000);
 
-    if (endVideo === false) {
+    if (endVideoModal === false && endVideoBanner === false) {
       const VideoTime = bannerTrailer.currentTime;
       ModalTrailer.currentTime = VideoTime;
       bannerTrailer.pause(true);
-    } else if (endVideo === true) {
-      setEndVideo(false);
+    } else if (endVideoModal === true) {
+      setEndVideoModal(false);
+    }
+
+    if (endVideoModal === false && endVideoBanner === true) {
+      ModalTrailer.currentTime = 0;
     }
 
     return () => {
@@ -269,6 +286,7 @@ export default function Banner({ netflixOriginals }: Props) {
       descriptionTitle.style.opacity = "1";
       descriptionTitle.style.transition =
         "transform 1.5s ease, opacity 2s ease";
+      setEndVideoBanner(true);
     };
 
     // Function for Replay event
@@ -283,6 +301,7 @@ export default function Banner({ netflixOriginals }: Props) {
       movie.play();
       mute.style.opacity = 1;
       replay.style.opacity = 0;
+      setEndVideoBanner(false);
 
       setTimeout(() => {
         imageTitle.style.transform = "scale(0.7) translate(0, 80%)";
@@ -292,6 +311,7 @@ export default function Banner({ netflixOriginals }: Props) {
         descriptionTitle.style.opacity = "0";
         descriptionTitle.style.transition =
           "transform 2s ease, opacity 0.5s ease";
+        setDropDownTitle(true);
       }, 3500);
     };
 
@@ -326,6 +346,7 @@ export default function Banner({ netflixOriginals }: Props) {
       descriptionTitle.style.opacity = "0";
       descriptionTitle.style.transition =
         "transform 2s ease, opacity 0.5s ease";
+      setDropDownTitle(true);
     }, 3500);
 
     // Events
