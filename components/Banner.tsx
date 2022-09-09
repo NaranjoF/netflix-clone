@@ -60,6 +60,7 @@ import {
   ActionButtonReplayModal,
   ActionButtonMuteModal,
   ImageMovieBanner,
+  ImageBannerContainer,
 } from "./styledComponents/Banner.elements";
 import { useRef } from "react";
 
@@ -104,12 +105,14 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const MoviesGrid = useRef<"div" | any | {} | never>(null);
 
+  const ImageBanner = useRef<"div" | any | {} | never>(null);
+
   // Functions
 
   const handleModal = () => {
     const Background = BgdModal.current;
     const mute = muteButton.current;
-    const replayy = replayButton.current;
+    const replay = replayButton.current;
 
     if (modal === false) {
       Background.style.position = "fixed";
@@ -230,7 +233,11 @@ export default function Banner({ netflixOriginals }: Props) {
         setTrailer(false);
         imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
         imageTitle.style.transition = "transform 1.5s ease";
+        imgBanner.style.opacity = 1;
+        movie.style.opacity = 0;
         mute.style.opacity = 0;
+        mute.style.zIndex = 1;
+        replay.style.zIndex = 2;
         replay.style.opacity = 1;
         descriptionTitle.style.transform = "translate(0, 0rem)";
         descriptionTitle.style.opacity = "1";
@@ -244,6 +251,10 @@ export default function Banner({ netflixOriginals }: Props) {
     const replayTrailer = () => {
       setTrailer(true);
       movie.muted = true;
+      mute.style.zIndex = 2;
+      replay.style.zIndex = 1;
+      imgBanner.style.opacity = 0;
+      movie.style.opacity = 1;
       setMute(false);
       movie.play();
       mute.style.opacity = 1;
@@ -279,6 +290,7 @@ export default function Banner({ netflixOriginals }: Props) {
     const mute = muteButton.current;
     const imageTitle = titleImage.current;
     const descriptionTitle = titleDescription.current;
+    const imgBanner = ImageBanner.current;
 
     // Function start
 
@@ -315,20 +327,22 @@ export default function Banner({ netflixOriginals }: Props) {
         <BannerImageContainer>
           <TrailerVideo
             ref={movieTrailerBanner}
-            src="/theMummyTrailer.mp4"
+            src="/corto.mp4"
             autoPlay={true}
             muted={true}
             controls={false}
             disablePictureInPicture={false}
             controlsList={"nodownload"}
           />
-          <ImageMovieBanner
-            src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR1fPJMkxF6boR42dgDVNRsm1stZjoI9ypDduoI_Wn9WquRlzwwG3Vb74kenWtd-FdFXqmpi6SCl1CWO6-QmCYHtDNKqRMtgqv7T.jpg?r=960"
-            width="100%"
-            height="57vh"
-            layout="responsive"
-            alt="Cover"
-          />
+          <ImageBannerContainer ref={ImageBanner}>
+            <ImageMovieBanner
+              src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR1fPJMkxF6boR42dgDVNRsm1stZjoI9ypDduoI_Wn9WquRlzwwG3Vb74kenWtd-FdFXqmpi6SCl1CWO6-QmCYHtDNKqRMtgqv7T.jpg?r=960"
+              width="100%"
+              height="57vh"
+              layout="responsive"
+              alt="Cover"
+            />
+          </ImageBannerContainer>
         </BannerImageContainer>
         {/* Background End */}
         <MovieInfoContainter>

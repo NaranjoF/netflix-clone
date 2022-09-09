@@ -8,7 +8,9 @@ export const BannerContainer = styled.div`
   height: 100vh;
 `;
 
-export const ImageMovieBanner = styled(Image)`
+export const ImageMovieBanner = styled(Image)``;
+
+export const ImageBannerContainer = styled.div`
   opacity: 0;
 `;
 
@@ -1817,6 +1819,7 @@ export const ActionButtonMute = styled.button`
   background: transparent;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  z-index: 2;
 
   &:focus::before {
     border-radius: 100%;
@@ -1839,6 +1842,7 @@ export const ActionButtonMute = styled.button`
 
 export const ActionButtonReplay = styled(ActionButton)`
   opacity: 0;
+  z-index: 1;
 `;
 
 export const ActionButtonReplayModal = styled(ActionButton)`
