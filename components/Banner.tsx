@@ -109,7 +109,7 @@ export default function Banner({ netflixOriginals }: Props) {
   const handleModal = () => {
     const Background = BgdModal.current;
     const mute = muteButton.current;
-    const replay = replayButton.current;
+    const replayy = replayButton.current;
 
     if (modal === false) {
       Background.style.position = "fixed";
