@@ -8,6 +8,10 @@ export const BannerContainer = styled.div`
   height: 100vh;
 `;
 
+export const ImageMovieBanner = styled(Image)`
+  opacity: 0;
+`;
+
 export const BackgroundBannerModal = styled.div``;
 
 export const BannerImageContainer = styled.div`
@@ -16,6 +20,7 @@ export const BannerImageContainer = styled.div`
   left: 0;
   right: 0;
   top: 0;
+  overflow: hidden;
 `;
 
 export const MovieInfoContainter = styled.div`
@@ -122,7 +127,7 @@ export const MovieReview = styled.p`
 `;
 
 export const Buttons = styled.div`
-  z-index: 2;
+  z-index: 1;
 
   button:first-child {
     margin-right: 0.5rem;
@@ -528,6 +533,7 @@ export const ReplayAndPegi = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  z-index: 2;
 
   button {
     margin-right: 1rem;
@@ -542,7 +548,6 @@ export const ActionButton = styled.button`
   background: transparent;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-  /* margin: 0.3rem; */
 
   &:focus::before {
     border-radius: 100%;
@@ -671,6 +676,7 @@ export const MovieAbout = styled.div`
   width: 100%;
   left: 72%;
   top: 110%;
+  z-index: 2;
 
   @media screen and (max-width: 600px) {
     left: 70%;
@@ -931,7 +937,9 @@ export const PrincipalInfoContainer = styled.div`
 `;
 
 export const TrailerVideo = styled.video`
-  width: 100%;
+  width: 101%;
+  position: absolute;
+  z-index: 1;
 `;
 
 export const TitleInfo = styled.div`
@@ -942,7 +950,9 @@ export const TitleInfo = styled.div`
   justify-content: flex-start;
 `;
 
-export const TitleImageContainer = styled.div``;
+export const TitleImageContainer = styled.div`
+  z-index: 2;
+`;
 
 export const ModalWrapper = styled.div`
   width: 100%;
@@ -982,6 +992,7 @@ export const ModalImageContainer = styled.div`
   height: auto;
   z-index: -1;
   position: relative;
+  overflow: hidden;
 `;
 
 export const ImageModal = styled(Image)`
@@ -991,7 +1002,6 @@ export const ImageModal = styled(Image)`
 `;
 
 export const InformationModalContainer = styled.div`
-  /* position: absolute; */
   width: 100%;
   height: 100%;
   top: 0;
@@ -1268,19 +1278,21 @@ export const InfoLeft = styled.div`
 `;
 
 export const InfoRight = styled.div`
-  cursor: default;
   display: flex;
   flex-direction: column;
+  z-index: 3;
 
   div {
     font-size: 0.8rem;
 
     span:first-child {
       color: #777;
+      /* cursor: default; */
     }
 
     span:nth-child(2) {
       margin-left: 0.3rem;
+      /* cursor: pointer; */
     }
   }
 
@@ -1459,7 +1471,7 @@ export const BackgroundModal = styled.div`
   background-color: #000;
   opacity: 0.7;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   z-index: 1;
   position: fixed;
 `;
@@ -1501,7 +1513,6 @@ export const Duration = styled.span`
 export const AboutWrapper = styled.div`
   margin-top: 3rem;
   margin-bottom: 3rem;
-  cursor: default;
 
   h3 {
     font-size: 1.5rem;
@@ -1519,8 +1530,8 @@ export const AboutWrapper = styled.div`
       color: #fff;
 
       &:hover {
-        border-bottom: 1px solid #fff;
-        cursor: pointer;
+        border-bottom: 1px solid #fff !important;
+        cursor: pointer !important;
       }
     }
   }
@@ -1540,8 +1551,9 @@ export const AboutWrapper = styled.div`
 `;
 
 export const TrailerModal = styled.video`
+  position: absolute;
+  opacity: 1;
   width: 100%;
-  z-index: -100;
   border-radius: 6px 6px 0px 0px;
 `;
 
@@ -1791,8 +1803,49 @@ export const DataAboutMovie = styled.div`
 
 export const ImageAndButtonsContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: max-content;
   position: absolute;
   top: 0;
   padding: 0 2rem 0 2rem;
+`;
+
+export const ActionButtonMute = styled.button`
+  display: flex;
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 100%;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:focus::before {
+    border-radius: 100%;
+    box-sizing: content-box;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 2px;
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    border: 2px solid white;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+`;
+
+export const ActionButtonReplay = styled(ActionButton)`
+  opacity: 0;
+`;
+
+export const ActionButtonReplayModal = styled(ActionButton)`
+  position: absolute;
+  opacity: 0;
+`;
+
+export const ActionButtonMuteModal = styled(ActionButton)`
+  z-index: 1;
 `;

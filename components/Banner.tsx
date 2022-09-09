@@ -55,6 +55,11 @@ import {
   ActionContentModal,
   DataAboutMovie,
   ImageAndButtonsContainer,
+  ActionButtonMute,
+  ActionButtonReplay,
+  ActionButtonReplayModal,
+  ActionButtonMuteModal,
+  ImageMovieBanner,
 } from "./styledComponents/Banner.elements";
 import { useRef } from "react";
 
@@ -87,6 +92,10 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const muteButton = useRef<"button" | any | {} | never>(null);
 
+  const replayButtonModal = useRef<"button" | any | {} | never>(null);
+
+  const muteButtonModal = useRef<"button" | any | {} | never>(null);
+
   const titleImage = useRef<"div" | any | {} | never>(null);
 
   const titleDescription = useRef<"p" | any | {} | never>(null);
@@ -102,15 +111,14 @@ export default function Banner({ netflixOriginals }: Props) {
     const mute = muteButton.current;
     const replay = replayButton.current;
 
-    if (mute !== null) {
-      mute.style.display = "none";
-      replay.style.display = "flex";
-    }
-
     if (modal === false) {
       Background.style.position = "fixed";
       Background.style.width = "100%";
       Background.style.height = "100%";
+      if (mute.style.opacity !== 0) {
+        mute.style.opacity = 0;
+      }
+      replay.style.opacity = 1;
       setTrailerModal(true);
     } else if (modal === true) {
       Background.removeAttribute("style");
@@ -133,6 +141,50 @@ export default function Banner({ netflixOriginals }: Props) {
     }
   };
 
+  const handleMuteModal = () => {
+    const movie = movieTrailerModal.current;
+    if (movie.muted === true) {
+      movie.muted = false;
+      setMute(true);
+    } else if (movie.muted === false) {
+      movie.muted = true;
+      setMute(false);
+    }
+  };
+
+  const endedVideo = () => {
+    const movieModal = movieTrailerModal.current;
+    const muteModal = muteButtonModal.current;
+    const replayModal = replayButtonModal.current;
+
+    const endMovie = () => {
+      muteModal.style.opacity = 0;
+      muteModal.style.zIndex = -1;
+      replayModal.style.opacity = 1;
+      movieModal.style.opacity = 0;
+    };
+
+    movieModal.addEventListener("ended", endMovie);
+
+    return () => {
+      movieModal.removeEventListener("ended", endMovie);
+    };
+  };
+
+  const replayTrailerModal = () => {
+    const muteModal = muteButtonModal.current;
+    const replayModal = replayButtonModal.current;
+    const movieModal = movieTrailerModal.current;
+
+    movieModal.play();
+    movieModal.muted = true;
+    movieModal.style.opacity = 1;
+    muteModal.style.opacity = 1;
+    muteModal.style.zIndex = 1;
+    replayModal.style.opacity = 0;
+    setMute(false);
+  };
+
   const videoModal = () => {
     const bannerTrailer = movieTrailerBanner.current;
     const ModalTrailer = movieTrailerModal.current;
@@ -145,7 +197,9 @@ export default function Banner({ netflixOriginals }: Props) {
       setTrailerModal(false);
     };
 
-    ModalTrailer.addEventListener("ended", handleTrailerModal);
+    setTimeout(() => {
+      ModalTrailer.addEventListener("ended", handleTrailerModal);
+    }, 2000);
 
     if (bannerTrailer !== null) {
       const VideoTime = bannerTrailer.currentTime;
@@ -154,8 +208,6 @@ export default function Banner({ netflixOriginals }: Props) {
       if (trailer === true) {
         setTrailer(false);
         bannerTrailer.pause(true);
-        mute.style.display = "none";
-        replay.style.display = "flex";
         imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
         imageTitle.style.transition = "transform 1.5s ease";
         descriptionTitle.style.transform = "translate(0, 0rem)";
@@ -176,10 +228,10 @@ export default function Banner({ netflixOriginals }: Props) {
     const handleTrailer = () => {
       if (trailer === true) {
         setTrailer(false);
-        mute.style.display = "none";
-        replay.style.display = "flex";
         imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
         imageTitle.style.transition = "transform 1.5s ease";
+        mute.style.opacity = 0;
+        replay.style.opacity = 1;
         descriptionTitle.style.transform = "translate(0, 0rem)";
         descriptionTitle.style.opacity = "1";
         descriptionTitle.style.transition =
@@ -191,11 +243,11 @@ export default function Banner({ netflixOriginals }: Props) {
 
     const replayTrailer = () => {
       setTrailer(true);
-      mute.style.display = "flex";
       movie.muted = true;
       setMute(false);
-      replay.style.display = "none";
       movie.play();
+      mute.style.opacity = 1;
+      replay.style.opacity = 0;
 
       setTimeout(() => {
         imageTitle.style.transform = "scale(0.7) translate(0, 80%)";
@@ -261,25 +313,22 @@ export default function Banner({ netflixOriginals }: Props) {
       {/* Background start */}
       <BackgroundBannerModal ref={BgdModal}>
         <BannerImageContainer>
-          {trailer ? (
-            <TrailerVideo
-              ref={movieTrailerBanner}
-              src="/theMummyTrailer.mp4"
-              autoPlay={true}
-              muted={true}
-              controls={false}
-              disablePictureInPicture={false}
-              controlsList={"nodownload"}
-            />
-          ) : (
-            <Image
-              src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR1fPJMkxF6boR42dgDVNRsm1stZjoI9ypDduoI_Wn9WquRlzwwG3Vb74kenWtd-FdFXqmpi6SCl1CWO6-QmCYHtDNKqRMtgqv7T.jpg?r=960"
-              width="100%"
-              height="55vh"
-              layout="responsive"
-              alt="Cover"
-            />
-          )}
+          <TrailerVideo
+            ref={movieTrailerBanner}
+            src="/theMummyTrailer.mp4"
+            autoPlay={true}
+            muted={true}
+            controls={false}
+            disablePictureInPicture={false}
+            controlsList={"nodownload"}
+          />
+          <ImageMovieBanner
+            src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR1fPJMkxF6boR42dgDVNRsm1stZjoI9ypDduoI_Wn9WquRlzwwG3Vb74kenWtd-FdFXqmpi6SCl1CWO6-QmCYHtDNKqRMtgqv7T.jpg?r=960"
+            width="100%"
+            height="57vh"
+            layout="responsive"
+            alt="Cover"
+          />
         </BannerImageContainer>
         {/* Background End */}
         <MovieInfoContainter>
@@ -351,7 +400,7 @@ export default function Banner({ netflixOriginals }: Props) {
               </Buttons>
 
               <ReplayAndPegi>
-                <ActionButton ref={muteButton}>
+                <ActionButtonMute ref={muteButton}>
                   <ActionContent>
                     {mute ? (
                       <svg
@@ -383,9 +432,9 @@ export default function Banner({ netflixOriginals }: Props) {
                       </svg>
                     )}
                   </ActionContent>
-                </ActionButton>
+                </ActionButtonMute>
 
-                <ActionButton ref={replayButton} style={{ display: "none" }}>
+                <ActionButtonReplay ref={replayButton}>
                   <ActionContent>
                     <svg
                       viewBox="0 0 24 24"
@@ -398,7 +447,7 @@ export default function Banner({ netflixOriginals }: Props) {
                       ></path>
                     </svg>
                   </ActionContent>
-                </ActionButton>
+                </ActionButtonReplay>
                 <Pegi>
                   <p>16+</p>
                 </Pegi>
@@ -491,32 +540,25 @@ export default function Banner({ netflixOriginals }: Props) {
                 </svg>
               </CloseModal>
               <ModalImageContainer>
-                {trailerModal ? (
-                  <>
-                    <TrailerModal
-                      ref={movieTrailerModal}
-                      src="/theMummyTrailer.mp4"
-                      autoPlay={true}
-                      muted={true}
-                      controls={false}
-                      disablePictureInPicture={false}
-                      controlsList={"nodownload"}
-                      onPlay={() => videoModal()}
-                    />
-                    <ShadowModal></ShadowModal>
-                  </>
-                ) : (
-                  <>
-                    <ImageModal
-                      src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABWDlosw-gklgL9NYjjjBwqbdyr7RA88QfoiXe2fpKjoWR69TLcV59TOzCbQkmQ_ZD0SZkVdyZavwI8eqFsM-_Vly4Ru2zu9W880f.jpg?r=4a9"
-                      width="100%"
-                      height="55vh"
-                      layout="responsive"
-                      alt="Cover"
-                    />
-                    <ShadowModal></ShadowModal>
-                  </>
-                )}
+                <TrailerModal
+                  ref={movieTrailerModal}
+                  src="/theMummyTrailer.mp4"
+                  onPlaying={() => endedVideo()}
+                  autoPlay={true}
+                  muted={true}
+                  controls={false}
+                  disablePictureInPicture={false}
+                  controlsList={"nodownload"}
+                  onPlay={() => videoModal()}
+                />
+                <ImageModal
+                  src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABWDlosw-gklgL9NYjjjBwqbdyr7RA88QfoiXe2fpKjoWR69TLcV59TOzCbQkmQ_ZD0SZkVdyZavwI8eqFsM-_Vly4Ru2zu9W880f.jpg?r=4a9"
+                  width="100%"
+                  height="55vh"
+                  layout="responsive"
+                  alt="Cover"
+                />
+                <ShadowModal></ShadowModal>
               </ModalImageContainer>
 
               <ImageAndButtonsContainer>
@@ -587,7 +629,10 @@ export default function Banner({ netflixOriginals }: Props) {
                   </PlayAndActionButtons>
 
                   <ReplayAndPegi>
-                    <ActionButton ref={muteButton}>
+                    <ActionButtonMuteModal
+                      ref={muteButtonModal}
+                      onClick={() => handleMuteModal()}
+                    >
                       <ActionContentModal>
                         {mute ? (
                           <svg
@@ -619,11 +664,11 @@ export default function Banner({ netflixOriginals }: Props) {
                           </svg>
                         )}
                       </ActionContentModal>
-                    </ActionButton>
+                    </ActionButtonMuteModal>
 
-                    <ActionButton
-                      ref={replayButton}
-                      style={{ display: "none" }}
+                    <ActionButtonReplayModal
+                      ref={replayButtonModal}
+                      onClick={() => replayTrailerModal()}
                     >
                       <ActionContentModal>
                         <svg
@@ -637,7 +682,7 @@ export default function Banner({ netflixOriginals }: Props) {
                           ></path>
                         </svg>
                       </ActionContentModal>
-                    </ActionButton>
+                    </ActionButtonReplayModal>
                   </ReplayAndPegi>
                 </ButtonsModal>
               </ImageAndButtonsContainer>
