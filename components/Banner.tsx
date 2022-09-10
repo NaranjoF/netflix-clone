@@ -84,6 +84,9 @@ export default function Banner({ netflixOriginals }: Props) {
   const [dropDownTitle, setDropDownTitle] = useState(false);
 
   const [endVideoBanner, setEndVideoBanner] = useState(false);
+
+  const [replayVideoModal, setReplayVideoModal] = useState(false);
+
   // Refs
 
   const movieTrailerBanner = useRef<"video" | any | {} | never>(null);
@@ -117,6 +120,8 @@ export default function Banner({ netflixOriginals }: Props) {
     const movieBanner = movieTrailerBanner.current;
     const movieModal = movieTrailerModal.current;
     const imgBanner = ImageBanner.current;
+    const imageTitle = titleImage.current;
+    const descriptionTitle = titleDescription.current;
 
     if (modal === false) {
       Background.style.position = "fixed";
@@ -124,6 +129,17 @@ export default function Banner({ netflixOriginals }: Props) {
       Background.style.height = "100%";
       movieBanner.style.opacity = 0;
       imgBanner.style.opacity = 1;
+
+      if (dropDownTitle === false) {
+        imageTitle.style.transform = "scale(0.7) translate(0, 80%)";
+        imageTitle.style.transition = "transform 2s ease";
+        imageTitle.style.transformOrigin = "bottom left";
+        descriptionTitle.style.transform = "translate(0, 90%)";
+        descriptionTitle.style.opacity = "0";
+        descriptionTitle.style.transition =
+          "transform 2s ease, opacity 0.5s ease";
+        setDropDownTitle(true);
+      }
     } else if (modal === true) {
       Background.removeAttribute("style");
 
@@ -131,6 +147,11 @@ export default function Banner({ netflixOriginals }: Props) {
         if (endVideoBanner === true) {
           setEndVideoBanner(false);
         }
+
+        if (replayVideoModal === true) {
+          setReplayVideoModal(false);
+        }
+
         const videoTime = movieModal.currentTime;
         movieBanner.currentTime = videoTime;
         movieBanner.play();
@@ -195,14 +216,15 @@ export default function Banner({ netflixOriginals }: Props) {
     movieModal.style.opacity = 1;
     movieModal.muted = true;
     movieModal.currentTime = 0;
-    movieModal.play();
     setMute(false);
     setEndVideoModal(false);
-    imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
-    imageTitle.style.transition = "transform 1.5s ease";
-    descriptionTitle.style.transform = "translate(0, 0rem)";
-    descriptionTitle.style.opacity = "1";
-    descriptionTitle.style.transition = "transform 1.5s ease, opacity 2s ease";
+    setReplayVideoModal(true);
+    imageTitle.style.transform = "scale(0.7) translate(0, 80%)";
+    imageTitle.style.transition = "transform 2s ease";
+    imageTitle.style.transformOrigin = "bottom left";
+    descriptionTitle.style.transform = "translate(0, 90%)";
+    descriptionTitle.style.opacity = "0";
+    descriptionTitle.style.transition = "transform 2s ease, opacity 0.5s ease";
   };
 
   const videoModal = () => {
@@ -226,14 +248,12 @@ export default function Banner({ netflixOriginals }: Props) {
       muteModal.style.opacity = 0;
       muteModal.style.zIndex = -1;
       replayModal.style.opacity = 1;
-      ModalTrailer.style.opacity = 1;
       imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
       imageTitle.style.transition = "transform 1.5s ease";
       descriptionTitle.style.transform = "translate(0, 0rem)";
       descriptionTitle.style.opacity = "1";
       descriptionTitle.style.transition =
         "transform 1.5s ease, opacity 2s ease";
-      ModalTrailer.currentTime = 0;
       ModalTrailer.style.opacity = 0;
       muteBanner.style.opacity = 0;
       muteBanner.style.zIndex = 1;
@@ -242,11 +262,13 @@ export default function Banner({ netflixOriginals }: Props) {
       setDropDownTitle(false);
     };
 
-    setTimeout(() => {
-      ModalTrailer.addEventListener("ended", handleTrailerModal);
-    }, 2000);
+    ModalTrailer.addEventListener("ended", handleTrailerModal);
 
-    if (endVideoModal === false && endVideoBanner === false) {
+    if (
+      endVideoModal === false &&
+      endVideoBanner === false &&
+      replayVideoModal === false
+    ) {
       const VideoTime = bannerTrailer.currentTime;
       ModalTrailer.currentTime = VideoTime;
       bannerTrailer.pause(true);
