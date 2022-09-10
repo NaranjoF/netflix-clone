@@ -128,6 +128,9 @@ export default function Banner({ netflixOriginals }: Props) {
       Background.removeAttribute("style");
 
       if (endVideoModal !== true) {
+        if (endVideoBanner === true) {
+          setEndVideoBanner(false);
+        }
         const videoTime = movieModal.currentTime;
         movieBanner.currentTime = videoTime;
         movieBanner.play();
@@ -186,12 +189,13 @@ export default function Banner({ netflixOriginals }: Props) {
     mute.style.zIndex = 2;
     replay.style.zIndex = 0;
     replay.style.opacity = 0;
-    movieModal.play();
-    movieModal.muted = true;
-    movieModal.style.opacity = 1;
     muteModal.style.opacity = 1;
     muteModal.style.zIndex = 1;
     replayModal.style.opacity = 0;
+    movieModal.style.opacity = 1;
+    movieModal.muted = true;
+    movieModal.currentTime = 0;
+    movieModal.play();
     setMute(false);
     setEndVideoModal(false);
     imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
@@ -217,23 +221,12 @@ export default function Banner({ netflixOriginals }: Props) {
       ModalTrailer.muted = true;
     }
 
-    if (dropDownTitle === false) {
-      imageTitle.style.transform = "scale(0.7) translate(0, 80%)";
-      imageTitle.style.transition = "transform 2s ease";
-      imageTitle.style.transformOrigin = "bottom left";
-      descriptionTitle.style.transform = "translate(0, 90%)";
-      descriptionTitle.style.opacity = "0";
-      descriptionTitle.style.transition =
-        "transform 2s ease, opacity 0.5s ease";
-      setDropDownTitle(true);
-    }
-
     const handleTrailerModal = () => {
       setEndVideoModal(true);
       muteModal.style.opacity = 0;
       muteModal.style.zIndex = -1;
       replayModal.style.opacity = 1;
-      ModalTrailer.style.opacity = 0;
+      ModalTrailer.style.opacity = 1;
       imageTitle.style.transform = "scale(1) translate(0px, 0rem)";
       imageTitle.style.transition = "transform 1.5s ease";
       descriptionTitle.style.transform = "translate(0, 0rem)";
@@ -263,6 +256,21 @@ export default function Banner({ netflixOriginals }: Props) {
 
     if (endVideoModal === false && endVideoBanner === true) {
       ModalTrailer.currentTime = 0;
+      muteBanner.style.opacity = 1;
+      muteBanner.style.zIndex = 2;
+      replay.style.zIndex = 1;
+      replay.style.opacity = 0;
+
+      if (dropDownTitle === false) {
+        imageTitle.style.transform = "scale(0.7) translate(0, 80%)";
+        imageTitle.style.transition = "transform 2s ease";
+        imageTitle.style.transformOrigin = "bottom left";
+        descriptionTitle.style.transform = "translate(0, 90%)";
+        descriptionTitle.style.opacity = "0";
+        descriptionTitle.style.transition =
+          "transform 2s ease, opacity 0.5s ease";
+        setDropDownTitle(true);
+      }
     }
 
     return () => {
@@ -287,6 +295,7 @@ export default function Banner({ netflixOriginals }: Props) {
       descriptionTitle.style.transition =
         "transform 1.5s ease, opacity 2s ease";
       setEndVideoBanner(true);
+      setDropDownTitle(false);
     };
 
     // Function for Replay event
@@ -298,6 +307,7 @@ export default function Banner({ netflixOriginals }: Props) {
       imgBanner.style.opacity = 0;
       movie.style.opacity = 1;
       setMute(false);
+      movie.currentTime = 0;
       movie.play();
       mute.style.opacity = 1;
       replay.style.opacity = 0;
@@ -372,11 +382,11 @@ export default function Banner({ netflixOriginals }: Props) {
         <BannerImageContainer>
           <TrailerVideo
             ref={movieTrailerBanner}
-            src="/corto.mp4"
+            src="/theMummyTrailer.mp4"
             autoPlay={true}
             muted={true}
             controls={false}
-            disablePictureInPicture={false}
+            disablePictureInPicture={true}
             controlsList={"nodownload"}
           />
           <ImageBannerContainer ref={ImageBanner}>
@@ -601,11 +611,11 @@ export default function Banner({ netflixOriginals }: Props) {
               <ModalImageContainer>
                 <TrailerModal
                   ref={movieTrailerModal}
-                  src="/corto.mp4"
+                  src="/theMummyTrailer.mp4"
                   autoPlay={true}
                   muted={true}
                   controls={false}
-                  disablePictureInPicture={false}
+                  disablePictureInPicture={true}
                   controlsList={"nodownload"}
                   onPlay={() => videoModal()}
                 />
