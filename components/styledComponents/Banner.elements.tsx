@@ -1003,7 +1003,7 @@ export const ModalWrapper = styled.div`
 
 export const ModalContainer = styled.div`
   z-index: 10;
-  top: 2em;
+  margin-top: 2em;
   background-color: #181818;
   overflow: hidden;
   height: max-content;
@@ -1363,13 +1363,14 @@ export const InfoRight = styled.div`
   div:nth-child(2) {
     margin-bottom: 1rem;
 
-    span:nth-child(2) {
+    span:first-child {
       &:hover {
-        border-bottom: 1px solid white;
-        cursor: pointer;
+        border-bottom: 0;
+        cursor: default;
       }
     }
-    span:nth-child(3) {
+
+    span {
       &:hover {
         border-bottom: 1px solid white;
         cursor: pointer;
@@ -1380,13 +1381,14 @@ export const InfoRight = styled.div`
   div:nth-child(3) {
     margin-bottom: 1rem;
 
-    span:nth-child(2) {
+    span:first-child {
       &:hover {
-        border-bottom: 1px solid white;
-        cursor: pointer;
+        border-bottom: 0;
+        cursor: default;
       }
     }
-    span:nth-child(3) {
+
+    span {
       &:hover {
         border-bottom: 1px solid white;
         cursor: pointer;
@@ -1527,15 +1529,6 @@ export const CardTitle = styled.div`
       font-size: 0.8rem;
     }
   }
-`;
-
-export const BackgroundModal = styled.div`
-  background-color: #000;
-  opacity: 0.7;
-  width: 100vw;
-  height: 100%;
-  z-index: 1;
-  position: fixed;
 `;
 
 export const SeparatorAndActionButton = styled.div`
@@ -1776,9 +1769,9 @@ export const DataAboutMovie = styled.div`
   div:nth-child(3) {
     display: flex;
     align-items: center;
+    justify-content: center;
     svg {
       width: 2rem;
-      height: 2em;
     }
   }
 
@@ -1918,4 +1911,20 @@ export const ActionButtonReplayModal = styled(ActionButton)`
 
 export const ActionButtonMuteModal = styled(ActionButton)`
   z-index: 1;
+`;
+
+export const ModalAndBackgroundContainer = styled.div`
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+`;
+
+export const BackgroundModal = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.7;
 `;
