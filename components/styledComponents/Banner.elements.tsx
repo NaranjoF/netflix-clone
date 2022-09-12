@@ -1926,5 +1926,6 @@ export const BackgroundModal = styled.div`
   height: 100%;
   position: absolute;
   background-color: #000;
-  opacity: 0.7;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 `;

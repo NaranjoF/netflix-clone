@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Movie } from "../typings";
 import Image from "next/image";
 import { baseUrl } from "../constants/movie";
+import { v4 as uuid } from "uuid";
 import {
   BannerImageContainer,
   BannerContainer,
@@ -803,7 +804,7 @@ export default function Banner({ netflixOriginals }: Props) {
       },
       {
         modalImageMovie:
-          "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZ_zrSs1ACHCe0N1OCd8qIUd9EDe6VyrnwKK8VXrHtjEA6FwQ_JzIgPqYxnVyP3sBe88Ms-RzLFnANS2xw0BtdwHgVWaPAFuFCg.jpg?r=c68",
+          "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABXPMotSVy15bOAwn_qJxcH7v96oSqI4oaMPyg7FmKFvI3fGOC3UR22hCoHrEd-jVI1FiKNNYCd7-uWhOAiI9B_dSwIMw3D_E2ME.jpg?r=81c",
         releaseYear: "2016",
         maturyRaiting: "16+",
         aboutMovie:
@@ -1048,6 +1049,8 @@ export default function Banner({ netflixOriginals }: Props) {
 
   const [replayVideoModal, setReplayVideoModal] = useState(false);
 
+  const [transitionModal, setTransitionModal] = useState(false);
+
   // Refs
 
   const movieTrailerBanner = useRef<"video" | any | {} | never>(null);
@@ -1071,6 +1074,10 @@ export default function Banner({ netflixOriginals }: Props) {
   const moviesGrid = useRef<"div" | any | {} | never>(null);
 
   const imageBanner = useRef<"div" | any | {} | never>(null);
+
+  const modalCont = useRef<"div" | any | {} | never>(null);
+
+  const BackModal = useRef<"div" | any | {} | never>(null);
 
   // General Functions
 
@@ -1114,38 +1121,53 @@ export default function Banner({ netflixOriginals }: Props) {
       Background.style.height = "100%";
       movieBanner.style.opacity = 0;
       imgBanner.style.opacity = 1;
+      setModal(true);
 
       if (dropDownTitle === false) {
         shrinkTitle();
       }
     } else if (modal === true) {
       Background.removeAttribute("style");
+      const backgroundModal = BackModal.current;
 
-      if (endVideoModal !== true) {
-        if (endVideoBanner === true) {
-          setEndVideoBanner(false);
-        }
-
-        if (replayVideoModal === true) {
-          setReplayVideoModal(false);
-        }
-
-        movieBanner.style.opacity = 1;
-        imgBanner.style.opacity = 0;
-        muteBanner.style.zIndex = 2;
-        replayBanner.style.zIndex = 1;
-        muteBanner.style.opacity = 1;
-        replayBanner.style.opacity = 0;
-        const videoTime = movieModal.currentTime;
-        movieBanner.currentTime = videoTime;
-        movieBanner.play();
-
-        if (mute === true) {
-          movieBanner.muted = false;
-        } else if (mute === false) {
-          movieBanner.muted = true;
-        }
+      if (transitionModal === true) {
+        backgroundModal.style.opacity = 0.0;
+        setTransitionModal(false);
       }
+
+      setTimeout(() => {
+        setModal(false);
+        if (endVideoModal !== true) {
+          if (endVideoBanner === true) {
+            setEndVideoBanner(false);
+          }
+
+          if (replayVideoModal === true) {
+            setReplayVideoModal(false);
+          }
+
+          movieBanner.style.opacity = 1;
+          imgBanner.style.opacity = 0;
+          muteBanner.style.zIndex = 2;
+          replayBanner.style.zIndex = 1;
+          muteBanner.style.opacity = 1;
+          replayBanner.style.opacity = 0;
+          const videoTime = movieModal.currentTime;
+          movieBanner.currentTime = videoTime;
+          movieBanner.play();
+
+          if (mute === true) {
+            movieBanner.muted = false;
+          } else if (mute === false) {
+            movieBanner.muted = true;
+          }
+        }
+
+        if (isOpenGrid === true && grid === true) {
+          SetOpenGrid(false);
+          setGrid(false);
+        }
+      }, 300);
     }
   };
 
@@ -1207,6 +1229,12 @@ export default function Banner({ netflixOriginals }: Props) {
     const replayModal = replayButtonModal.current;
     const muteBanner = muteButton.current;
     const replayBanner = replayButton.current;
+    const backgroundModal = BackModal.current;
+
+    if (transitionModal === false) {
+      backgroundModal.style.opacity = 0.7;
+      setTransitionModal(true);
+    }
 
     if (mute === true) {
       movieModal.muted = false;
@@ -1404,7 +1432,7 @@ export default function Banner({ netflixOriginals }: Props) {
                 </PlayButton>
                 <InfoButton
                   onClick={() => {
-                    setModal(true), handleModal();
+                    handleModal();
                   }}
                 >
                   <ContentButton>
@@ -1549,13 +1577,14 @@ export default function Banner({ netflixOriginals }: Props) {
             <ModalAndBackgroundContainer>
               <BackgroundModal
                 onClick={() => {
-                  setModal(false), handleModal();
+                  handleModal();
                 }}
+                ref={BackModal}
               ></BackgroundModal>
-              <ModalContainer>
+              <ModalContainer ref={modalCont}>
                 <CloseModal
                   onClick={() => {
-                    setModal(false), handleModal();
+                    handleModal();
                   }}
                 >
                   <svg
@@ -1776,21 +1805,21 @@ export default function Banner({ netflixOriginals }: Props) {
                       <div>
                         <span>Cast:</span>
                         {moviesArray[actualMovie].cast.map((actor) => (
-                          <span key={actor}>{actor}</span>
+                          <span key={uuid()}>{actor}</span>
                         ))}
                       </div>
 
                       <div>
                         <span>Genres:</span>
                         {moviesArray[actualMovie].Genres.map((genre) => (
-                          <span key={genre}>{genre}</span>
+                          <span key={uuid()}>{genre}</span>
                         ))}
                       </div>
 
                       <div>
                         <span>The Movie is:</span>
                         {moviesArray[actualMovie].thisMovieIs.map((is) => (
-                          <span key={is}>{is}</span>
+                          <span key={uuid()}>{is}</span>
                         ))}
                       </div>
                     </InfoRight>
@@ -1799,7 +1828,7 @@ export default function Banner({ netflixOriginals }: Props) {
                     <p>More Like This</p>
                     <GridMovies ref={moviesGrid}>
                       {recommended[actualMovie].map((movie) => (
-                        <GridCard key={movie.maturyRaiting}>
+                        <GridCard key={uuid()}>
                           <Duration>{movie.duration}</Duration>
                           <section
                             style={{
