@@ -570,6 +570,18 @@ export const ActionButton = styled.button`
   }
 `;
 
+export const ActionButtonGridCard = styled(ActionButton)`
+  z-index: 3;
+`;
+
+export const ActionButtonMM = styled(ActionButton)`
+  background-color: #3333335e;
+
+  &:hover {
+    background-color: #3333335e;
+  }
+`;
+
 export const ActionContent = styled.div`
   display: flex;
   align-items: center;
@@ -624,6 +636,13 @@ export const ActionContent = styled.div`
       width: 0.7rem;
       height: 0.7rem;
     }
+  }
+`;
+
+export const ActionContentModalMM = styled(ActionContent)`
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 `;
 
@@ -691,6 +710,21 @@ export const MovieAbout = styled.div`
   @media screen and (min-width: 370px) and (max-width: 385px) and (min-height: 630px) and (max-height: 640px) {
     left: 68%;
   }
+`;
+
+export const PlayButtonMoviesModal = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.2s ease-in;
+  cursor: pointer;
+  z-index: 2;
 `;
 
 export const FirstInfo = styled.div`
@@ -1398,6 +1432,32 @@ export const GridCard = styled.div`
   background-color: #2f2f2f;
   border-radius: 4px;
   position: relative;
+  z-index: 3;
+  cursor: pointer;
+
+  &&::before {
+    background-image: linear-gradient(
+      198deg,
+      rgba(0, 0, 0, 0.9),
+      hsla(0, 0%, 9%, 0.5) 20%,
+      transparent 28%
+    );
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+
+  &:hover {
+    section:nth-child(2) {
+      div:first-child {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
 export const GridCardDescription = styled.div`
@@ -1494,6 +1554,7 @@ export const SeparatorAndActionButton = styled.div`
   position: relative;
   width: 100%;
   margin-top: -6em;
+  z-index: 4;
 `;
 
 export const ButtonsMoreMovies = styled.div`
@@ -1504,7 +1565,7 @@ export const ButtonsMoreMovies = styled.div`
 
 export const Duration = styled.span`
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   right: 0;
   color: #fff;
   margin-top: 0.3rem;
