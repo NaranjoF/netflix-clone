@@ -69,9 +69,138 @@ interface Props {
 }
 
 export default function Banner({ netflixOriginals }: Props) {
+  // Movies for banner and  modal
+
+  const moviesArray = [
+    {
+      name: "Back To The Future",
+      titleImage:
+        "https://occ-0-5460-114.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABXR-_yln1VAeMou2Ro0nycLQfI6z900iU3FE055MpLOLYlQYrm6BWvHd8TTXzIU58e10dOMrhzcLefghfIVrdyLdchN5dQr3D8BhFwzK0dTY.png?r=47b",
+      aboutMovie:
+        "After he accidentally drives a DeLorean time machine from 1985 to 1955, Marty McFly races the clock to ensure his future parents fall in love.",
+      backgroundImageMovie:
+        "https://occ-0-5460-114.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABSbek_H6ReV5ZdMmgO8lqFQailFNSAoixmUvS1cYLKYpAJtCuggqNNHfWCfU7fOJuWkEmkFsC24cDSfsza_kmW_k30J4hQj5xR4T.jpg?r=99d",
+      modalImageMovie:
+        "https://occ-0-5460-114.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABSbek_H6ReV5ZdMmgO8lqFQailFNSAoixmUvS1cYLKYpAJtCuggqNNHfWCfU7fOJuWkEmkFsC24cDSfsza_kmW_k30J4hQj5xR4T.jpg?r=99d",
+      releaseYear: "1985",
+      maturyRaiting: "13+",
+      duration: "1h 56m",
+      cast: [
+        "Michael J.fox, ",
+        "Christopher Lloyd, ",
+        "Lea Thompson, ",
+        "more",
+      ],
+      Genres: ["Sci-Fi Movies, ", "Family Movies, ", "Action & Adventure"],
+      thisMovieIs: ["Feel-Good, ", "Exciting"],
+      Director: "Robert Zemeckis",
+      writer: ["Robert Xemeckis, ", "Bob Gale"],
+      match: "90% Match",
+    },
+    {
+      name: "Puss In Boots",
+      titleImage:
+        "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABVMXfVds362qUm08Z_2q8CoxCPo3TQh-WYQKz8WmJBJjEKlnuUcU5HuxbM1YxTXsK1sYJAjOOF9OvYU-q2T6PiV9YaHE9Ap7guORVAQXFmQ.png?r=d0e",
+      aboutMovie:
+        "The fabled feline heads to the Land of Giants with friends Humpty Dumpty and Kitty Softpaws on a quest to nab its greatest treasure: the Golden Goose.",
+      backgroundImageMovie:
+        "https://occ-0-5386-116.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABSTPOeOndbVLR3w0fV26s_M2xgKwT4rKX_0auSuPZYEpo1T_Z6GqOGx1GifBjISYifbk4BE7EMPGXr91H9r6l-fZflxzeHlBJ0bx.jpg?r=22e",
+      modalImageMovie:
+        "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABW3disKwQkQA8omxwknVT5xAETzN0HwabUc4SUGqAcGc4XTFyLbLlGL47Lhv2LG31hfnjCs3x7Vs3G1DmNEUSL9dU18LjS0lt-4S.jpg?r=0d0",
+      releaseYear: "2011",
+      maturyRaiting: "7+",
+      duration: "1h 32m",
+      cast: [
+        "Antonio Banderas, ",
+        "Salma Hayek, ",
+        "Zach Galifianakis, ",
+        "more",
+      ],
+      Genres: ["Family Movies, ", "Kids & Family Movies, ", "Comedies"],
+      thisMovieIs: ["Witty, ", "Goofy"],
+      Director: "Chris Miller",
+      writer: ["Brian Lynch, ", "William Davies, ", "Tom Wheeler"],
+      match: "80% Match",
+    },
+    {
+      name: "Spider-Man",
+      titleImage:
+        "https://occ-0-5460-114.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABVSPDk2Qnh_4fBtkM2anvmlZmG4ZBtxQt2EiDP023Y_7fdlroY1Sz40MaL9oddPbNyXO8cR0KsQd6P29sCYmT5iIMap8StxcyNkqZfIOYFOU.png?r=bf8",
+      aboutMovie:
+        "After getting bitten by a genetically enhanced spider, shy teen Peter Parker uses his newfound superpowers to fight injustice and battle a vengeful supervillain.",
+      backgroundImageMovie:
+        "https://occ-0-5460-114.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXW_M0y6lMfk2H2IR-SYMdr5NJ9usdYr87IUwPIekw7LY1JDEpaf381-nYiNzzQKvoMl6UK5LHOlHxkwMEATIGHVvdUzquzSzy_e.jpg?r=762",
+      modalImageMovie:
+        "https://occ-0-5460-114.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXW_M0y6lMfk2H2IR-SYMdr5NJ9usdYr87IUwPIekw7LY1JDEpaf381-nYiNzzQKvoMl6UK5LHOlHxkwMEATIGHVvdUzquzSzy_e.jpg?r=762",
+      releaseYear: "2002",
+      maturyRaiting: "13+",
+      duration: "2h 1m",
+      cast: ["Tobey Maguire, ", "Willem Dafoe, ", "Kirsten Dunst, ", "more"],
+      Genres: ["Sci-Fi Movies, ", "Action & Adventure"],
+      thisMovieIs: ["Exciting"],
+      Director: "Sam Raimi",
+      writer: ["David Koepp"],
+      match: "95% Match",
+    },
+    {
+      name: "Chappie",
+      titleImage:
+        "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/tx1O544a9T7n8Z_G12qaboulQQE/AAAABdoS_6kR_aSx91sQ7pW7Oai4pQOFkALaknjLCYsb5XW8--i516iH8JA3u8VJUbBupkDDRGEPCGk9fY2nRClIoo9uKUdjPPa_HWCZWs47l_0.png?r=6d9",
+      aboutMovie:
+        "In a futuristic society where an indestructible robot police force keeps crime at bay, a lone droid evolves to the next level of artificial intelligence.",
+      backgroundImageMovie:
+        "https://occ-0-5386-116.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABdrCaZGsBBWauX0SxXSegIbigNahCXo6CQFGRWZzgwBU6YVsv3qUm6wy4aY0zZ5Bw-awelPcsd0w8xE2J5Y5mgNYbEbARn2jRC6F.jpg?r=3a8",
+      modalImageMovie:
+        "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABfPDfD8jmIpg3o0fWTC9xI_3OoL5fJJIaT2Sq1w3TF90EspwsLpGF85wArIfdP2JzsjAZff1arzAaXpT_lbFroXjSRxQUOR5eVBY.jpg?r=e5c",
+      releaseYear: "2015",
+      maturyRaiting: "16+",
+      duration: "2h",
+      cast: [
+        "Sharito Copley, ",
+        "Hugh Jackman, ",
+        "Sigourney Weaver, ",
+        "more",
+      ],
+      Genres: ["Sci-Fi Movies, ", "Action & Adventure"],
+      thisMovieIs: ["Exciting"],
+      Director: "Neill Blomkamp",
+      writer: ["Neill Blomkamp, ", "Terri Tatchell"],
+      match: "85% Match",
+    },
+    {
+      name: "The Mummy",
+      titleImage:
+        "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABRV8Rfaw8Jh_5TYMAmVkGaSeswqIbYCQw4z4BOTzlcDlVVNsLC6UBKrljog6M8xuv8zrP2ByzY7cRxHWxLksZP-6ZyYGdXOJKPIxZhpVELUZ.png?r=076",
+      aboutMovie:
+        "A treasure-hunting soldier reawakens an ancient Egyptian princess who has waited for centuries to take revenge on a world that wronged her.",
+      backgroundImageMovie:
+        "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR1fPJMkxF6boR42dgDVNRsm1stZjoI9ypDduoI_Wn9WquRlzwwG3Vb74kenWtd-FdFXqmpi6SCl1CWO6-QmCYHtDNKqRMtgqv7T.jpg?r=960",
+      modalImageMovie:
+        "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABWDlosw-gklgL9NYjjjBwqbdyr7RA88QfoiXe2fpKjoWR69TLcV59TOzCbQkmQ_ZD0SZkVdyZavwI8eqFsM-_Vly4Ru2zu9W880f.jpg?r=4a9",
+      releaseYear: "2017",
+      maturyRaiting: "16+",
+      duration: "1h 50m",
+      cast: ["Tom Cruise, ", "Annabelle Wallis, ", "Sofia Boutella, ", "more"],
+      Genres: ["Action & Adventure, ", "Monster Movies"],
+      thisMovieIs: ["Suspenseful, ", "Exciting"],
+      Director: "Alex Kurtzman",
+      writer: [
+        "Jon Spaihts, ",
+        "Alex Kurtzman, ",
+        "Jenny Lumet, ",
+        "Davud Koepp, ",
+        "Christopher Mcquarrie, ",
+        "Dylan Kussman",
+      ],
+      match: "92% Match",
+    },
+  ];
+
   // States
 
   const [mute, setMute] = useState(false);
+
+  const [actualMovie, setActualMovie] = useState(0);
 
   const [endVideoModal, setEndVideoModal] = useState(false);
 
@@ -334,6 +463,7 @@ export default function Banner({ netflixOriginals }: Props) {
   };
 
   const videoBanner = () => {
+    console.log(netflixOriginals);
     const handleTrailer = () => {
       expandTitle();
       imgBanner.style.opacity = 1;
@@ -361,6 +491,15 @@ export default function Banner({ netflixOriginals }: Props) {
     };
   };
 
+  useEffect(() => {
+    const randomMovie = (max: number) => {
+      const number = Math.floor(Math.random() * max);
+      setActualMovie(number);
+    };
+
+    randomMovie(5);
+  }, []);
+
   return (
     <BannerContainer>
       {/* Background start */}
@@ -368,7 +507,7 @@ export default function Banner({ netflixOriginals }: Props) {
         <BannerImageContainer>
           <TrailerVideo
             ref={movieTrailerBanner}
-            src="/theMummyTrailer.mp4"
+            src="/corto.mp4"
             autoPlay={true}
             muted={true}
             controls={false}
@@ -378,7 +517,7 @@ export default function Banner({ netflixOriginals }: Props) {
           />
           <ImageBannerContainer ref={imageBanner}>
             <ImageMovieBanner
-              src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABR1fPJMkxF6boR42dgDVNRsm1stZjoI9ypDduoI_Wn9WquRlzwwG3Vb74kenWtd-FdFXqmpi6SCl1CWO6-QmCYHtDNKqRMtgqv7T.jpg?r=960"
+              src={moviesArray[actualMovie].backgroundImageMovie}
               width="100%"
               height="57vh"
               layout="responsive"
@@ -396,7 +535,7 @@ export default function Banner({ netflixOriginals }: Props) {
             <TitleInfo>
               <TitleImageContainer ref={titleImage}>
                 <Image
-                  src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABRV8Rfaw8Jh_5TYMAmVkGaSeswqIbYCQw4z4BOTzlcDlVVNsLC6UBKrljog6M8xuv8zrP2ByzY7cRxHWxLksZP-6ZyYGdXOJKPIxZhpVELUZ.png?r=076"
+                  src={moviesArray[actualMovie].titleImage}
                   width="30%"
                   height="10rem"
                   layout="responsive"
@@ -404,9 +543,7 @@ export default function Banner({ netflixOriginals }: Props) {
                 />
               </TitleImageContainer>
               <MovieReview ref={titleDescription}>
-                A treasure-hunting soldier reawakens an ancient Egyptian
-                princess who has waited for centuries to take revenge on a world
-                that wronged her.
+                {moviesArray[actualMovie].aboutMovie}
               </MovieReview>
             </TitleInfo>
 
@@ -601,7 +738,7 @@ export default function Banner({ netflixOriginals }: Props) {
               <ModalImageContainer>
                 <TrailerModal
                   ref={movieTrailerModal}
-                  src="/theMummyTrailer.mp4"
+                  src="/corto.mp4"
                   autoPlay={true}
                   muted={true}
                   controls={false}
@@ -610,9 +747,9 @@ export default function Banner({ netflixOriginals }: Props) {
                   onPlay={() => videoModal()}
                 />
                 <ImageModal
-                  src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABWDlosw-gklgL9NYjjjBwqbdyr7RA88QfoiXe2fpKjoWR69TLcV59TOzCbQkmQ_ZD0SZkVdyZavwI8eqFsM-_Vly4Ru2zu9W880f.jpg?r=4a9"
+                  src={moviesArray[actualMovie].modalImageMovie}
                   width="100%"
-                  height="55vh"
+                  height="57vh"
                   layout="responsive"
                   alt="Cover"
                 />
@@ -622,7 +759,7 @@ export default function Banner({ netflixOriginals }: Props) {
               <ImageAndButtonsContainer>
                 <TitleModalContainer>
                   <Image
-                    src="https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABRV8Rfaw8Jh_5TYMAmVkGaSeswqIbYCQw4z4BOTzlcDlVVNsLC6UBKrljog6M8xuv8zrP2ByzY7cRxHWxLksZP-6ZyYGdXOJKPIxZhpVELUZ.png?r=076"
+                    src={moviesArray[actualMovie].titleImage}
                     width="50rem"
                     height="20%"
                     layout="responsive"
@@ -749,14 +886,14 @@ export default function Banner({ netflixOriginals }: Props) {
                 <DescriptionModal>
                   <InfoLeft>
                     <DataAboutMovie>
-                      <p>98% Match </p>
+                      <p>{moviesArray[actualMovie].match}</p>
                       <div>
                         <div>
-                          <span>2017 </span>
-                          <span>16+</span>
+                          <span>{moviesArray[actualMovie].releaseYear}</span>
+                          <span>{moviesArray[actualMovie].maturyRaiting}</span>
                         </div>
                         <div>
-                          <span>1h 50m</span>
+                          <span>{moviesArray[actualMovie].duration}</span>
                           <span>HD</span>
                         </div>
                       </div>
@@ -793,29 +930,28 @@ export default function Banner({ netflixOriginals }: Props) {
                       </div>
                     </DataAboutMovie>
 
-                    <p>
-                      A treasure-hunting soldier reawakens an ancient Egyptian
-                      princess who has waited for centuries to take revenge on a
-                      world that wronged her.
-                    </p>
+                    <p>{moviesArray[actualMovie].aboutMovie}</p>
                   </InfoLeft>
                   <InfoRight>
                     <div>
                       <span>Cast:</span>
-                      <span>Tom Cruise,</span> <span>Anabelle Walls,</span>
-                      <span> Sofia Boutella,</span> <span>more</span>
+                      {moviesArray[actualMovie].cast.map((actor) => (
+                        <span key={actor}>{actor}</span>
+                      ))}
                     </div>
 
                     <div>
                       <span>Genres:</span>
-                      <span>Action & Adventure, </span>
-                      <span>Monster Movies</span>
+                      {moviesArray[actualMovie].Genres.map((genre) => (
+                        <span key={genre}>{genre}</span>
+                      ))}
                     </div>
 
                     <div>
                       <span>The Movie is:</span>
-                      <span>Suspenseful, </span>
-                      <span>Exciting</span>
+                      {moviesArray[actualMovie].thisMovieIs.map((is) => (
+                        <span key={is}>{is}</span>
+                      ))}
                     </div>
                   </InfoRight>
                 </DescriptionModal>
@@ -1414,32 +1550,39 @@ export default function Banner({ netflixOriginals }: Props) {
                 </MoreMoviesContainer>
                 <AboutWrapper>
                   <h3>
-                    About <strong>The Mummy</strong>
+                    About <strong>{moviesArray[actualMovie].name}</strong>
                   </h3>
                   <p>
                     <span>Director: </span>
-                    <span>Alex Kurtzman</span>
+                    <span>{moviesArray[actualMovie].Director}</span>
                   </p>
                   <p>
                     <span>Cast: </span>
-                    <span>Tom Cruise</span>
+                    {moviesArray[actualMovie].cast.map((actor) => (
+                      <span key={actor}>{actor}</span>
+                    ))}
                   </p>
                   <p>
                     <span>Writer: </span>
-                    <span>Jon Spalhts</span>
+                    {moviesArray[actualMovie].writer.map((writer) => (
+                      <span key={writer}>{writer}</span>
+                    ))}
                   </p>
                   <p>
                     <span>Genres: </span>
-                    <span>Action & Adventure</span>
+                    {moviesArray[actualMovie].Genres.map((genres) => (
+                      <span key={genres}>{genres}</span>
+                    ))}
                   </p>
                   <p>
                     <span>This movie is: </span>
-                    <span>Suspenseful</span>
+                    {moviesArray[actualMovie].thisMovieIs.map((is) => (
+                      <span key={is}>{is}</span>
+                    ))}
                   </p>
                   <p>
                     <span>Matury Raiting: </span>
-                    <span>16+</span>
-                    <span>Violence</span>
+                    <span>{moviesArray[actualMovie].maturyRaiting}</span>
                   </p>
                 </AboutWrapper>
               </InformationModalContainer>

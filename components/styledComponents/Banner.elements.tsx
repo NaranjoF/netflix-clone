@@ -1526,14 +1526,19 @@ export const AboutWrapper = styled.div`
 
     span:first-child {
       color: #777;
+
+      &:hover {
+        border-bottom: 0;
+        cursor: default;
+      }
     }
 
-    span:last-child {
+    span {
       color: #fff;
 
       &:hover {
-        border-bottom: 1px solid #fff !important;
-        cursor: pointer !important;
+        border-bottom: 1px solid #fff;
+        cursor: pointer;
       }
     }
   }
