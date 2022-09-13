@@ -10,9 +10,7 @@ export const BannerContainer = styled.div`
 
 export const ImageMovieBanner = styled(Image)``;
 
-export const ImageBannerContainer = styled.div`
-  opacity: 0;
-`;
+export const ImageBannerContainer = styled.div``;
 
 export const BackgroundBannerModal = styled.div``;
 
@@ -976,6 +974,7 @@ export const TrailerVideo = styled.video`
   width: 101%;
   position: absolute;
   z-index: 1;
+  transition: opacity 0.5s ease-in-out;
 `;
 
 export const TitleInfo = styled.div`
@@ -1011,6 +1010,10 @@ export const ModalContainer = styled.div`
   box-sizing: border-box;
   border-radius: 6px;
   position: relative;
+  opacity: 0.3;
+  transform-origin: 50% 12.5% 0px;
+  transform: scale(0.8);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   @media screen and (max-width: 900px) {
     margin-right: 2rem;
@@ -1025,7 +1028,7 @@ export const ModalContainer = styled.div`
 
 export const ModalImageContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
   z-index: -1;
   position: relative;
   overflow: hidden;
@@ -1040,8 +1043,7 @@ export const ImageModal = styled(Image)`
 export const InformationModalContainer = styled.div`
   width: 100%;
   height: 100%;
-  top: 0;
-  padding: 0 2rem 0 2rem;
+  padding: 1rem 2rem 0 2rem;
 `;
 
 export const TitleModalContainer = styled.div`
@@ -1613,21 +1615,19 @@ export const AboutWrapper = styled.div`
 
 export const TrailerModal = styled.video`
   position: absolute;
-  opacity: 1;
+  top: 0;
+  opacity: 0;
+  z-index: 1;
   width: 100%;
   border-radius: 6px 6px 0px 0px;
+  transition: opacity 0.3s ease-in-out;
 `;
 
 export const ShadowModal = styled.div`
-  background: rgb(24, 24, 24);
-  background: linear-gradient(
-    0deg,
-    rgba(24, 24, 24, 1) 2%,
-    rgba(24, 24, 24, 0) 100%
-  );
+  background: linear-gradient(0deg, #181818, transparent 50%);
   position: absolute;
   top: 0;
-  z-index: 10;
+  z-index: 1;
   width: 100%;
   height: 100%;
 `;
@@ -1864,10 +1864,11 @@ export const DataAboutMovie = styled.div`
 
 export const ImageAndButtonsContainer = styled.div`
   width: 100%;
-  height: max-content;
+  height: 100%;
   position: absolute;
   top: 0;
   padding: 0 2rem 0 2rem;
+  /* background: linear-gradient(0deg, #181818, transparent 50%); */
 `;
 
 export const ActionButtonMute = styled.button`
@@ -1927,5 +1928,5 @@ export const BackgroundModal = styled.div`
   position: absolute;
   background-color: #000;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease;
 `;
