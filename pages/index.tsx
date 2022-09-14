@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
+import MoviesRows from "../components/MoviesRows";
 import { StyledHome } from "../components/styledComponents/index.elements";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
@@ -48,6 +49,7 @@ const Home = ({
 
       <main>
         <Banner netflixOriginals={netflixOriginals} />
+        <MoviesRows />
       </main>
     </StyledHome>
   );

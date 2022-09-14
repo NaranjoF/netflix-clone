@@ -3,24 +3,24 @@ import styled from "styled-components";
 
 export const BannerContainer = styled.div`
   display: flex;
-  height: max-content;
+  height: 100%;
   width: 100%;
-  height: 100vh;
 `;
 
 export const ImageMovieBanner = styled(Image)``;
 
 export const ImageBannerContainer = styled.div``;
 
-export const BackgroundBannerModal = styled.div``;
+export const BackgroundBannerModal = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
 
 export const BannerImageContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
   overflow: hidden;
+  width: 100%;
+  height: max-content;
 `;
 
 export const MovieInfoContainter = styled.div`
@@ -971,7 +971,7 @@ export const PrincipalInfoContainer = styled.div`
 `;
 
 export const TrailerVideo = styled.video`
-  width: 101%;
+  width: 101.4%;
   position: absolute;
   z-index: 1;
   transition: opacity 0.5s ease-in-out;
@@ -986,7 +986,7 @@ export const TitleInfo = styled.div`
 `;
 
 export const TitleImageContainer = styled.div`
-  z-index: 2;
+  z-index: 1;
 `;
 
 export const ModalWrapper = styled.div`
@@ -1028,7 +1028,7 @@ export const ModalContainer = styled.div`
 
 export const ModalImageContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: max-content;
   z-index: -1;
   position: relative;
   overflow: hidden;
@@ -1617,7 +1617,7 @@ export const TrailerModal = styled.video`
   position: absolute;
   top: 0;
   opacity: 0;
-  z-index: 1;
+  z-index: -1;
   width: 100%;
   border-radius: 6px 6px 0px 0px;
   transition: opacity 0.3s ease-in-out;
@@ -1864,7 +1864,7 @@ export const DataAboutMovie = styled.div`
 
 export const ImageAndButtonsContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: max-content;
   position: absolute;
   top: 0;
   padding: 0 2rem 0 2rem;
