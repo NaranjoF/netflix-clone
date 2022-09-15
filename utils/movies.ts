@@ -944,3 +944,175 @@ export const moviesArray = [
     trailer: "/theMummy.mp4",
   },
 ];
+
+export const trendingNow = [
+  {
+    nameCollection: "Trending Now",
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABb-KETjOTM9oC28eMMUagxc0ywhIc1Nfh5LhpjZrP3244h_YDKhk_5mQ93GrOex8gcOXluz1JEPOxO-f7QQyIXkq2Kr1OrUX9_e8gNJJC7OpV5raG3ExAwW-HwHhIB3PV3TOvRSvF4tHU8H1PmO02j5DnQHtcIrVnD96z-GJ6SDiqwI5nYpGZnw4MY-mG4s.jpg?r=5e0",
+    maturyRaiting: "16+",
+    duration: "6 Episodes",
+    features: ["Suspenseful", "Action", "Drug Lord"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABTIW_ZZyO2iCWNfmf8mKQEI73FYQXOB1hKA9sxxV_mz_CNhg8AciJqRbG9aJP3axGDfAmsmN0xp1jZCDBJSqdwjS1FGnvnvxaFM.jpg?r=0dd",
+    maturyRaiting: "16+",
+    duration: "2h 11m",
+    features: ["Gory", "Violent", "Martial Arts"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABYs3e614WXaNArMq_5CmaeODFWjUHDpyTMFOtSQXwKcXosgvqa0sNLMUY2lFdnQxB5y75W9AxzfGNutqk4AURuNK559d-5up2b4JrzGA2fXAk1duojiEQQlsNp10sp6iDiPTeLHRC4UnuNdaCstVAqjQYI4kmg8ww3pkJe52XRBVZD8f2-lLKkqQJsW7cBLEOA9sJfZV99869GbOsylM0R9L2znWeIIOKTWsGjti0xMKpU9s3AqrODbcIyIws7Cl2L0-JTSEifj0858UHYhi1lZ746DJUKSG8yZgnDVB0wseP_4DAvxHT2hvloaCQjMxD8mN1zUQyZtiAp4pyCs.jpg?r=9c0",
+    maturyRaiting: "13+",
+    duration: "5 Seasons",
+    features: ["Rousing", "Nostalgic", "Action"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABbcIzerIWFD-RaRUSbT1ZnznGhtFNhXePP5rlfhPyJXE06NqyPKNuxE7jI5y7VqEgs55pWquzb_ECoef-DHnR5zMk69KNWHFmc8.jpg?r=c38",
+    maturyRaiting: "13+",
+    duration: "2h 15m",
+    features: ["Suspenseful", "Exciting", "Sci-Fi Adventure"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABRX9EHlNSYZaekB_waHFz3WczLhIjslLTje-XfhTTXGnh4m8naw8R95Waj9y-42n_W4CoxYPVjV6Hi_f45UXJF3wnt-OIDjO7LmRCX_vMcfaKMZ0-5CD9cMTmt2fKXq9MQgsvzovSFSc6XVIiey-ir9n_d2m8d2xV4zhovFanC9CAOHamXzSbVNk7G31sl4.jpg?r=d3b",
+    maturyRaiting: "16+",
+    duration: "4 Seasons",
+    features: ["Intimate", "Drama", "Halls Of Power"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABbHJ2yCCW9e-knO61XOBcc3CYVN-JRby6cVS5CSVQJTDmP0UxEY1FIXDW1MqaGA4eq5IYiBhT1uieWitFrhV5CgL3R8-czoEXsURQHeRArWqn8hlZKHii0OCW47RCnPt5Auo.jpg?r=e90",
+    maturyRaiting: "13+",
+    duration: "3 Seasons",
+    features: ["Mind-Bending", "Suspenseful", "Sci-Fi TV"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZiGxXCh7NOrWXxVc3SdMMoMo5qcG4lBM6fH1vRiIEQd1_tunrsiGT202Zv9EnhuVOHB7Lud9uMuS66jX1Rptw4Nr0rZAur_DV7i6sXtIj89nqUB_QhHACot8mNVqgYw7Fb8JIzkXuDO9Pib18mIkykHngxOo87sTS0.jpg?r=4d3",
+    maturyRaiting: "16+",
+    duration: "1h 55m",
+    features: ["Gritty", "Exciting", "Thriller"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABaDtvLpaT8qad4I4rQi6XABm646oqnvmvgKMa1dQ5eVVA48DNEzxPpadKE1tdhv0f8aGBdARFSQujbfuWXjrifrLB8UEh_S-4O8.jpg?r=5a4",
+    maturyRaiting: "13+",
+    duration: "5 Seasons",
+    features: ["Rousing", "Suspenseful", "Epic"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABf7M7CEtNGoJhhw97oeVwrFmBywT8Q5TpZIHeOwz6lreeLLLrcq3_FQEXaVkBjcaBSs_UdHCBnQX8yuyf7tvsfwpE9V7-tmi3MScUAwH13Y11JvldcYzr-NBCumV9rR7I-BvJ10piqXXeEqggqJWy4A7nmLxiAlnY6P6wZ5WeKl5xT4WuxeoQk4WBVD_s4I.jpg?r=6c7",
+    maturyRaiting: "16+",
+    duration: "10 Episodes",
+    features: ["Irreverent", "Exciting", "Sci-Fi TV"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABV9LE05pdKjVzSSaTuubBw7sPZQBOAasdH333NfChFRlGYyFw097tozaUVqsdvITfeg8p6ibh3i42UcvsIIB4QhfmJ7UwRpbWp-4PSs9oHf0SDLp7-s8jTGoQfdcLu5ByAV4.jpg?r=b12",
+    maturyRaiting: "16+",
+    duration: "3 Episodes",
+    features: ["Psychological", "Scary", "Horror"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABdXCTE5jw8G3vLATgIYodYa9r0KdMY3gY9hcLSH90cEqkU7AdMcRpFptusIn2jpg72nkODU_twcl79LC9bm8tuwOVYull9LF_60.jpg?r=4ed",
+    maturyRaiting: "13+",
+    duration: "2h 15m",
+    features: ["Suspenseful", "Exciting", "Sci-Fi Adventure"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZuw8SHzUoYEdYPKKegfceAqfg8MjuqapNj7dEDy9CEPM2uMrod0iKgtXFrtwl1-eITnOXdH68JbhGM8G5r63vOXujEfbIvJA08.jpg?r=2a6",
+    maturyRaiting: "16+",
+    duration: "8 Episodes",
+    features: ["Gritty", "Dark", "Period Piece"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABdYGIeAouVs_eLWRIwR3CwfluSTHhhoEWmKsc4RlQWK15gZYGkvJdpu2tJD8LvQZSMeLerw68pi6pu-W6YCbP0VB1espnsoziDSCXOn4pq7ZCgyER5Eoas6-LS6r7SpdbHFM.jpg?r=d86",
+    maturyRaiting: "16+",
+    duration: "Limited Series",
+    features: ["Provocative", "Inspiring", "Thriller"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABTkrkZ1yL5Lm95gBE8Bgc9peTUMEJxHacxOp0SC4OZ-FE4XYj86BpDl-PIy4I0iPvYmHwio1hFN3c1Hud9WAhHz3Y0N9xcV8pzQ.jpg?r=7ac",
+    maturyRaiting: "16+",
+    duration: "3h 5m",
+    features: ["Adrenaline", "Explosive", "Inspiring"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWx4a5ZWNFTxF5342o5AMHWbkxxV3ekOZ7U_-CeHy-wlwQMIovsjJR2_WIsdxCgE-POtARgNBl3TtiPDRLuSEHYMndq64vN9Gy9Tc7HfgBxBlIc330ImwlcAUOEOzetfqNMr.jpg?r=165",
+    maturyRaiting: "16+",
+    duration: "16 Episodes",
+    features: ["Dark", "Suspenseful", "Emotional"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABe8x-7YBlkyWEXrAKMxi2i4mrsbYfmzEyxm7qvQo7rHSo6r66awsL48jRCmTFfk6ysKzQWP62WfRJTTTqitHdJU-FzAECCLG4kIRI5Rul8HaD-bv1VFSvfqS6voCnysz_JPX.jpg?r=5fa",
+    maturyRaiting: "13+",
+    duration: "16 Episodes",
+    features: ["Sci-Fi TV", "Time Travel", "Korean"],
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABa5t3GgmVaTxL0hcbl193uftWlYGfBGS1NcZPEYjXO18RXJB8j9VpcZXu-yfnqAIFSAZrQSWggf3a8_6tPnt5fa6vPFIrCsGnTJbN4J6Q1pHkH6OID9FkMptudt4yY5EvojT.jpg?r=dc0",
+    maturyRaiting: "13+",
+    duration: "2h 9m",
+    features: ["Action & Adventure", "Based on Book", "Police"],
+    name: "The Gray Man",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU-I_fLHHVq2ZDd9Rh6eyQ2TGUJLuVDtWrCCpqDeQZi2m1PCTPS8e1V3QFLbEFM2Zai-7BXuP5th3IGdid565Toht4CbHUSDPv9PSZVqeUhKUXoCCuHoVUHh1iC2RZBd2LK6dDxzRdDCPSlZEVWVuTdoiAycly1Smdg.jpg?r=b22",
+    maturyRaiting: "16+",
+    duration: "2h 4m",
+    features: ["Psychological", "Scary", "Sci-Fi Movie"],
+    name: "The Invisible Man",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABYIJ2WSmaxR4FrUynGzag-K11G1q4r3-_33ff4syDF2pKZq4N-u2qVW73sQb6uija-TZLGha9_xPhBzDhRmJPl_EXbLSRGBwkDk.jpg?r=3de",
+    maturyRaiting: "16+",
+    duration: "1h 39m",
+    features: ["Offbeat", "Violent", "Horror Comedy"],
+    name: "Zombieland Double Tap",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABVADapp6Whhx0QV8FvmnwimbvQZhkwbahuG4cwQYQvC3O-MNDAublvBzdNj--Y3nJVww3FrUmgEIYSfLaQsvtp5pMIqlGmGIPQOIkXEbVvSansQhz422hdSW4zj-4leEqCyU.jpg?r=aca",
+    maturyRaiting: "16+",
+    duration: "6 Episodes",
+    features: ["Gritty", "Suspenseful", "Mystery"],
+    name: "Entrapped",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABS5uYrcuXS_zIENcssDjZyDNz9lW22jsW8yg9UG-eQUvE54o1ezTFNUKvzcWSY23-dIT6-3wrkx2guhWMpRzzX8cbz_dDmK5dNhPdgt9_tGOGBRkmSQwPmrKM38zOFCfy9k1.jpg?r=07e",
+    maturyRaiting: "16+",
+    duration: "10 Episodes",
+    features: ["Dystopian", "Explosive", "CyberPunk"],
+    name: "Cyberpunk Edgerunners",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABaFZI-XkViJRLdEriL0JO1uEb34HFIJh6ilnepSx6nWgFcifstmyFYNpPBFQmnk7gayhXXiT-aeaqNs1VQWkVzhjvwDQf_gtp3La13CfNVhwoU0nJqkSVC_mPE1Rk39hHkf1.jpg?r=b59",
+    maturyRaiting: "16+",
+    duration: "1h 42m",
+    features: ["Emotional", "Drama", "Polish"],
+    name: "Broad Peak",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWp_MrKOkSA1uxMObNk7zeC4u0f3pVCXOgJma_5fH-xtIMROEhWJ7fxqMJl-Bfj4Wnjufvl8Ky8GzhZb9aEdQx5Fly36jkNz1K2c0XXiRj73HV7qJlLn7OsE23nKxFZTqlTT.jpg?r=aa7",
+    maturyRaiting: "16+",
+    duration: "Limited Series",
+    features: ["Riveting", "True Crime", "Media Circus"],
+    name: "Sins of our mother",
+  },
+];

@@ -12,7 +12,7 @@ export const StyledHeaderwob = styled.header`
   position: fixed;
   font-size: 0.9rem;
   font-weight: 400;
-  z-index: 2;
+  z-index: 5;
   background: transparent;
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 5%, transparent);
 `;
@@ -26,7 +26,7 @@ export const StyledHeaderwb = styled.header`
   font-weight: 400;
   opacity: 0;
   background: #0b0b0b;
-  z-index: -1;
+  z-index: 5;
 `;
 
 export const Nav = styled.nav`

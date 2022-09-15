@@ -21,6 +21,7 @@ export const BannerImageContainer = styled.div`
   overflow: hidden;
   width: 100%;
   height: max-content;
+  position: absolute;
 `;
 
 export const MovieInfoContainter = styled.div`
@@ -28,7 +29,7 @@ export const MovieInfoContainter = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   margin-left: 2.7rem;
-  position: absolute;
+  position: relative;
   top: 0;
   width: 38%;
   margin-top: 8rem;
@@ -1627,6 +1628,15 @@ export const ShadowModal = styled.div`
   background: linear-gradient(0deg, #181818, transparent 50%);
   position: absolute;
   top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+`;
+
+export const ShadowBanner = styled.div`
+  position: absolute;
+  background: linear-gradient(0deg, #141414, transparent 50%);
+  bottom: 0;
   z-index: 1;
   width: 100%;
   height: 100%;

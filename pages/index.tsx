@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect, useRef, useState } from "react";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import MoviesRows from "../components/MoviesRows";
@@ -27,8 +28,26 @@ const Home = ({
   romanceMovies,
   documentaries,
 }: Props) => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const setingModal = (state: boolean) => {
+    setIsOpenModal(state);
+  };
+
+  const homeIndex = useRef<"div" | any | {} | never>(null);
+
+  useEffect(() => {
+    const home = homeIndex.current;
+
+    if (isOpenModal) {
+      home.style.position = "fixed";
+    } else {
+      home.removeAttribute("style");
+    }
+  }, [isOpenModal]);
+
   return (
-    <StyledHome>
+    <StyledHome ref={homeIndex}>
       <Head>
         <title>Home - Netflix</title>
         <link
@@ -48,7 +67,7 @@ const Home = ({
       <Header />
 
       <main>
-        <Banner netflixOriginals={netflixOriginals} />
+        <Banner setingModal={setingModal} />
         <MoviesRows />
       </main>
     </StyledHome>

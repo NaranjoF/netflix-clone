@@ -36,7 +36,6 @@ export default function Header() {
       if (window.scrollY > 0) {
         navWithBackground.current.style.opacity = 1;
         navWithBackground.current.style.visibility = "visible";
-        navWithBackground.current.style.zIndex = 1;
       } else if (window.scrollY <= 0) {
         navWithBackground.current.style.opacity = 0;
         navWithBackground.current.style.visibility = "hidden";

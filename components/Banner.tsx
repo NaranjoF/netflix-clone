@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { moviesArray } from "../utils/movies";
 import { recommended } from "../utils/movies";
-import { Movie } from "../typings";
 import Image from "next/image";
 import { baseUrl } from "../constants/movie";
 import { v4 as uuid } from "uuid";
@@ -69,14 +68,15 @@ import {
   ActionButtonMM,
   ModalAndBackgroundContainer,
   BackgroundModal,
+  ShadowBanner,
 } from "./styledComponents/Banner.elements";
 import { useRef } from "react";
 
 interface Props {
-  netflixOriginals: Movie[];
+  setingModal: (state: boolean) => void;
 }
 
-export default function Banner({ netflixOriginals }: Props) {
+export default function Banner({ setingModal }: Props) {
   // States
 
   const [mute, setMute] = useState(false);
@@ -165,10 +165,11 @@ export default function Banner({ netflixOriginals }: Props) {
     const modalContainer = modalCont.current;
 
     if (modal === false) {
-      Background.style.position = "fixed";
+      // Background.style.position = "fixed";
       Background.style.width = "100%";
       Background.style.height = "100%";
       movieBanner.style.opacity = 0;
+      setingModal(true);
       setModal(true);
 
       if (dropDownTitle === false) {
@@ -190,6 +191,7 @@ export default function Banner({ netflixOriginals }: Props) {
       }
 
       setTimeout(() => {
+        setingModal(false);
         setModal(false);
         if (endVideoModal !== true) {
           if (endVideoBanner === true) {
@@ -391,7 +393,6 @@ export default function Banner({ netflixOriginals }: Props) {
   };
 
   const videoBanner = () => {
-    console.log(netflixOriginals);
     const handleTrailer = () => {
       expandTitle();
       movie.style.opacity = 0;
@@ -448,6 +449,7 @@ export default function Banner({ netflixOriginals }: Props) {
               layout="responsive"
               alt="Cover"
             />
+            <ShadowBanner></ShadowBanner>
           </ImageBannerContainer>
         </BannerImageContainer>
 
