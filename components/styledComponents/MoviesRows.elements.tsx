@@ -169,7 +169,7 @@ export const MoviesRowsContainerPrincipal = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  margin: 10vw 0 3vw 0;
+  margin: 3vw 0 3vw 0;
   user-select: none;
 
   &:hover {
@@ -179,6 +179,11 @@ export const MoviesRowsContainerPrincipal = styled.div`
   }
 `;
 
+export const MoviesRowsContainerPrincipalTop = styled(
+  MoviesRowsContainerPrincipal
+)`
+  margin: 10vw 0 3vw 0;
+`;
 export const MovieRowBody = styled.div`
   /* position: relative;
   padding: 0 4%;
