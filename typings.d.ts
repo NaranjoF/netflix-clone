@@ -27,6 +27,15 @@ export interface Movie {
   vote_count: number;
 }
 
+export interface MovieSlider {
+  nameCollection?: string | undefined;
+  imageRow: string;
+  maturyRaiting: string;
+  duration: string;
+  features: string[];
+  name: string;
+}
+
 export interface Element {
   type:
     | "Bloopers"

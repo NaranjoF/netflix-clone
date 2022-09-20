@@ -1,52 +1,27 @@
+import { useEffect, useRef, useState } from "react";
+import { raunchyComedies } from "../utils/movies";
+import { v4 as uuid } from "uuid";
+import { MovieSlider } from "../typings";
 import {
-  MoviesRowsGeneralContainer,
-  MoviesRowsContainerPrincipal,
-  RowContainer,
-  ImageRowContainer,
-  MovieRowHeader,
-  PaginationIndicator,
-  Indicator,
-  ArrowLeftContainer,
   Arrow,
   ArrowLeft,
+  ArrowLeftContainer,
   ArrowRight,
   ArrowRightContainer,
+  Indicator,
   MovieRowBody,
-  MoviesRowsContainerPrincipalTop,
-  ShadowLeft,
-  ShadowRight,
+  MovieRowHeader,
+  MoviesRowsContainerPrincipal,
+  PaginationIndicator,
+  RowContainer,
 } from "./styledComponents/MoviesRows.elements";
 
-import { v4 as uuid } from "uuid";
+interface Props {
+  title: string | undefined;
+  collection: MovieSlider[];
+}
 
-import { Slider } from "./Slider";
-
-import { trendingNow } from "../utils/movies";
-
-import { trendingNowMedium } from "../utils/movies";
-
-import { trendingNowSmall } from "../utils/movies";
-
-import { raunchyComedies } from "../utils/movies";
-
-import { raunchyComediesMedium } from "../utils/movies";
-
-import { actionThrillers } from "../utils/movies";
-
-import { actionThrillersMedium } from "../utils/movies";
-
-import { familiarFavorites } from "../utils/movies";
-
-import { familiarFavoritesMedium } from "../utils/movies";
-
-import { romantic } from "../utils/movies";
-
-import { romanticMedium } from "../utils/movies";
-
-import Image from "next/image";
-import { useEffect, useRef, useState, useMemo } from "react";
-
-export default function MoviesRows() {
+export const Slider = ({ title, collection }: Props) => {
   //Refs
 
   // TrendingRefsFullSlider
@@ -163,8 +138,6 @@ export default function MoviesRows() {
 
   const [sliderSmall, setSliderSmall] = useState(false);
   const [sliderSmallIndex, setSliderSmallIndex] = useState(0);
-
-  //Functions
 
   const cambiarTamaño = () => {
     setHeight(window.innerHeight);
@@ -539,330 +512,41 @@ export default function MoviesRows() {
   });
 
   return (
-    <MoviesRowsGeneralContainer>
-      <p>
-        ${width}${width}
-      </p>
-      <div style={{ marginTop: "10vw" }}>
-        {sliderFull && (
-          <>
-            {/* <MoviesRowsContainerPrincipalTop>
-            <MovieRowHeader>
-              <p>{trendingNow[0].nameCollection}</p>
-              <PaginationIndicator>
-                <Indicator ref={indicatorOneSf}></Indicator>
-                <Indicator ref={indicatorTwoSf}></Indicator>
-                <Indicator ref={indicatorThreeSf}></Indicator>
-                <Indicator ref={indicatorFourSf}></Indicator>
-                <Indicator ref={indicatorFiveSf}></Indicator>
-              </PaginationIndicator>
-            </MovieRowHeader>
-            <MovieRowBody>
-              <ArrowLeftContainer
-                ref={arrowLeftContainerFull}
-                onClick={moveSliderLeft}
-              >
-                <Arrow ref={arrowLeftSliderFull}>
-                  <ArrowLeft></ArrowLeft>
-                </Arrow>
-              </ArrowLeftContainer>
-              <RowContainer ref={sliderFullRef}>
-                {trendingNow.map((movie) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={uuid()} src={movie.imageRow} alt="Cover" />
-                ))}
-              </RowContainer>
-              <ArrowRightContainer
-                ref={arrowRightContainerFull}
-                onClick={moveSliderRight}
-              >
-                <Arrow ref={arrowRightSliderFull}>
-                  <ArrowRight></ArrowRight>
-                </Arrow>
-              </ArrowRightContainer>
-            </MovieRowBody>
-          </MoviesRowsContainerPrincipalTop>
-
-          <MoviesRowsContainerPrincipal>
-            <MovieRowHeader>
-              <p>{raunchyComedies[0].nameCollection}</p>
-              <PaginationIndicator>
-                <Indicator ref={indicatorOneSf}></Indicator>
-                <Indicator ref={indicatorTwoSf}></Indicator>
-                <Indicator ref={indicatorThreeSf}></Indicator>
-                <Indicator ref={indicatorFourSf}></Indicator>
-                <Indicator ref={indicatorFiveSf}></Indicator>
-              </PaginationIndicator>
-            </MovieRowHeader>
-            <MovieRowBody>
-              <ArrowLeftContainer
-                ref={arrowLeftContainerFull}
-                onClick={moveSliderLeft}
-              >
-                <Arrow ref={arrowLeftSliderFull}>
-                  <ArrowLeft></ArrowLeft>
-                </Arrow>
-              </ArrowLeftContainer>
-              <RowContainer ref={sliderFullRef}>
-                {raunchyComedies.map((movie) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={uuid()} src={movie.imageRow} alt="Cover" />
-                ))}
-              </RowContainer>
-              <ArrowRightContainer
-                ref={arrowRightContainerFull}
-                onClick={moveSliderRight}
-              >
-                <Arrow ref={arrowRightSliderFull}>
-                  <ArrowRight></ArrowRight>
-                </Arrow>
-              </ArrowRightContainer>
-            </MovieRowBody>
-          </MoviesRowsContainerPrincipal>
-
-          <MoviesRowsContainerPrincipal>
-            <MovieRowHeader>
-              <p>{actionThrillers[0].nameCollection}</p>
-              <PaginationIndicator>
-                <Indicator ref={indicatorOneSf}></Indicator>
-                <Indicator ref={indicatorTwoSf}></Indicator>
-                <Indicator ref={indicatorThreeSf}></Indicator>
-                <Indicator ref={indicatorFourSf}></Indicator>
-                <Indicator ref={indicatorFiveSf}></Indicator>
-              </PaginationIndicator>
-            </MovieRowHeader>
-            <MovieRowBody>
-              <ArrowLeftContainer
-                ref={arrowLeftContainerFull}
-                onClick={moveSliderLeft}
-              >
-                <Arrow ref={arrowLeftSliderFull}>
-                  <ArrowLeft></ArrowLeft>
-                </Arrow>
-              </ArrowLeftContainer>
-              <RowContainer ref={sliderFullRef}>
-                {actionThrillers.map((movie) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={uuid()} src={movie.imageRow} alt="Cover" />
-                ))}
-              </RowContainer>
-              <ArrowRightContainer
-                ref={arrowRightContainerFull}
-                onClick={moveSliderRight}
-              >
-                <Arrow ref={arrowRightSliderFull}>
-                  <ArrowRight></ArrowRight>
-                </Arrow>
-              </ArrowRightContainer>
-            </MovieRowBody>
-          </MoviesRowsContainerPrincipal>
-
-          <MoviesRowsContainerPrincipal>
-            <MovieRowHeader>
-              <p>{familiarFavorites[0].nameCollection}</p>
-              <PaginationIndicator>
-                <Indicator ref={indicatorOneSf}></Indicator>
-                <Indicator ref={indicatorTwoSf}></Indicator>
-                <Indicator ref={indicatorThreeSf}></Indicator>
-                <Indicator ref={indicatorFourSf}></Indicator>
-                <Indicator ref={indicatorFiveSf}></Indicator>
-              </PaginationIndicator>
-            </MovieRowHeader>
-            <MovieRowBody>
-              <ArrowLeftContainer
-                ref={arrowLeftContainerFull}
-                onClick={moveSliderLeft}
-              >
-                <Arrow ref={arrowLeftSliderFull}>
-                  <ArrowLeft></ArrowLeft>
-                </Arrow>
-              </ArrowLeftContainer>
-              <RowContainer ref={sliderFullRef}>
-                {familiarFavorites.map((movie) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={uuid()} src={movie.imageRow} alt="Cover" />
-                ))}
-              </RowContainer>
-              <ArrowRightContainer
-                ref={arrowRightContainerFull}
-                onClick={moveSliderRight}
-              >
-                <Arrow ref={arrowRightSliderFull}>
-                  <ArrowRight></ArrowRight>
-                </Arrow>
-              </ArrowRightContainer>
-            </MovieRowBody>
-          </MoviesRowsContainerPrincipal>
-
-          <MoviesRowsContainerPrincipal>
-            <MovieRowHeader>
-              <p>{romantic[0].nameCollection}</p>
-              <PaginationIndicator>
-                <Indicator ref={indicatorOneSf}></Indicator>
-                <Indicator ref={indicatorTwoSf}></Indicator>
-                <Indicator ref={indicatorThreeSf}></Indicator>
-                <Indicator ref={indicatorFourSf}></Indicator>
-                <Indicator ref={indicatorFiveSf}></Indicator>
-              </PaginationIndicator>
-            </MovieRowHeader>
-            <MovieRowBody>
-              <ArrowLeftContainer
-                ref={arrowLeftContainerFull}
-                onClick={moveSliderLeft}
-              >
-                <Arrow ref={arrowLeftSliderFull}>
-                  <ArrowLeft></ArrowLeft>
-                </Arrow>
-              </ArrowLeftContainer>
-              <RowContainer ref={sliderFullRef}>
-                {romantic.map((movie) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={uuid()} src={movie.imageRow} alt="Cover" />
-                ))}
-              </RowContainer>
-              <ArrowRightContainer
-                ref={arrowRightContainerFull}
-                onClick={moveSliderRight}
-              >
-                <Arrow ref={arrowRightSliderFull}>
-                  <ArrowRight></ArrowRight>
-                </Arrow>
-              </ArrowRightContainer>
-            </MovieRowBody>
-          </MoviesRowsContainerPrincipal> */}
-
-            <Slider
-              title={trendingNow[0].nameCollection}
-              collection={trendingNow}
-            />
-            <Slider
-              title={raunchyComedies[0].nameCollection}
-              collection={raunchyComedies}
-            />
-            <Slider
-              title={actionThrillers[0].nameCollection}
-              collection={actionThrillers}
-            />
-            <Slider
-              title={familiarFavorites[0].nameCollection}
-              collection={familiarFavorites}
-            />
-            <Slider title={romantic[0].nameCollection} collection={romantic} />
-          </>
-        )}
-        {sliderMedium && (
-          // <MoviesRowsContainerPrincipalTop>
-          //   <MovieRowHeader>
-          //     <p>{trendingNowMedium[0].nameCollection}</p>
-          //     <PaginationIndicator>
-          //       <Indicator ref={indicatorOneSm}></Indicator>
-          //       <Indicator ref={indicatorTwoSm}></Indicator>
-          //       <Indicator ref={indicatorThreeSm}></Indicator>
-          //       <Indicator ref={indicatorFourSm}></Indicator>
-          //       <Indicator ref={indicatorFiveSm}></Indicator>
-          //       <Indicator ref={indicatorSixSm}></Indicator>
-          //       <Indicator ref={indicatorSevenSm}></Indicator>
-          //       <Indicator ref={indicatorEightSm}></Indicator>
-          //       <Indicator ref={indicatorNineSm}></Indicator>
-          //     </PaginationIndicator>
-          //   </MovieRowHeader>
-          //   <MovieRowBody>
-          //     <ArrowLeftContainer
-          //       ref={arrowLeftContainerMedium}
-          //       onClick={moveSliderLeft}
-          //     >
-          //       <Arrow ref={arrowLeftSliderMedium}>
-          //         <ArrowLeft></ArrowLeft>
-          //       </Arrow>
-          //     </ArrowLeftContainer>
-          //     <RowContainer ref={sliderMediumRef}>
-          //       {trendingNowMedium.map((movie) => (
-          //         // eslint-disable-next-line @next/next/no-img-element
-          //         <img key={uuid()} src={movie.imageRow} alt="Cover" />
-          //       ))}
-          //     </RowContainer>
-          //     <ArrowRightContainer
-          //       ref={arrowRightContainerMedium}
-          //       onClick={moveSliderRight}
-          //     >
-          //       <Arrow ref={arrowRightSliderMedium}>
-          //         <ArrowRight></ArrowRight>
-          //       </Arrow>
-          //     </ArrowRightContainer>
-          //   </MovieRowBody>
-          // </MoviesRowsContainerPrincipalTop>
-          <>
-            <Slider
-              title={trendingNowMedium[0].nameCollection}
-              collection={trendingNowMedium}
-            />
-            <Slider
-              title={raunchyComediesMedium[0].nameCollection}
-              collection={raunchyComediesMedium}
-            />
-            <Slider
-              title={actionThrillersMedium[0].nameCollection}
-              collection={actionThrillersMedium}
-            />
-            <Slider
-              title={familiarFavoritesMedium[0].nameCollection}
-              collection={familiarFavoritesMedium}
-            />
-            <Slider
-              title={romanticMedium[0].nameCollection}
-              collection={romanticMedium}
-            />
-          </>
-        )}
-
-        {sliderSmall && (
-          <MoviesRowsContainerPrincipalTop>
-            <MovieRowHeader>
-              <p>{trendingNowSmall[0].nameCollection}</p>
-              <PaginationIndicator>
-                <Indicator ref={indicatorOneSs}></Indicator>
-                <Indicator ref={indicatorTwoSs}></Indicator>
-                <Indicator ref={indicatorThreeSs}></Indicator>
-                <Indicator ref={indicatorFourSs}></Indicator>
-                <Indicator ref={indicatorFiveSs}></Indicator>
-                <Indicator ref={indicatorSixSs}></Indicator>
-                <Indicator ref={indicatorSevenSs}></Indicator>
-                <Indicator ref={indicatorEightSs}></Indicator>
-                <Indicator ref={indicatorNineSs}></Indicator>
-                <Indicator ref={indicatorTenSs}></Indicator>
-                <Indicator ref={indicatorElevenSs}></Indicator>
-                <Indicator ref={indicatorTwelveSs}></Indicator>
-                <Indicator ref={indicatorThirteenSs}></Indicator>
-                <Indicator ref={indicatorFourteenSs}></Indicator>
-              </PaginationIndicator>
-            </MovieRowHeader>
-            <MovieRowBody>
-              <ArrowLeftContainer
-                ref={arrowLeftContainerSmall}
-                onClick={moveSliderLeft}
-              >
-                <Arrow ref={arrowLeftSliderSmall}>
-                  <ArrowLeft></ArrowLeft>
-                </Arrow>
-              </ArrowLeftContainer>
-              <RowContainer ref={sliderSmallRef}>
-                {trendingNowSmall.map((movie) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img key={uuid()} src={movie.imageRow} alt="Cover" />
-                ))}
-              </RowContainer>
-              <ArrowRightContainer
-                ref={arrowRightContainerSmall}
-                onClick={moveSliderRight}
-              >
-                <Arrow ref={arrowRightSliderSmall}>
-                  <ArrowRight></ArrowRight>
-                </Arrow>
-              </ArrowRightContainer>
-            </MovieRowBody>
-          </MoviesRowsContainerPrincipalTop>
-        )}
-      </div>
-    </MoviesRowsGeneralContainer>
+    <MoviesRowsContainerPrincipal>
+      <MovieRowHeader>
+        <p>{title}</p>
+        <PaginationIndicator>
+          <Indicator ref={indicatorOneSf}></Indicator>
+          <Indicator ref={indicatorTwoSf}></Indicator>
+          <Indicator ref={indicatorThreeSf}></Indicator>
+          <Indicator ref={indicatorFourSf}></Indicator>
+          <Indicator ref={indicatorFiveSf}></Indicator>
+        </PaginationIndicator>
+      </MovieRowHeader>
+      <MovieRowBody>
+        <ArrowLeftContainer
+          ref={arrowLeftContainerFull}
+          onClick={moveSliderLeft}
+        >
+          <Arrow ref={arrowLeftSliderFull}>
+            <ArrowLeft></ArrowLeft>
+          </Arrow>
+        </ArrowLeftContainer>
+        <RowContainer ref={sliderFullRef}>
+          {collection.map((movie?) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img key={uuid()} src={movie.imageRow} alt="Cover" />
+          ))}
+        </RowContainer>
+        <ArrowRightContainer
+          ref={arrowRightContainerFull}
+          onClick={moveSliderRight}
+        >
+          <Arrow ref={arrowRightSliderFull}>
+            <ArrowRight></ArrowRight>
+          </Arrow>
+        </ArrowRightContainer>
+      </MovieRowBody>
+    </MoviesRowsContainerPrincipal>
   );
-}
+};
