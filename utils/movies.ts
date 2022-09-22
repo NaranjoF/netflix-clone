@@ -1599,7 +1599,7 @@ export const trendingNowSmall = [
 
 export const raunchyComedies = [
   {
-    nameCollection: "Raunchy Comedies",
+    nameCollection: "Comedies",
     imageRow:
       "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABQu8lqiGfU923f28_NxsfbeQ_shu6TUzmDSVAAW8I5-sqAx72p_X1yBYyRhjcVYNZlqn-jLvSJHG8TJZFSdJ7jkYMtI4JiMGIxM.jpg?r=479",
     maturyRaiting: "16+",
@@ -1803,7 +1803,7 @@ export const raunchyComedies = [
 
 export const raunchyComediesMedium = [
   {
-    nameCollection: "Raunchy Comedies",
+    nameCollection: "Comedies",
     imageRow:
       "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABQu8lqiGfU923f28_NxsfbeQ_shu6TUzmDSVAAW8I5-sqAx72p_X1yBYyRhjcVYNZlqn-jLvSJHG8TJZFSdJ7jkYMtI4JiMGIxM.jpg?r=479",
     maturyRaiting: "16+",
@@ -2023,7 +2023,7 @@ export const raunchyComediesMedium = [
 
 export const raunchyComediesSmall = [
   {
-    nameCollection: "Raunchy Comedies",
+    nameCollection: "Comedies",
     imageRow:
       "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABQu8lqiGfU923f28_NxsfbeQ_shu6TUzmDSVAAW8I5-sqAx72p_X1yBYyRhjcVYNZlqn-jLvSJHG8TJZFSdJ7jkYMtI4JiMGIxM.jpg?r=479",
     maturyRaiting: "16+",
@@ -2238,6 +2238,14 @@ export const raunchyComediesSmall = [
     duration: "1h 48m",
     features: ["Irreverent", "Raunchy", "Action Comedy"],
     name: "The do over",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABdjq048r7mbSMLsYFnpfTPzLIbHiNg2BC2KGRsg32WZN-ELb48QpyrvvvHf4j5kjsZZAzl9Cz-NuOrYKz0TyYR9XQpaC1zwNZESK0f6GFtgw9itutvWKt5P8yE1M5bWHo9rZ.jpg?r=f16",
+    maturyRaiting: "13+",
+    duration: "1h 37m",
+    features: ["Irreverent", "Goofy", "Mystery"],
+    name: "Murder Mystery",
   },
 ];
 
@@ -2885,14 +2893,6 @@ export const actionThrillersSmall = [
   },
   {
     imageRow:
-      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABT6N1R-wv3lCFUimyfSwYXY8o7h12we76bxA_aq2VbddainvhInS4LEVNTnXxPckdTrYy34NKIUTQGc-K4jwCTmUygQzDNS5D3w.jpg?r=805",
-    maturyRaiting: "16+",
-    duration: "2h 35m",
-    features: ["Rousing", "Exciting", "Epic"],
-    name: "Gladiator",
-  },
-  {
-    imageRow:
       "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZnWvMzGk9EmanssSqEbYaeQQFNr60W5PTRRN5Pf-P8nJ3dV2LKT96Fe1R4QC1hKk9tiHR3mTyN9wCUY0aDKz16fBdvrDkIxv-Y.jpg?r=7e2",
     maturyRaiting: "16+",
     duration: "2h 4m",
@@ -2911,7 +2911,7 @@ export const actionThrillersSmall = [
 
 export const familiarFavorites = [
   {
-    nameCollection: "Familiar Favorites",
+    nameCollection: "Familiar",
     imageRow:
       "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZRdl4vNU5Y7K_zAf-kJO3Ii0WLlopfC3enD-IYHw6Y7t5UG53-uuWX0o6tS0WxKkHlWk9GPiF_oETJjY8Ng6t8oBlptqxMqZ8o.jpg?r=529",
     maturyRaiting: "7+",
@@ -3115,7 +3115,7 @@ export const familiarFavorites = [
 
 export const familiarFavoritesMedium = [
   {
-    nameCollection: "Familiar Favorites",
+    nameCollection: "Familiar",
     imageRow:
       "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZRdl4vNU5Y7K_zAf-kJO3Ii0WLlopfC3enD-IYHw6Y7t5UG53-uuWX0o6tS0WxKkHlWk9GPiF_oETJjY8Ng6t8oBlptqxMqZ8o.jpg?r=529",
     maturyRaiting: "7+",
@@ -3335,7 +3335,7 @@ export const familiarFavoritesMedium = [
 
 export const familiarFavoritesSmall = [
   {
-    nameCollection: "Familiar Favorites",
+    nameCollection: "Familiar",
     imageRow:
       "https://occ-0-5391-58.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABZRdl4vNU5Y7K_zAf-kJO3Ii0WLlopfC3enD-IYHw6Y7t5UG53-uuWX0o6tS0WxKkHlWk9GPiF_oETJjY8Ng6t8oBlptqxMqZ8o.jpg?r=529",
     maturyRaiting: "7+",
@@ -3563,7 +3563,7 @@ export const familiarFavoritesSmall = [
 
 export const romantic = [
   {
-    nameCollection: "Romantic Dramas",
+    nameCollection: "Romantic",
     imageRow:
       "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABdmu7N57J5X_5W062l-HRF4uZfl7uE2-wfYk9DnDo9O7tAnGGP421R80FVbSTrgytMyv4rSfNjVhipJdhi5VKtBY8lmwLIubaXA.jpg?r=d44",
     maturyRaiting: "13+",
@@ -3767,7 +3767,7 @@ export const romantic = [
 
 export const romanticMedium = [
   {
-    nameCollection: "Romantic Dramas",
+    nameCollection: "Romantic",
     imageRow:
       "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABdmu7N57J5X_5W062l-HRF4uZfl7uE2-wfYk9DnDo9O7tAnGGP421R80FVbSTrgytMyv4rSfNjVhipJdhi5VKtBY8lmwLIubaXA.jpg?r=d44",
     maturyRaiting: "13+",
@@ -3987,7 +3987,7 @@ export const romanticMedium = [
 
 export const romanticSmall = [
   {
-    nameCollection: "Romantic Dramas",
+    nameCollection: "Romantic",
     imageRow:
       "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABdmu7N57J5X_5W062l-HRF4uZfl7uE2-wfYk9DnDo9O7tAnGGP421R80FVbSTrgytMyv4rSfNjVhipJdhi5VKtBY8lmwLIubaXA.jpg?r=d44",
     maturyRaiting: "13+",
@@ -4202,5 +4202,13 @@ export const romanticSmall = [
     duration: "1h 47m",
     features: ["Emotional", "Intimate", "TearJerker"],
     name: "Dear John",
+  },
+  {
+    imageRow:
+      "https://occ-0-5391-185.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABWqokztj97JINJWylyUIlm87lD6SNSN7HcsZzpz9GrhscJxkwjBIxmRN6oo_5VSw5pOANk1kIjuwk_YHW4OOtSWUoN63nsBseieenc8r_V5vzQgk7EuB7tJOMhJIKArHBDhI.jpg?r=6fa",
+    maturyRaiting: "16+",
+    duration: "1h 44m",
+    features: ["Romantic", "Feel-Good", "Comedy"],
+    name: "Holidate",
   },
 ];

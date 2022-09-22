@@ -13,41 +13,86 @@ export const MoviesRowsGeneralContainer = styled.div`
 
 export const ArrowLeft = styled(VscChevronLeft)`
   font-size: 4vw;
+
+  @media screen and (max-width: 290px) and (max-height: 653px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (max-width: 415px) and (min-height: 880px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (max-width: 380px) and (min-height: 700px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (max-width: 390px) and (min-height: 830px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    font-size: 7vw;
+  }
 `;
 
-export const Arrow = styled.div`
+export const ArrowContR = styled.div`
   transition: transform 0.2s ease-in-out;
   align-self: center;
   align-self: center;
   height: auto;
+  width: auto;
 
   opacity: 0;
   z-index: 10;
+
+  &:focus {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 290px) and (max-height: 653px) {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
+
+  @media screen and (max-width: 380px) and (min-height: 700px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 390px) and (min-height: 830px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+`;
+
+export const ArrowContL = styled(ArrowContR)`
+  @media screen and (max-width: 290px) and (max-height: 500px) {
+    font-size: 1rem;
+    margin-left: 2rem;
+  }
+
+  @media screen and (max-width: 380px) and (min-height: 700px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 390px) and (min-height: 830px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
 `;
 
 export const ArrowLeftContainer = styled.span`
-  /* border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
-  left: -3px;
-  cursor: pointer;
-  bottom: 0;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 3.8%;
-  z-index: 4;
-  opacity: 0;
-
-  &:hover {
-    background: hsla(0, 0%, 8%, 0.7);
-    div:nth-child(2) {
-      transform: scale(1.2);
-    }
-  } */
-
   border: none;
   border-radius: 1rem;
   flex-grow: 0;
@@ -96,31 +141,30 @@ export const ShadowLeft = styled.div`
 
 export const ArrowRight = styled(VscChevronRight)`
   font-size: 4vw;
+
+  @media screen and (max-width: 290px) and (max-height: 653px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (max-width: 380px) and (min-height: 700px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (max-width: 390px) and (min-height: 830px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (max-width: 415px) and (min-height: 880px) {
+    font-size: 7vw;
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
 `;
 
 export const ArrowRightContainer = styled.span`
-  /* border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-  right: 0;
-  cursor: pointer;
-  bottom: 0;
-  color: #fff;
-  display: flex;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  width: 3.9%;
-  z-index: 4;
-  transition: background 0.2s ease-in-out;
-  opacity: 1;
-
-  &:hover {
-    background: hsla(0, 0%, 8%, 0.7);
-    div:nth-child(2) {
-      transform: scale(1.2);
-    }
-  } */
-
   border: none;
   border-radius: 1rem;
   flex-grow: 0;
@@ -185,24 +229,10 @@ export const MoviesRowsContainerPrincipalTop = styled(
   margin: 10vw 0 3vw 0;
 `;
 export const MovieRowBody = styled.div`
-  /* position: relative;
-  padding: 0 4%;
-  cursor: pointer;
-
- &:hover {
-    ul {
-      opacity: 1;
-    }
-
-    div:nth-child(2) {
-      opacity: 1;
-    } 
-  } */
-
   display: flex;
   position: relative;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
 
   &:hover {
     div:nth-child(2) {
@@ -222,12 +252,19 @@ export const RowContainer = styled.div`
   flex-direction: row;
   transition: transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s;
   flex-grow: 1;
+
   img {
     flex: 0 0 calc(100% / var(--items-per-screen));
     max-width: calc(100% / var(--items-per-screen));
     aspect-ratio: 16/9;
     padding: 0.25rem;
     border-radius: 0.5rem;
+    transition: transform 0.4s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+      z-index: 20;
+    }
   }
 
   @media (max-width: 1000px) {
@@ -294,6 +331,75 @@ export const MovieRowHeader = styled.h2`
       font-size: 2.9vw;
     }
   }
+
+  @media screen and (max-width: 480px) {
+    p {
+      font-size: 2.5vw;
+    }
+  }
+
+  @media screen and (max-width: 290px) and (max-height: 653px) {
+    p {
+      font-size: 3.5vw;
+      min-width: 1em;
+      white-space: nowrap;
+      margin: 0 2rem 0.5em;
+    }
+  }
+
+  @media screen and (max-width: 380px) and (min-height: 660px) {
+    p {
+      font-size: 3.5vw;
+      min-width: 1em;
+      white-space: nowrap;
+      margin: 0 3.5rem 0.5em;
+    }
+  }
+
+  @media screen and (max-width: 390px) and (min-height: 830px) {
+    p {
+      font-size: 3.5vw;
+      min-width: 1em;
+      white-space: nowrap;
+      margin: 0 3.5rem 0em;
+    }
+  }
+
+  @media screen and (max-width: 653px) and (max-height: 300px) {
+    p {
+      font-size: 2.3vw;
+      min-width: 1em;
+      white-space: nowrap;
+      margin: 0 3.5rem 0.5em;
+    }
+  }
+
+  @media screen and (max-width: 415px) and (min-height: 880px) {
+    p {
+      font-size: 2.9vw;
+      min-width: 1em;
+      white-space: nowrap;
+      margin: 0 3.5rem 0.5em;
+    }
+  }
+
+  @media screen and (max-width: 430px) and (min-height: 900px) {
+    p {
+      font-size: 2.9vw;
+      min-width: 1em;
+      white-space: nowrap;
+      margin: 0 3.5rem 0.5em;
+    }
+  }
+
+  @media screen and (min-width: 330px) and (max-height: 650px) {
+    p {
+      font-size: 2.9vw;
+      min-width: 1em;
+      white-space: nowrap;
+      margin: 0 3.5rem 0.5em;
+    }
+  } ;
 `;
 
 export const PaginationIndicator = styled.ul`
@@ -307,6 +413,56 @@ export const PaginationIndicator = styled.ul`
   li:first-child {
     background-color: #aaa;
   }
+
+  @media screen and (max-width: 480px) {
+    li {
+      width: 11px;
+    }
+  }
+
+  @media screen and (max-width: 290px) and (min-height: 640px) {
+    li {
+      width: 3px;
+    }
+    margin-right: 2.1rem;
+  }
+
+  @media screen and (max-width: 390px) and (min-height: 660px) {
+    li {
+      width: 4px;
+    }
+    margin-right: 3.5rem;
+  }
+
+  @media screen and (max-width: 415px) and (min-height: 880px) {
+    li {
+      width: 8px;
+    }
+  }
+
+  @media screen and (max-width: 870px) and (max-height: 415px) {
+    li {
+      width: 8px;
+    }
+  }
+
+  @media screen and (max-width: 430px) and (min-height: 900px) {
+    li {
+      width: 8px;
+    }
+  }
+
+  @media screen and (min-width: 330px) and (max-height: 650px) {
+    li {
+      width: 7px;
+    }
+  }
+
+  @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
+    li {
+      width: 5px;
+    }
+  }
 `;
 
 export const Indicator = styled.li`
@@ -315,4 +471,24 @@ export const Indicator = styled.li`
   height: 2px;
   margin-left: 1px;
   width: 12px;
+`;
+
+export const SlidersGeneralContainer = styled.div`
+  margin-top: 10vw;
+
+  @media screen and (max-width: 480px) {
+    margin-top: 7vw;
+  }
+
+  @media screen and (max-width: 290px) and (min-height: 653px) {
+    margin-top: 15vw;
+  }
+
+  @media screen and (max-width: 380px) and (min-height: 750px) {
+    margin-top: 19vw;
+  }
+
+  @media screen and (min-width: 400px) and (min-height: 800px) {
+    margin-top: 15vw;
+  }
 `;
