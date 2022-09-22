@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import MoviesRows from "../components/MoviesRows";
+import Footer from "../components/Footer";
 import { StyledHome } from "../components/styledComponents/index.elements";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
@@ -70,6 +71,8 @@ const Home = ({
         <Banner setingModal={setingModal} />
         <MoviesRows />
       </main>
+
+      <Footer />
     </StyledHome>
   );
 };
