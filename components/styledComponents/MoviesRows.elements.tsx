@@ -4,7 +4,6 @@ import { VscChevronLeft, VscChevronRight } from "react-icons/vsc";
 
 export const MoviesRowsGeneralContainer = styled.div`
   width: 100%;
-  min-height: 1000px;
   background: transparent;
   position: relative;
   overflow: hidden;
@@ -44,10 +43,6 @@ export const ArrowContR = styled.div`
 
   opacity: 0;
   z-index: 10;
-
-  &:focus {
-    opacity: 1;
-  }
 
   @media screen and (max-width: 290px) and (max-height: 653px) {
     font-size: 1rem;
@@ -97,7 +92,6 @@ export const ArrowLeftContainer = styled.span`
   border-radius: 1rem;
   flex-grow: 0;
   flex-shrink: 0;
-  z-index: 10;
   margin: 0.25rem 0.25rem 0.25rem 0rem;
   width: 3rem;
   cursor: pointer;
@@ -259,16 +253,30 @@ export const RowContainer = styled.div`
     aspect-ratio: 16/9;
     padding: 0.25rem;
     border-radius: 0.5rem;
+    cursor: pointer;
     transition: transform 0.4s ease-in-out;
 
     &:hover {
-      transform: scale(1.2);
-      z-index: 20;
+      transform: scale(0.95);
     }
   }
 
   @media (max-width: 1000px) {
     --items-per-screen: 3;
+  }
+
+  @media (max-width: 500px) {
+    --items-per-screen: 2;
+  }
+`;
+
+export const RowContainerComingSoon = styled(RowContainer)`
+  img {
+    aspect-ratio: auto;
+  }
+
+  @media (max-width: 1000px) {
+    --items-per-screen: 4;
   }
 
   @media (max-width: 500px) {

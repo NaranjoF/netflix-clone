@@ -82,7 +82,7 @@ export default function Footer() {
             <div>
               <p>Gift Cards</p>
               <p>Terms of Use</p>
-              <p>Corporate Information</p>
+              <p>Information About</p>
             </div>
 
             <div>

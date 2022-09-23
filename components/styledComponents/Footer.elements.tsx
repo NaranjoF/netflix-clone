@@ -11,8 +11,8 @@ export const FooterContainer = styled.div`
 export const ContentFooter = styled.div`
   width: 100%;
   height: 100%;
-  margin-top: 2rem;
-  margin-left: 8rem;
+  margin-top: 2vw;
+  margin-left: 8vw;
   display: flex;
   flex-direction: column;
 
@@ -38,6 +38,10 @@ export const SocialMedia = styled.div`
 export const FooterLinks = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export const Links = styled.div`
@@ -58,7 +62,7 @@ export const Links = styled.div`
       }
     }
 
-    margin-right: 10rem;
+    margin-right: 10vw;
   }
 `;
 

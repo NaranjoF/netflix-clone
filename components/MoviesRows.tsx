@@ -5,6 +5,8 @@ import {
 
 import { Slider } from "./Slider";
 
+import { SliderComingSoon } from "./SliderComingSoon";
+
 import {
   actionThrillersSmall,
   familiarFavoritesSmall,
@@ -24,8 +26,14 @@ import {
 } from "../utils/movies";
 
 import { useEffect, useState } from "react";
+import { Movie } from "../typings";
+import { baseUrl } from "../constants/movie";
 
-export default function MoviesRows() {
+interface Props {
+  comingSoon: Movie[];
+}
+
+export default function MoviesRows({ comingSoon }: Props) {
   //States
 
   const initialWidth = typeof window !== "undefined" && window.innerWidth;
@@ -52,16 +60,19 @@ export default function MoviesRows() {
     if (width > 1000) {
       setSliderFull(true);
       setSliderMedium(false);
-    } else {
-      setSliderFull(false);
+      setSliderSmall(false);
     }
 
     if (width <= 1000 && width > 500) {
       setSliderMedium(true);
+      setSliderFull(false);
+      setSliderSmall(false);
     }
 
     if (width <= 500) {
       setSliderSmall(true);
+      setSliderMedium(false);
+      setSliderFull(false);
     }
   };
 
@@ -70,14 +81,18 @@ export default function MoviesRows() {
     if (width > 1000) {
       setSliderFull(true);
       setSliderMedium(false);
+      setSliderSmall(false);
     } else if (width <= 1000 && width > 500) {
       setSliderMedium(true);
       setSliderFull(false);
       setSliderSmall(false);
     } else if (width <= 500) {
+      setSliderFull(false);
       setSliderMedium(false);
       setSliderSmall(true);
     }
+
+    console.log(comingSoon);
 
     window.addEventListener("resize", cambiarTamaño);
 
@@ -111,6 +126,7 @@ export default function MoviesRows() {
               collection={familiarFavorites}
             />
             <Slider title={romantic[0].nameCollection} collection={romantic} />
+            <SliderComingSoon title="Coming Soon" collection={comingSoon} />
           </>
         )}
         {sliderMedium && (
@@ -135,6 +151,7 @@ export default function MoviesRows() {
               title={romanticMedium[0].nameCollection}
               collection={romanticMedium}
             />
+            <SliderComingSoon title="Coming Soon" collection={comingSoon} />
           </>
         )}
 
@@ -160,6 +177,7 @@ export default function MoviesRows() {
               title={romanticSmall[0].nameCollection}
               collection={romanticSmall}
             />
+            <SliderComingSoon title="Coming Soon" collection={comingSoon} />
           </>
         )}
       </SlidersGeneralContainer>

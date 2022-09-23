@@ -9,26 +9,10 @@ import { Movie } from "../typings";
 import requests from "../utils/requests";
 
 interface Props {
-  netflixOriginals: Movie[];
-  trendingNow: Movie[];
-  topRated: Movie[];
-  actionMovies: Movie[];
-  comedyMovies: Movie[];
-  horrorMovies: Movie[];
-  romanceMovies: Movie[];
-  documentaries: Movie[];
+  comingSoon: Movie[];
 }
 
-const Home = ({
-  netflixOriginals,
-  trendingNow,
-  topRated,
-  actionMovies,
-  comedyMovies,
-  horrorMovies,
-  romanceMovies,
-  documentaries,
-}: Props) => {
+const Home = ({ comingSoon }: Props) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const setingModal = (state: boolean) => {
@@ -69,7 +53,7 @@ const Home = ({
 
       <main>
         <Banner setingModal={setingModal} />
-        <MoviesRows />
+        <MoviesRows comingSoon={comingSoon} />
       </main>
 
       <Footer />
@@ -80,36 +64,13 @@ const Home = ({
 export default Home;
 
 export const getServerSideProps = async () => {
-  const [
-    netflixOriginals,
-    trendingNow,
-    topRated,
-    actionMovies,
-    comedyMovies,
-    horrorMovies,
-    romanceMovies,
-    documentaries,
-  ] = await Promise.all([
-    fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
-    fetch(requests.fetchTrending).then((res) => res.json()),
-    fetch(requests.fetchTopRated).then((res) => res.json()),
-    fetch(requests.fetchActionMovies).then((res) => res.json()),
-    fetch(requests.fetchComedyMovies).then((res) => res.json()),
-    fetch(requests.fetchHorrorMovies).then((res) => res.json()),
-    fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-    fetch(requests.fetchDocumentaries).then((res) => res.json()),
+  const [comingSoon] = await Promise.all([
+    fetch(requests.fetchComingSoon).then((res) => res.json()),
   ]);
 
   return {
     props: {
-      netflixOriginals: netflixOriginals.results,
-      trendingNow: trendingNow.results,
-      topRated: topRated.results,
-      actionMovies: actionMovies.results,
-      comedyMovies: comedyMovies.results,
-      horrorMovies: horrorMovies.results,
-      romanceMovies: romanceMovies.results,
-      documentaries: documentaries.results,
+      comingSoon: comingSoon.results,
     },
   };
 };
