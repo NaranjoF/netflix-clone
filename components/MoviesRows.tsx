@@ -92,8 +92,6 @@ export default function MoviesRows({ comingSoon }: Props) {
       setSliderSmall(true);
     }
 
-    console.log(comingSoon);
-
     window.addEventListener("resize", cambiarTamaño);
 
     return () => {

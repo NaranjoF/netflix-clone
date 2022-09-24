@@ -29,11 +29,23 @@ export interface Movie {
 
 export interface MovieSlider {
   nameCollection?: string | undefined;
-  imageRow: string;
+  imageRow?: string | undefined;
   maturyRaiting: string;
   duration: string;
-  features: string[];
+  features?: string[] | undefined;
   name: string;
+  modalImageMovie?: string;
+  releaseYear?: string;
+  aboutMovie?: string;
+  titleImage?: string;
+  backgroundImageMovie?: string;
+  cast?: string[];
+  Genres?: string[];
+  thisMovieIs?: string[];
+  Director?: string[] | string;
+  writer?: string[];
+  match?: string;
+  trailer?: string;
 }
 
 export interface Element {

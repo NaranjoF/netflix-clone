@@ -65,6 +65,13 @@ export const ArrowContR = styled.div`
   }
 `;
 
+export const ArrowContRComingSoon = styled(ArrowContR)`
+  @media screen and (max-width: 300px) and (min-height: 650px) {
+    font-size: 1rem;
+    margin-right: 0;
+  }
+`;
+
 export const ArrowContL = styled(ArrowContR)`
   @media screen and (max-width: 290px) and (max-height: 500px) {
     font-size: 1rem;
@@ -84,6 +91,13 @@ export const ArrowContL = styled(ArrowContR)`
   @media screen and (min-width: 350px) and (max-width: 370px) and (min-height: 560px) and (max-height: 620px) {
     font-size: 1rem;
     margin-right: 0;
+  }
+`;
+
+export const ArrowContLComingSoon = styled(ArrowContL)`
+  @media screen and (max-width: 300px) and (min-height: 650px) {
+    font-size: 1rem;
+    margin-left: 0.9rem;
   }
 `;
 
@@ -115,6 +129,12 @@ export const ArrowLeftContainer = styled.span`
     div:nth-child(1) {
       transform: scale(1.2);
     }
+  }
+`;
+
+export const ArrowLeftContainerComingSoon = styled(ArrowLeftContainer)`
+  @media screen and (max-width: 300px) and (min-height: 650px) {
+    width: 1.5rem;
   }
 `;
 
@@ -186,6 +206,12 @@ export const ArrowRightContainer = styled.span`
   border-top-left-radius: 4px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+`;
+
+export const ArrowRightContainerComingSoon = styled(ArrowRightContainer)`
+  @media screen and (max-width: 300px) and (min-height: 650px) {
+    width: 1.5rem;
+  }
 `;
 
 export const ShadowRight = styled.div`
@@ -326,6 +352,7 @@ export const MovieRowHeader = styled.h2`
     margin: 0 3.5rem 0.5em;
     min-width: 6em;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   @media screen and (max-width: 650px) {
@@ -435,7 +462,7 @@ export const PaginationIndicator = styled.ul`
     margin-right: 2.1rem;
   }
 
-  @media screen and (max-width: 390px) and (min-height: 660px) {
+  @media screen and (max-width: 395px) and (min-height: 660px) {
     li {
       width: 4px;
     }

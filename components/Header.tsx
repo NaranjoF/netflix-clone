@@ -20,13 +20,31 @@ import {
   ProfileContainer,
   ArrowDownBrowse,
   BellSvg,
+  SearchBarContainer,
+  InputSearch,
 } from "./styledComponents/Header.elements";
 import Link from "next/link";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 
-export default function Header() {
+interface Props {
+  setingSearch: (state: boolean, search: string) => void;
+}
+
+export default function Header({ setingSearch }: Props) {
+  //States Search
+
+  const [searchBar, setSearchBar] = useState(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length >= 1) {
+      setingSearch(true, e.target.value);
+    } else if (e.target.value.length <= 0) {
+      setingSearch(false, e.target.value);
+    }
+  };
+
   // Start of Handle NavBackground
 
   const navWithBackground = useRef<"header" | any | {} | never>(null);
@@ -168,29 +186,69 @@ export default function Header() {
             <DefaultMenu>
               <ul>
                 <Item>
-                  <a href="">Home</a>
+                  <p>
+                    <strong>Home</strong>
+                  </p>
                 </Item>
                 <Item>
-                  <a href="">TV Shows</a>
+                  <p>TV Shows</p>
                 </Item>
                 <Item>
-                  <a href="">Movies</a>
+                  <p>Movies</p>
                 </Item>
                 <Item>
-                  <a href="">New & Popular</a>
+                  <p>New & Popular</p>
                 </Item>
                 <Item>
-                  <a href="">My List</a>
+                  <p>My List</p>
                 </Item>
                 <Item>
-                  <a href="">Browse by Languages</a>
+                  <p>Browse by Languages</p>
                 </Item>
               </ul>
             </DefaultMenu>
           </NavContentLeft>
 
           <NavContentRight>
-            <Search />
+            {searchBar ? (
+              <SearchBarContainer>
+                <Search>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M13 11C13 13.7614 10.7614 16 8 16C5.23858 16 3 13.7614 3 11C3 8.23858 5.23858 6 8 6C10.7614 6 13 8.23858 13 11ZM14.0425 16.2431C12.5758 17.932 10.4126 19 8 19C3.58172 19 0 15.4183 0 11C0 6.58172 3.58172 3 8 3C12.4183 3 16 6.58172 16 11C16 11.9287 15.8417 12.8205 15.5507 13.6497L24.2533 18.7028L22.7468 21.2972L14.0425 16.2431Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </Search>
+                <InputSearch
+                  type="text"
+                  placeholder="Search any movies or series"
+                  onChange={handleChange}
+                />
+              </SearchBarContainer>
+            ) : (
+              <Search onClick={() => setSearchBar(true)}>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M13 11C13 13.7614 10.7614 16 8 16C5.23858 16 3 13.7614 3 11C3 8.23858 5.23858 6 8 6C10.7614 6 13 8.23858 13 11ZM14.0425 16.2431C12.5758 17.932 10.4126 19 8 19C3.58172 19 0 15.4183 0 11C0 6.58172 3.58172 3 8 3C12.4183 3 16 6.58172 16 11C16 11.9287 15.8417 12.8205 15.5507 13.6497L24.2533 18.7028L22.7468 21.2972L14.0425 16.2431Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </Search>
+            )}
+
             <Bell
               aria-haspopup="true"
               aria-expanded="false"
@@ -213,14 +271,19 @@ export default function Header() {
               </BellSvg>
             </Bell>
             <ProfileContainer>
-              <Link href="account">
+              {/* <Link href="account">
                 <StyledImage
                   src="https://rb.gy/g1pwyx"
                   alt="profilePhoto"
                   layout="fill"
                   objectFit="cover"
                 />
-              </Link>
+              </Link> */}
+              <img
+                src="https://occ-0-1190-2774.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABbme8JMz4rEKFJhtzpOKWFJ_6qX-0y5wwWyYvBhWS0VKFLa289dZ5zvRBggmFVWVPL2AAYE8xevD4jjLZjWumNo.png?r=a41"
+                alt="profileImage"
+                style={{ borderRadius: "5px", width: "100%" }}
+              />
             </ProfileContainer>
           </NavContentRight>
         </Nav>
@@ -289,29 +352,44 @@ export default function Header() {
             <DefaultMenu>
               <ul>
                 <Item>
-                  <a href="">Home</a>
+                  <p>
+                    <strong>Home</strong>
+                  </p>
                 </Item>
                 <Item>
-                  <a href="">TV Shows</a>
+                  <p>TV Shows</p>
                 </Item>
                 <Item>
-                  <a href="">Movies</a>
+                  <p>Movies</p>
                 </Item>
                 <Item>
-                  <a href="">New & Popular</a>
+                  <p>New & Popular</p>
                 </Item>
                 <Item>
-                  <a href="">My List</a>
+                  <p>My List</p>
                 </Item>
                 <Item>
-                  <a href="">Browse by Languages</a>
+                  <p>Browse by Languages</p>
                 </Item>
               </ul>
             </DefaultMenu>
           </NavContentLeft>
 
           <NavContentRight>
-            <Search />
+            <Search>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M13 11C13 13.7614 10.7614 16 8 16C5.23858 16 3 13.7614 3 11C3 8.23858 5.23858 6 8 6C10.7614 6 13 8.23858 13 11ZM14.0425 16.2431C12.5758 17.932 10.4126 19 8 19C3.58172 19 0 15.4183 0 11C0 6.58172 3.58172 3 8 3C12.4183 3 16 6.58172 16 11C16 11.9287 15.8417 12.8205 15.5507 13.6497L24.2533 18.7028L22.7468 21.2972L14.0425 16.2431Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </Search>
             <Bell
               aria-haspopup="true"
               aria-expanded="false"

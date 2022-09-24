@@ -12,7 +12,7 @@ export const StyledHeaderwob = styled.header`
   position: fixed;
   font-size: 0.9rem;
   font-weight: 400;
-  z-index: 5;
+  z-index: 6;
   background: transparent;
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 5%, transparent);
 `;
@@ -84,11 +84,21 @@ export const Nav = styled.nav`
   }
 `;
 
-export const Search = styled(BiSearch)`
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 1rem;
+export const Search = styled.svg`
+  width: 1.75vw;
+  height: 1.75vw;
+  margin-right: 1vw;
   cursor: pointer;
+
+  @media screen and (max-width: 1100px) {
+    width: 2.2vw;
+    height: 2.2vw;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
 
   @media screen and (max-width: 500px) and (min-height: 700px) {
     width: 1rem;
@@ -176,7 +186,7 @@ export const DropDownMenu = styled.div`
     align-items: center;
   }
 
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 1099px) {
     display: flex;
     margin-left: 2rem;
 
@@ -203,7 +213,6 @@ export const DropDownMenu = styled.div`
 `;
 
 export const DownMenu = styled.div`
-  background-color: red;
   width: 17.5rem;
   height: 21.8rem;
   border-left: 1px solid #242323;
@@ -301,7 +310,7 @@ export const ButtonMenu = styled.button`
 `;
 
 export const NavContentLeft = styled.div`
-  width: 70%;
+  width: max-content;
   display: flex;
   flex-direction: column;
 `;
@@ -352,9 +361,23 @@ export const ArrowNDDContainer = styled.div`
 
 export const DefaultMenu = styled.div`
   visibility: hidden;
+  display: none !important;
 
-  @media screen and (min-width: 951px) {
+  ul > li:first-child {
+    &:hover {
+      color: white;
+    }
+  }
+
+  ul > li {
+    p {
+      cursor: pointer;
+    }
+  }
+
+  @media screen and (min-width: 1100px) {
     visibility: visible;
+    display: flex !important;
   }
 `;
 
@@ -411,15 +434,48 @@ export const NetflixLogo = styled.svg`
 export const NetflixLogoContainer = styled.div``;
 
 export const NavContentRight = styled.div`
-  width: 30%;
+  width: max-content;
   display: flex;
   flex-direction: row;
 `;
 
+export const SearchBarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: max-content;
+  width: 80%;
+  transition: width 0.5s ease-in;
+  overflow: hidden;
+  border: 1px solid white;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  margin-right: 1rem;
+  background: rgb(0, 0, 0, 70%);
+`;
+
+export const InputSearch = styled.input`
+  background: transparent;
+  border: none;
+  color: #a1a1a1;
+  font-size: 1vw;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: 1100px) {
+    font-size: 1.3vw;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 1.6vw;
+  }
+`;
+
 export const ProfileContainer = styled.div`
   position: relative;
-  width: 2rem;
-  height: 2rem;
+  width: 2vw;
+  height: 100%;
 
   @media screen and (max-width: 885px) {
     width: 1.5rem;

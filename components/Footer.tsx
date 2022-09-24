@@ -5,6 +5,7 @@ import {
   FooterLinks,
   Links,
   ServiceCode,
+  Links2,
 } from "./styledComponents/Footer.elements";
 
 export default function Footer() {
@@ -78,7 +79,7 @@ export default function Footer() {
               <p>Cookie Preferences</p>
             </div>
           </Links>
-          <Links>
+          <Links2>
             <div>
               <p>Gift Cards</p>
               <p>Terms of Use</p>
@@ -90,7 +91,7 @@ export default function Footer() {
               <p>Privacy</p>
               <p>Contact Us</p>
             </div>
-          </Links>
+          </Links2>
         </FooterLinks>
         <ServiceCode>
           <p>Service Code</p>

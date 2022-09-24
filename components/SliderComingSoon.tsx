@@ -4,11 +4,15 @@ import { baseUrl } from "../constants/movie";
 import { Movie } from "../typings";
 import {
   ArrowContL,
+  ArrowContLComingSoon,
   ArrowContR,
+  ArrowContRComingSoon,
   ArrowLeft,
   ArrowLeftContainer,
+  ArrowLeftContainerComingSoon,
   ArrowRight,
   ArrowRightContainer,
+  ArrowRightContainerComingSoon,
   Indicator,
   MovieRowBody,
   MovieRowHeader,
@@ -388,14 +392,14 @@ export const SliderComingSoon = ({ title, collection }: Props) => {
         </PaginationIndicator>
       </MovieRowHeader>
       <MovieRowBody>
-        <ArrowLeftContainer
+        <ArrowLeftContainerComingSoon
           ref={arrowLeftContainerFull}
           onClick={moveSliderLeft}
         >
-          <ArrowContL ref={arrowLeftSliderFull}>
+          <ArrowContLComingSoon ref={arrowLeftSliderFull}>
             <ArrowLeft></ArrowLeft>
-          </ArrowContL>
-        </ArrowLeftContainer>
+          </ArrowContLComingSoon>
+        </ArrowLeftContainerComingSoon>
         <RowContainerComingSoon ref={sliderFullRef}>
           {collection.map((movie?) => (
             // eslint-disable-next-line @next/next/no-img-element
@@ -406,14 +410,14 @@ export const SliderComingSoon = ({ title, collection }: Props) => {
             />
           ))}
         </RowContainerComingSoon>
-        <ArrowRightContainer
+        <ArrowRightContainerComingSoon
           ref={arrowRightContainerFull}
           onClick={moveSliderRight}
         >
-          <ArrowContR ref={arrowRightSliderFull}>
+          <ArrowContRComingSoon ref={arrowRightSliderFull}>
             <ArrowRight></ArrowRight>
-          </ArrowContR>
-        </ArrowRightContainer>
+          </ArrowContRComingSoon>
+        </ArrowRightContainerComingSoon>
       </MovieRowBody>
     </MoviesRowsContainerPrincipal>
   );

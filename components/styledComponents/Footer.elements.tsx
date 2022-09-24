@@ -52,6 +52,7 @@ export const Links = styled.div`
   div {
     font-size: 0.8rem;
     color: grey;
+    white-space: nowrap;
 
     p {
       margin-bottom: 0.9rem;
@@ -63,6 +64,16 @@ export const Links = styled.div`
     }
 
     margin-right: 10vw;
+  }
+
+  div:first-child {
+    max-width: 6.5rem;
+  }
+`;
+
+export const Links2 = styled(Links)`
+  @media screen and (max-width: 700px) {
+    margin-top: 0;
   }
 `;
 
