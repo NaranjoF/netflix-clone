@@ -18,6 +18,7 @@ const Home = ({ comingSoon }: Props) => {
   const [searchOn, setSearchOn] = useState(false);
   const [inputSearch, setInputSearch] = useState("");
   const [finishedTitle, setFinishedTitle] = useState(false);
+  const [searchBar, setSearchBar] = useState(false);
 
   const setingModal = (state: boolean) => {
     setIsOpenModal(state);
@@ -30,6 +31,16 @@ const Home = ({ comingSoon }: Props) => {
   const setingSearch = (state: boolean, search: string) => {
     setInputSearch(search);
     setSearchOn(state);
+  };
+
+  const setingSearchBar = (state: boolean) => {
+    setSearchBar(state);
+  };
+
+  const closeSearchBar = () => {
+    if (searchBar) {
+      setSearchBar(false);
+    }
   };
 
   const homeIndex = useRef<"div" | any | {} | never>(null);
@@ -89,9 +100,14 @@ const Home = ({ comingSoon }: Props) => {
         ></link>
       </Head>
 
-      <Header setingSearch={setingSearch} />
+      <Header
+        setingSearch={setingSearch}
+        inputSearch={inputSearch}
+        searchBar={searchBar}
+        setSearchBar={setingSearchBar}
+      />
 
-      <main>
+      <main onClick={closeSearchBar}>
         {searchOn && finishedTitle ? (
           <Search searchInfo={inputSearch} />
         ) : (

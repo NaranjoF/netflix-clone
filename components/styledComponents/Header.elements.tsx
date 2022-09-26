@@ -35,6 +35,7 @@ export const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 1rem;
+  user-select: none;
 
   div:first-child {
     display: flex;
@@ -85,19 +86,15 @@ export const Nav = styled.nav`
 `;
 
 export const Search = styled.svg`
-  width: 1.75vw;
-  height: 1.75vw;
-  margin-right: 1vw;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1rem;
   cursor: pointer;
+  transition: opacity 0.5s ease-in-out;
 
   @media screen and (max-width: 1100px) {
-    width: 2.2vw;
-    height: 2.2vw;
-  }
-
-  @media screen and (max-width: 600px) {
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
   @media screen and (max-width: 500px) and (min-height: 700px) {
@@ -313,6 +310,7 @@ export const NavContentLeft = styled.div`
   width: max-content;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 export const ArrowUp = styled(IoMdArrowDropup)`
@@ -437,15 +435,16 @@ export const NavContentRight = styled.div`
   width: max-content;
   display: flex;
   flex-direction: row;
+  height: 2rem;
 `;
 
 export const SearchBarContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: max-content;
-  width: 80%;
-  transition: width 0.5s ease-in;
+  width: max-content;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
   overflow: hidden;
   border: 1px solid white;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
@@ -468,7 +467,7 @@ export const InputSearch = styled.input`
   }
 
   @media screen and (max-width: 600px) {
-    font-size: 1.6vw;
+    font-size: 1.8vw;
   }
 `;
 

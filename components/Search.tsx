@@ -21,7 +21,7 @@ export default function Search({ searchInfo }: Props) {
   }, []);
 
   const movieSearchFilteredOut = movieSearch.filter((movie) =>
-    movie.name.toLocaleLowerCase().includes(searchInfo)
+    movie.name.toLocaleLowerCase().includes(searchInfo.toLocaleLowerCase())
   );
 
   useEffect(() => {
