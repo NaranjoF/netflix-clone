@@ -8,9 +8,13 @@ import {
   Links2,
 } from "./styledComponents/Footer.elements";
 
-export default function Footer() {
+interface Props {
+  closeSearchBar: () => void;
+}
+
+export default function Footer({ closeSearchBar }: Props) {
   return (
-    <FooterContainer>
+    <FooterContainer onClick={closeSearchBar}>
       <ContentFooter>
         <SocialMedia>
           <svg
