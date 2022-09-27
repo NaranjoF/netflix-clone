@@ -17,6 +17,23 @@ export const StyledHeaderwob = styled.header`
   background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 5%, transparent);
 `;
 
+export const StyledHeader = styled.header`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.3rem;
+  color: white;
+  padding: 1.8rem 3.5rem 0rem 3.5rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  z-index: 6;
+  background: transparent;
+`;
+
 export const StyledHeaderwb = styled.header`
   width: 100%;
   color: white;
@@ -429,6 +446,11 @@ export const NetflixLogo = styled.svg`
   }
 `;
 
+export const NetflixLogoLogin = styled.svg`
+  width: 8.3rem;
+  height: 2.25rem;
+`;
+
 export const NetflixLogoContainer = styled.div``;
 
 export const NavContentRight = styled.div`
@@ -545,5 +567,15 @@ export const BellSvg = styled.svg`
   @media screen and (max-width: 930px) and (max-height: 500px) {
     width: 1.3rem;
     height: 1.3rem;
+  }
+`;
+
+export const SignInButton = styled.div`
+  background: #e50914;
+  padding: 0.4rem 1rem;
+  border-radius: 3px;
+
+  span {
+    font-size: 1rem;
   }
 `;
