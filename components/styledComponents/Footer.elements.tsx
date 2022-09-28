@@ -8,6 +8,16 @@ export const FooterContainer = styled.div`
   z-index: 1;
 `;
 
+export const FooterContainerIndex = styled(FooterContainer)`
+  background: #000000;
+
+  span:first-child {
+    font-size: 1rem;
+    color: grey;
+    white-space: nowrap;
+  }
+`;
+
 export const ContentFooter = styled.div`
   width: 100%;
   height: 100%;
@@ -33,6 +43,15 @@ export const SocialMedia = styled.div`
     width: 1.5rem;
     height: 1.5rem;
   }
+
+  span {
+    span {
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const FooterLinks = styled.div`
@@ -42,6 +61,10 @@ export const FooterLinks = styled.div`
   @media screen and (max-width: 700px) {
     flex-direction: column;
   }
+`;
+
+export const FooterLinksIndex = styled(FooterLinks)`
+  margin-bottom: 1rem;
 `;
 
 export const Links = styled.div`
