@@ -60,33 +60,35 @@ export default function Header({
   const navWithBackground = useRef<"header" | any | {} | never>(null);
 
   useEffect(() => {
-    const search = searchNavbar.current;
-    const searchIcn = searchIcon.current;
+    if (login) {
+      const search = searchNavbar.current;
+      const searchIcn = searchIcon.current;
 
-    if (searchBar) {
-      setTimeout(() => {
-        search.style.opacity = 1;
-      }, 50);
-    }
-
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        navWithBackground.current.style.opacity = 1;
-        navWithBackground.current.style.visibility = "visible";
-      } else if (window.scrollY <= 0) {
-        navWithBackground.current.style.opacity = 0;
-        navWithBackground.current.style.visibility = "hidden";
-        navWithBackground.current.style.transition =
-          "opacity 1s, visibility 0.5s ease-in-out";
+      if (searchBar) {
+        setTimeout(() => {
+          search.style.opacity = 1;
+        }, 50);
       }
-    };
 
-    window.addEventListener("scroll", handleScroll);
+      const handleScroll = () => {
+        if (window.scrollY > 0) {
+          navWithBackground.current.style.opacity = 1;
+          navWithBackground.current.style.visibility = "visible";
+        } else if (window.scrollY <= 0) {
+          navWithBackground.current.style.opacity = 0;
+          navWithBackground.current.style.visibility = "hidden";
+          navWithBackground.current.style.transition =
+            "opacity 1s, visibility 0.5s ease-in-out";
+        }
+      };
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [searchBar]);
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [searchBar, login]);
 
   // End HandleNavbar
 
