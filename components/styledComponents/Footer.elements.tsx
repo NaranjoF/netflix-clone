@@ -31,6 +31,14 @@ export const ContentFooter = styled.div`
     color: grey;
     margin-bottom: 1rem;
   }
+
+  @media screen and (min-width: 600px) and (max-width: 700px) and (min-height: 250px) and (max-height: 500px) {
+    margin-left: 5vw;
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 300px) and (min-height: 600px) and (max-height: 660px) {
+    margin-left: 4vw;
+  }
 `;
 
 export const SocialMedia = styled.div`
@@ -54,6 +62,22 @@ export const SocialMedia = styled.div`
   }
 `;
 
+export const Questions = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  span {
+    span {
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+
+  margin-top: 2rem;
+`;
+
 export const FooterLinks = styled.div`
   display: flex;
   flex-direction: row;
@@ -63,8 +87,20 @@ export const FooterLinks = styled.div`
   }
 `;
 
-export const FooterLinksIndex = styled(FooterLinks)`
+export const FooterLinksIndex = styled.div`
+  display: flex;
+  flex-direction: row;
   margin-bottom: 1rem;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 700px) and (min-height: 250px) and (max-height: 500px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Links = styled.div`
@@ -91,6 +127,14 @@ export const Links = styled.div`
 
   div:first-child {
     max-width: 6.5rem;
+
+    @media screen and (max-width: 400px) {
+      margin-right: 15vw;
+    }
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 700px) and (min-height: 250px) and (max-height: 500px) {
+    margin: 0;
   }
 `;
 

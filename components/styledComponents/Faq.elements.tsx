@@ -25,6 +25,14 @@ export const Faqq = styled.ul`
   width: 75%;
   max-width: 815px;
   padding: 0;
+
+  @media screen and (max-width: 1000px) {
+    width: 90%;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const FaqItemContainer = styled.li`
@@ -56,6 +64,14 @@ export const FaqItemContainer = styled.li`
       width: 1em;
       overflow: hidden;
     }
+
+    @media screen and (max-width: 1000px) {
+      font-size: 1.3rem;
+    }
+
+    @media screen and (max-width: 400px) {
+      font-size: 1rem;
+    }
   }
 
   div {
@@ -70,6 +86,14 @@ export const FaqItemContainer = styled.li`
     span {
       display: inline-block;
       padding: 1.2em;
+    }
+
+    @media screen and (max-width: 1000px) {
+      font-size: 1.3rem;
+    }
+
+    @media screen and (max-width: 400px) {
+      font-size: 1rem;
     }
   }
 `;
@@ -89,11 +113,22 @@ export const FormFaq = styled.form`
     margin-top: 1.5rem;
     margin-bottom: 1rem;
   }
+
+  @media screen and (min-width: 200px) and (max-width: 300px) and (min-height: 600px) and (max-height: 660px) {
+    h3 {
+      font-size: 0.7rem;
+    }
+  }
 `;
 
 export const FormContainerFaq = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const InputEmail = styled.input`
@@ -111,6 +146,21 @@ export const InputEmail = styled.input`
     outline: none;
     border-color: #0071eb;
   }
+
+  @media screen and (max-width: 900px) {
+    width: 70vw;
+    height: 3.4rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 80vw;
+    height: 3.4rem;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 30vw;
+    height: 3.4rem;
+  }
 `;
 
 export const ButtonStarted = styled.div`
@@ -125,6 +175,39 @@ export const ButtonStarted = styled.div`
   border-bottom-right-radius: 3px;
   border-left: 1px solid #333;
   height: 3.75rem;
+
+  @media screen and (max-width: 900px) {
+    margin-top: 1rem;
+    width: 20vw;
+    height: 3.4rem;
+    font-size: 1rem;
+    padding: 0 0rem 0 1rem;
+    height: 2.5rem;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-left: none;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 30vw;
+  }
+
+  @media screen and (max-width: 430px) and (min-height: 560px) and (max-height: 800px) {
+    width: 38vw;
+  }
+
+  @media screen and (min-width: 370px) and (min-height: 800px) and (max-height: 930px) {
+    width: 38vw;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 20vw;
+    height: 3.4rem;
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 300px) and (min-height: 600px) and (max-height: 660px) {
+    width: 50vw;
+  }
 `;
 
 export const ArrowIcon = styled(RiArrowRightSLine)`

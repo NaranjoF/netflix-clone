@@ -34,6 +34,12 @@ export const StyledHeader = styled.header`
   background: transparent;
 `;
 
+export const StyledHeaderIndex = styled(StyledHeader)`
+  @media screen and (max-width: 600px) {
+    padding: 1.8rem 2rem 0rem 2rem;
+  }
+`;
+
 export const StyledHeaderwb = styled.header`
   width: 100%;
   color: white;
@@ -449,6 +455,11 @@ export const NetflixLogo = styled.svg`
 export const NetflixLogoLogin = styled.svg`
   width: 8.3rem;
   height: 2.25rem;
+
+  @media screen and (max-width: 600px) {
+    width: 6.3rem;
+    height: 2.25rem;
+  }
 `;
 
 export const NetflixLogoContainer = styled.div``;
@@ -574,8 +585,16 @@ export const SignInButton = styled.div`
   background: #e50914;
   padding: 0.4rem 1rem;
   border-radius: 3px;
+  cursor: pointer;
 
   span {
     font-size: 1rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0.3rem 0.5rem;
+    span {
+      font-size: 0.9rem;
+    }
   }
 `;

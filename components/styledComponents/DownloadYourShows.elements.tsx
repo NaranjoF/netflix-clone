@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const AnimationContainer = styled.div`
   box-sizing: border-box;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 1 auto;
   height: 100%;
   width: 48%;
@@ -13,6 +15,27 @@ export const AnimationContainer = styled.div`
     border: 0;
     height: auto;
     max-width: 100%;
+  }
+
+  @media screen and (max-width: 1000px) {
+    margin: 0;
+    width: 100%;
+
+    img {
+      border: 0;
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 200px) and (max-width: 300px) and (min-height: 600px) and (max-height: 660px) {
+    margin: 0;
+    width: 180%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
   }
 `;
 
@@ -35,6 +58,16 @@ export const ModalAnimationContainer = styled.div`
   position: absolute;
   transform: translateX(-50%);
   width: 60%;
+
+  @media screen and (max-width: 1000px) {
+    padding: 0.35em 0.75em;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 900px) {
+    padding: 0.35em 0.75em;
+    width: 60%;
+  }
 `;
 
 export const ModalImageContainer = styled.div`
@@ -46,6 +79,18 @@ export const ModalImageContainer = styled.div`
     border: 0;
     max-width: 100%;
     height: 4.5em;
+  }
+
+  @media screen and (max-width: 600px) {
+    img {
+      height: 3.5em;
+    }
+  }
+
+  @media screen and (max-width: 430px) and (min-height: 560px) and (max-height: 670px) {
+    img {
+      height: 3em;
+    }
   }
 `;
 
@@ -64,6 +109,20 @@ export const TextContainerModal = styled.div`
     color: #0071eb;
     font-weight: 400;
   }
+
+  @media screen and (max-width: 600px) {
+    div:first-child {
+      font-size: 0.8em;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    div:last-child {
+      font-size: 0.7em;
+      color: #0071eb;
+      font-weight: 400;
+    }
+  }
 `;
 
 export const GifModalContainer = styled.div`
@@ -78,4 +137,8 @@ export const GifModalContainer = styled.div`
   outline: 2px solid #000;
   outline-offset: -2px;
   width: 3em;
+
+  @media screen and (max-width: 430px) and (min-height: 560px) and (max-height: 670px) {
+    height: 3em;
+  }
 `;

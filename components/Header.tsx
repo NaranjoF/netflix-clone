@@ -26,6 +26,7 @@ import {
   StyledHeader,
   SignInButton,
   NetflixLogoLogin,
+  StyledHeaderIndex,
 } from "./styledComponents/Header.elements";
 import Link from "next/link";
 import { ChangeEvent, useState } from "react";
@@ -469,7 +470,7 @@ export default function Header({
           </StyledHeaderwb>
         </>
       ) : (
-        <StyledHeader>
+        <StyledHeaderIndex>
           <NetflixLogoContainer>
             <NetflixLogoLogin
               xmlns="http://www.w3.org/2000/svg"
@@ -484,7 +485,7 @@ export default function Header({
           <SignInButton>
             <span>Sign In</span>
           </SignInButton>
-        </StyledHeader>
+        </StyledHeaderIndex>
       )}
     </>
   );

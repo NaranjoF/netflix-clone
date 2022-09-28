@@ -9,6 +9,7 @@ import {
   Links2,
   FooterLinksIndex,
   FooterContainerIndex,
+  Questions,
 } from "./styledComponents/Footer.elements";
 
 interface Props {
@@ -24,11 +25,11 @@ export default function Footer({ closeSearchBar, page }: Props) {
           return (
             <FooterContainerIndex>
               <ContentFooter>
-                <SocialMedia>
+                <Questions>
                   <span>
                     Questions? <span>Call 1-852-234-7572</span>
                   </span>
-                </SocialMedia>
+                </Questions>
                 <FooterLinksIndex>
                   <Links>
                     <div>

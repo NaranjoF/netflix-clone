@@ -17,7 +17,7 @@ export default function CreateProfile() {
           <h1>Create profiles for kids.</h1>
           <h2>
             Send kids on adventures with their favorite characters in a space
-            made just for them—free with your membership.
+            made just for them free with your membership.
           </h2>
         </TextContainerReverse>
         <AnimationContainerKids>

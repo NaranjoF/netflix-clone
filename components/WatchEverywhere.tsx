@@ -1,7 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import {
-  CardContainer,
   ContentContainer,
-  TextContainer,
   CardContainerPadding,
 } from "./styledComponents/EnjoyOnYourTv.elements";
 
@@ -9,6 +8,7 @@ import {
   AnimationContainer,
   ElementsContainer,
   VideoContainer,
+  TextContainer,
 } from "./styledComponents/WatchEverywhere.elements";
 
 export default function WatchEverywhere() {
