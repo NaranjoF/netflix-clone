@@ -8,6 +8,8 @@ import { StyledHome } from "../components/styledComponents/home.elements";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
 import Search from "../components/Search";
+import { useAppDispatch } from "../hooks";
+import { setNewPage } from "../slices/pageSlice";
 
 interface Props {
   comingSoon: Movie[];
@@ -45,8 +47,12 @@ const Home = ({ comingSoon }: Props) => {
 
   const homeIndex = useRef<"div" | any | {} | never>(null);
 
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     const home = homeIndex.current;
+
+    dispatch(setNewPage("home"));
 
     if (isOpenModal) {
       home.style.position = "fixed";

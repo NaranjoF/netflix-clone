@@ -18,6 +18,12 @@ export const FooterContainerIndex = styled(FooterContainer)`
   }
 `;
 
+export const FooterContainerLogin = styled(FooterContainer)`
+  position: absolute;
+  bottom: 0;
+  background: #000000;
+`;
+
 export const ContentFooter = styled.div`
   width: 100%;
   height: 100%;
@@ -76,6 +82,12 @@ export const Questions = styled.div`
   }
 
   margin-top: 2rem;
+`;
+
+export const QuestionsLogin = styled(Questions)`
+  span {
+    font-size: 1rem;
+  }
 `;
 
 export const FooterLinks = styled.div`

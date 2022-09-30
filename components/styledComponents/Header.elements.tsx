@@ -40,6 +40,16 @@ export const StyledHeaderIndex = styled(StyledHeader)`
   }
 `;
 
+export const StyledHeaderLogin = styled(StyledHeader)`
+  padding: 1.8rem 0rem 0rem 2.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  border-bottom: transparent;
+`;
+
 export const StyledHeaderwb = styled.header`
   width: 100%;
   color: white;
@@ -50,6 +60,7 @@ export const StyledHeaderwb = styled.header`
   opacity: 0;
   background: #0b0b0b;
   z-index: 5;
+  transition: opacity 1s, visibility 0.5s ease-in-out;
 `;
 
 export const Nav = styled.nav`
@@ -452,12 +463,22 @@ export const NetflixLogo = styled.svg`
   }
 `;
 
-export const NetflixLogoLogin = styled.svg`
+export const NetflixLogoIndex = styled.svg`
   width: 8.3rem;
   height: 2.25rem;
 
   @media screen and (max-width: 600px) {
     width: 6.3rem;
+    height: 2.25rem;
+  }
+`;
+
+export const NetflixLogoLogin = styled.svg`
+  width: 10.4rem;
+  height: 2.8rem;
+
+  @media screen and (max-width: 600px) {
+    width: 8.3rem;
     height: 2.25rem;
   }
 `;

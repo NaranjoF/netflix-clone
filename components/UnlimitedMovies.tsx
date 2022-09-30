@@ -14,7 +14,7 @@ export function UnlimitedMovies() {
   return (
     <BannerContainer>
       <ImageBanner
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/45082c39-e6d5-4b02-8867-e38fe32ed3af/3e35f791-04e3-4db3-b963-f69e0e1d6af6/AR-en-20220919-popsignuptwoweeks-perspective_alpha_website_small.jpg"
+        src="https://assets.nflxext.com/ffe/siteui/vlv3/b321426e-35ae-4661-b899-d63bca17648a/e01e18e0-779e-4c3e-bfc0-c3b4bd9afc65/AR-en-20220926-popsignuptwoweeks-perspective_alpha_website_large.jpg"
         alt="imageBackground"
       />
       <Shadow></Shadow>

@@ -9,13 +9,14 @@ import Header from "../components/Header";
 import { StyledIndex } from "../components/styledComponents/index.elements";
 import { UnlimitedMovies } from "../components/UnlimitedMovies";
 import WatchEverywhere from "../components/WatchEverywhere";
+import { useAppDispatch } from "../hooks";
+import { setNewPage } from "../slices/pageSlice";
 
 export default function Index() {
-  const [login, setLogin] = useState(false);
-  const [page, setPage] = useState("");
+  const dispatch = useAppDispatch();
 
   useState(() => {
-    setPage("index");
+    dispatch(setNewPage("index"));
   });
 
   return (
@@ -36,14 +37,14 @@ export default function Index() {
         ></link>
       </Head>
 
-      <Header login={login} />
+      <Header />
       <UnlimitedMovies />
       <EnjoyOnYourTv />
       <DownloadYourShows />
       <WatchEverywhere />
       <CreateProfile />
       <Faq />
-      <Footer page={page} />
+      <Footer />
     </StyledIndex>
   );
 }
