@@ -9,11 +9,12 @@ import Header from "../components/Header";
 import { StyledIndex } from "../components/styledComponents/index.elements";
 import { UnlimitedMovies } from "../components/UnlimitedMovies";
 import WatchEverywhere from "../components/WatchEverywhere";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { setNewPage } from "../slices/pageSlice";
 
 export default function Index() {
   const dispatch = useAppDispatch();
+  const loginState = useAppSelector((state) => state.login.value);
 
   useState(() => {
     dispatch(setNewPage("index"));
@@ -21,30 +22,34 @@ export default function Index() {
 
   return (
     <StyledIndex>
-      <Head>
-        <title>Netflix - Watch Tv Shows Online, Watch Movies Online</title>
-        <link
-          rel="icon"
-          href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
-        ></link>
-        <link
-          rel="shortcut icon"
-          href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"
-        ></link>
-      </Head>
+      {!loginState && (
+        <>
+          <Head>
+            <title>Netflix - Watch Tv Shows Online, Watch Movies Online</title>
+            <link
+              rel="icon"
+              href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
+            />
+            <link
+              rel="apple-touch-icon"
+              href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
+            ></link>
+            <link
+              rel="shortcut icon"
+              href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"
+            ></link>
+          </Head>
 
-      <Header />
-      <UnlimitedMovies />
-      <EnjoyOnYourTv />
-      <DownloadYourShows />
-      <WatchEverywhere />
-      <CreateProfile />
-      <Faq />
-      <Footer />
+          <Header />
+          <UnlimitedMovies />
+          <EnjoyOnYourTv />
+          <DownloadYourShows />
+          <WatchEverywhere />
+          <CreateProfile />
+          <Faq />
+          <Footer />
+        </>
+      )}
     </StyledIndex>
   );
 }

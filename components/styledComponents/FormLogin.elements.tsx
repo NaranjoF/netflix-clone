@@ -15,6 +15,90 @@ export const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 660px;
+
+  form {
+    position: relative;
+    display: block;
+    width: 450px;
+    margin: 50px auto;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 60px 68px 40px;
+
+    h1 {
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    div {
+      position: relative;
+      margin: 0 auto;
+      padding-bottom: 16px;
+
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        font-family: inherit;
+        padding: 0px 20px 0 20px;
+        height: 50px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background: #333;
+        color: #ffffff;
+      }
+
+      /* label {
+        box-sizing: border-box;
+        width: 100%;
+        position: absolute;
+        top: 20%;
+        left: 20px;
+        font-size: 18px;
+        cursor: text;
+        color: #8c8c8c;
+        transition: font 0.1s ease, top 0.1s ease, transform 0.1s ease;
+      } */
+
+      span {
+        color: red;
+        font-size: 0.8rem;
+      }
+    }
+
+    button {
+      width: 100%;
+      height: 50px;
+      margin-top: 24px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 5px;
+      border: none;
+      color: #ffffff;
+      background-color: #e50914;
+    }
+
+    p {
+      margin-top: 4rem;
+
+      color: #737373;
+
+      span {
+        color: white;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 `;
 
 export const Form = styled.div`

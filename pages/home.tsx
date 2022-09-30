@@ -8,7 +8,7 @@ import { StyledHome } from "../components/styledComponents/home.elements";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
 import Search from "../components/Search";
-import { useAppDispatch } from "../hooks";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { setNewPage } from "../slices/pageSlice";
 
 interface Props {
@@ -21,6 +21,7 @@ const Home = ({ comingSoon }: Props) => {
   const [inputSearch, setInputSearch] = useState("");
   const [finishedTitle, setFinishedTitle] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
+  const loginState = useAppSelector((state) => state.login.value);
 
   const setingModal = (state: boolean) => {
     setIsOpenModal(state);
@@ -63,44 +64,48 @@ const Home = ({ comingSoon }: Props) => {
 
   return (
     <StyledHome ref={homeIndex}>
-      <Head>
-        <title>Home - Netflix</title>
-        <link
-          rel="icon"
-          href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
-        ></link>
-        <link
-          rel="shortcut icon"
-          href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"
-        ></link>
-      </Head>
-
-      <Header
-        setingSearch={setingSearch}
-        inputSearch={inputSearch}
-        searchBar={searchBar}
-        setSearchBar={setingSearchBar}
-      />
-
-      <main onClick={closeSearchBar}>
-        {searchOn && finishedTitle ? (
-          <Search searchInfo={inputSearch} />
-        ) : (
-          <>
-            <Banner
-              setingModal={setingModal}
-              finishedTitle={finishedTitleSet}
+      {loginState && (
+        <>
+          <Head>
+            <title>Home - Netflix</title>
+            <link
+              rel="icon"
+              href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
             />
-            <MoviesRows comingSoon={comingSoon} />
-          </>
-        )}
-      </main>
+            <link
+              rel="apple-touch-icon"
+              href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png"
+            ></link>
+            <link
+              rel="shortcut icon"
+              href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"
+            ></link>
+          </Head>
 
-      <Footer closeSearchBar={closeSearchBar} />
+          <Header
+            setingSearch={setingSearch}
+            inputSearch={inputSearch}
+            searchBar={searchBar}
+            setSearchBar={setingSearchBar}
+          />
+
+          <main onClick={closeSearchBar}>
+            {searchOn && finishedTitle ? (
+              <Search searchInfo={inputSearch} />
+            ) : (
+              <>
+                <Banner
+                  setingModal={setingModal}
+                  finishedTitle={finishedTitleSet}
+                />
+                <MoviesRows comingSoon={comingSoon} />
+              </>
+            )}
+          </main>
+
+          <Footer closeSearchBar={closeSearchBar} />
+        </>
+      )}
     </StyledHome>
   );
 };

@@ -48,6 +48,7 @@ export const StyledHeaderLogin = styled(StyledHeader)`
     rgba(0, 0, 0, 0) 100%
   );
   border-bottom: transparent;
+  z-index: 20;
 `;
 
 export const StyledHeaderwb = styled.header`
@@ -476,6 +477,7 @@ export const NetflixLogoIndex = styled.svg`
 export const NetflixLogoLogin = styled.svg`
   width: 10.4rem;
   height: 2.8rem;
+  cursor: pointer;
 
   @media screen and (max-width: 600px) {
     width: 8.3rem;

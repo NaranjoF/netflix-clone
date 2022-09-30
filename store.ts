@@ -7,9 +7,11 @@ import {
 } from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import pageReducer from "./slices/pageSlice";
+import loginReducer from "./slices/loginSlice";
 
 const combinedReducer = combineReducers({
   page: pageReducer,
+  login: loginReducer,
 });
 
 const reducer = (
