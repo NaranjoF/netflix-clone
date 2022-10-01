@@ -1,5 +1,5 @@
 import { signInAnonymously, signInWithPopup } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import {
@@ -8,6 +8,8 @@ import {
   FormContainer,
   FormGeneralContainer,
 } from "./styledComponents/FormLogin.elements";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import { setInputValue } from "../slices/inputSlice";
 
 interface Inputs {
   email: string;
@@ -15,6 +17,9 @@ interface Inputs {
 }
 
 export default function FormLogin() {
+  const inputValue: string | number | readonly string[] | undefined =
+    useAppSelector((state) => state.input.value);
+
   const {
     register,
     handleSubmit,
@@ -41,19 +46,14 @@ export default function FormLogin() {
     }
   };
 
+  const dispatch = useAppDispatch();
+
+  const handleChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setInputValue(e.target.value));
+  };
+
   return (
     <FormGeneralContainer>
-      {/* <FormContainer>
-        <Form>
-          <h1>Sign In</h1>
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <ButtonLogin>Sign In</ButtonLogin>
-          <p>
-            New to Netflix? <span>Sign up now.</span>
-          </p>
-        </Form>
-      </FormContainer> */}
       <FormContainer>
         <form action="#" onSubmit={handleSubmit(onSubmit)}>
           <h1>{login ? "Sign In" : "Sign Up"}</h1>
@@ -62,6 +62,7 @@ export default function FormLogin() {
               type="email"
               id="username"
               placeholder="Email"
+              defaultValue={inputValue}
               {...register("email", { required: true })}
             />
             {errors.email && <span>Please enter a valid email.</span>}

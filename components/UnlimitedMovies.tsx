@@ -8,9 +8,37 @@ import {
   InputEmail,
   ButtonStarted,
   ArrowIcon,
+  ErrorForm,
 } from "./styledComponents/UnlimitedMovies.elements";
+import { useAppDispatch } from "../hooks";
+import { setInputValue } from "../slices/inputSlice";
+import { useRouter } from "next/router";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+interface Inputs {
+  email: string;
+}
 
 export function UnlimitedMovies() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = async ({ email }) => {
+    dispatchEmail(email);
+  };
+
+  const router = useRouter();
+
+  const dispatch = useAppDispatch();
+
+  const dispatchEmail = (email: string) => {
+    dispatch(setInputValue(email));
+    router.push("/login");
+  };
+
   return (
     <BannerContainer>
       <ImageBanner
@@ -27,19 +55,20 @@ export function UnlimitedMovies() {
             membership.
           </h3>
         </ContentUnlimited>
-        <FormContainer>
+        <FormContainer onSubmit={handleSubmit(onSubmit)}>
           <InputEmail
             placeholder="Email address"
-            type="text"
+            type="email"
             minLength={5}
             maxLength={50}
-            autoComplete="email"
+            {...register("email", { required: true })}
           />
           <ButtonStarted>
             <span>Get Started</span>
             <ArrowIcon />
           </ButtonStarted>
         </FormContainer>
+        {errors.email && <ErrorForm>Please enter a valid email!.</ErrorForm>}
       </ContentUnlimitedContainer>
     </BannerContainer>
   );

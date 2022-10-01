@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import { StyledBackground } from "./styledComponents/BackgroundLogin.elements";
 
 export default function BackgroundLogin() {

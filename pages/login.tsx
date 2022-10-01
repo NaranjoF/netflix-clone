@@ -1,10 +1,14 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import BackgroundLogin from "../components/BackgroundLogin";
 import Footer from "../components/Footer";
 import FormLogin from "../components/FormLogin";
 import Header from "../components/Header";
-import { StyledLogin } from "../components/styledComponents/BackgroundLogin.elements";
+import {
+  ContentLoginContainer,
+  StyledLogin,
+} from "../components/styledComponents/BackgroundLogin.elements";
 import { FormGeneralContainer } from "../components/styledComponents/FormLogin.elements";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { setNewPage } from "../slices/pageSlice";
@@ -12,6 +16,8 @@ import { setNewPage } from "../slices/pageSlice";
 export default function Login() {
   const dispatch = useAppDispatch();
   const loginState = useAppSelector((state) => state.login.value);
+
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(setNewPage("login"));
@@ -38,9 +44,12 @@ export default function Login() {
           </Head>
 
           <Header />
-          <BackgroundLogin />
-          <FormLogin />
-          <Footer />
+
+          <ContentLoginContainer>
+            <BackgroundLogin />
+            <FormLogin />
+            <Footer />
+          </ContentLoginContainer>
         </>
       )}
     </StyledLogin>

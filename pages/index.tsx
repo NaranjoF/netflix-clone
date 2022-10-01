@@ -11,6 +11,8 @@ import { UnlimitedMovies } from "../components/UnlimitedMovies";
 import WatchEverywhere from "../components/WatchEverywhere";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { setNewPage } from "../slices/pageSlice";
+import { setInputValue } from "../slices/inputSlice";
+import { setLogoutState } from "../slices/logoutSlice";
 
 export default function Index() {
   const dispatch = useAppDispatch();
@@ -18,6 +20,8 @@ export default function Index() {
 
   useState(() => {
     dispatch(setNewPage("index"));
+    dispatch(setInputValue(""));
+    dispatch(setLogoutState(false));
   });
 
   return (

@@ -405,24 +405,14 @@ export default function Banner({ setingModal, finishedTitle }: Props) {
     replay.style.zIndex = 2;
     replay.style.opacity = 1;
     setEndVideoBanner(true);
-    console.log("termino");
   };
 
   const videoBanner = () => {
-    // const movie = movieTrailerBanner.current;
-    // const replay = replayButton.current;
-    // const mute = muteButton.current;
     finishedTitle(false);
 
     setTimeout(() => {
       shrinkTitle();
     }, 3500);
-
-    // movie.addEventListener("ended", handleTrailer);
-
-    // return () => {
-    //   movie.removeEventListener("ended", handleTrailer);
-    // };
   };
 
   useEffect(() => {
@@ -445,7 +435,7 @@ export default function Banner({ setingModal, finishedTitle }: Props) {
             muted={true}
             controls={false}
             onPlay={() => videoBanner()}
-            onEnded={() => handleTrailer()}
+            onEnded={handleTrailer}
           />
           <ImageBannerContainer ref={imageBanner}>
             <ImageMovieBanner

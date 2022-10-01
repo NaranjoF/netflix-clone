@@ -1,8 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
+import { useAppDispatch } from "../hooks";
+import { setInputValue } from "../slices/inputSlice";
+import { useRouter } from "next/router";
+import { SubmitHandler, useForm } from "react-hook-form";
 import FaqItem from "./FaqItem";
 import {
   ArrowIcon,
   ButtonStarted,
+  ErrorForm,
   FaqContainer,
   FaqGeneralContainer,
   FaqItemContainer,
@@ -12,7 +17,30 @@ import {
   InputEmail,
 } from "./styledComponents/Faq.elements";
 
+interface Inputs {
+  email: string;
+}
+
 export default function Faq() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const onSubmit: SubmitHandler<Inputs> = async ({ email }) => {
+    dispatchEmail(email);
+  };
+
+  const router = useRouter();
+
+  const dispatch = useAppDispatch();
+
+  const dispatchEmail = (email: string) => {
+    dispatch(setInputValue(email));
+    router.push("/login");
+  };
+
   return (
     <FaqGeneralContainer>
       <FaqContainer>
@@ -47,23 +75,24 @@ export default function Faq() {
           />
         </Faqq>
       </FaqContainer>
-      <FormFaq>
+      <FormFaq onSubmit={handleSubmit(onSubmit)}>
         <h3>
           Ready to watch? Enter your email to create or restart your membership.
         </h3>
         <FormContainerFaq>
           <InputEmail
             placeholder="Email address"
-            type="text"
+            type="email"
             minLength={5}
             maxLength={50}
-            autoComplete="email"
+            {...register("email", { required: true })}
           />
           <ButtonStarted>
             <span>Get Started</span>
             <ArrowIcon />
           </ButtonStarted>
         </FormContainerFaq>
+        {errors.email && <ErrorForm>Please enter a valid email!.</ErrorForm>}
       </FormFaq>
     </FaqGeneralContainer>
   );

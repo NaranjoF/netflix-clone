@@ -111,7 +111,7 @@ export const FooterLinksIndex = styled.div`
   @media screen and (min-width: 600px) and (max-width: 700px) and (min-height: 250px) and (max-height: 500px) {
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 

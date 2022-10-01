@@ -8,10 +8,14 @@ import {
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import pageReducer from "./slices/pageSlice";
 import loginReducer from "./slices/loginSlice";
+import inputReducer from "./slices/inputSlice";
+import logoutReducer from "./slices/logoutSlice";
 
 const combinedReducer = combineReducers({
   page: pageReducer,
   login: loginReducer,
+  input: inputReducer,
+  logout: logoutReducer,
 });
 
 const reducer = (

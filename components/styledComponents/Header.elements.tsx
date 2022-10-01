@@ -244,6 +244,20 @@ export const DropDownMenu = styled.div`
   }
 `;
 
+export const DropDownMenuUser = styled.div`
+  position: relative;
+  flex-direction: column !important;
+  justify-content: flex-start;
+  align-items: center;
+  display: none;
+
+  div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
 export const DownMenu = styled.div`
   width: 17.5rem;
   height: 21.8rem;
@@ -290,6 +304,30 @@ export const DownMenu = styled.div`
 
   @media screen and (min-width: 640px) and (max-width: 690px) and (min-height: 370px) and (max-height: 385px) {
     height: 19rem;
+  }
+`;
+
+export const DownMenuLogin = styled.div`
+  width: auto;
+  height: auto;
+  border-left: 1px solid #242323;
+  border-bottom: 1px solid #242323;
+  border-right: 1px solid #242323;
+  border-top: 2px solid gray;
+  font-weight: 700;
+  background: rgb(0, 0, 0, 70%);
+  -webkit-box-shadow: 0px 2px 11px 3px rgba(0, 0, 0, 0.58);
+  box-shadow: 0px 2px 11px 3px rgba(0, 0, 0, 0.58);
+
+  p {
+    white-space: nowrap;
+    padding: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -356,6 +394,14 @@ export const ArrowUp = styled(IoMdArrowDropup)`
   color: gray;
 `;
 
+export const ArrowUpLogin = styled(IoMdArrowDropup)`
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 5%;
+  color: gray;
+`;
+
 export const DropDownContainer = styled.div`
   margin-top: 0.2rem;
 `;
@@ -390,6 +436,39 @@ export const ArrowNDDContainer = styled.div`
   @media screen and (max-width: 950px) and (max-height: 500px) {
     margin-top: 2.5rem;
   }
+`;
+
+export const ArrowNDDContainerUser = styled.div`
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column !important;
+  margin-top: 2.5rem;
+  margin-right: 3rem;
+
+  /* @media screen and (max-width: 800px) and (min-height: 700px) {
+    margin-left: 2.5rem;
+  }
+
+  @media screen and (max-width: 400px) and (max-height: 700px) {
+    margin-left: 3rem;
+  }
+
+  @media screen and (max-width: 300px) and (max-height: 700px) {
+    margin-left: 1.6rem;
+  }
+
+  @media screen and (min-width: 800px) and (max-height: 1180px) {
+    margin-left: 2rem;
+  }
+
+  @media screen and (max-width: 700px) and (max-height: 300px) {
+    margin-top: 2.5rem;
+  }
+
+  @media screen and (max-width: 950px) and (max-height: 500px) {
+    margin-top: 2.5rem;
+  } */
 `;
 
 export const DefaultMenu = styled.div`
@@ -531,6 +610,7 @@ export const ProfileContainer = styled.div`
   position: relative;
   width: 2vw;
   height: 100%;
+  cursor: pointer;
 
   @media screen and (max-width: 885px) {
     width: 1.5rem;

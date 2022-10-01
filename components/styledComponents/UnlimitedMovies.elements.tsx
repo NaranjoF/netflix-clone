@@ -133,7 +133,7 @@ export const ContentUnlimited = styled.div`
   }
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: row;
 
@@ -184,8 +184,10 @@ export const InputEmail = styled.input`
   }
 `;
 
-export const ButtonStarted = styled.div`
+export const ButtonStarted = styled.button`
   display: flex;
+  border: 0;
+  color: white;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -196,6 +198,7 @@ export const ButtonStarted = styled.div`
   border-bottom-right-radius: 3px;
   border-left: 1px solid #333;
   height: 3.75rem;
+  cursor: pointer;
 
   @media screen and (max-width: 900px) {
     margin-top: 1rem;
@@ -234,4 +237,10 @@ export const ButtonStarted = styled.div`
 export const ArrowIcon = styled(RiArrowRightSLine)`
   width: 2rem;
   height: rem;
+`;
+
+export const ErrorForm = styled.span`
+  width: 100%;
+  color: #ffa00a;
+  margin-top: 0.5rem;
 `;

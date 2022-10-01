@@ -163,8 +163,11 @@ export const InputEmail = styled.input`
   }
 `;
 
-export const ButtonStarted = styled.div`
+export const ButtonStarted = styled.button`
   display: flex;
+  cursor: pointer;
+  border: 0;
+  color: white;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -213,4 +216,10 @@ export const ButtonStarted = styled.div`
 export const ArrowIcon = styled(RiArrowRightSLine)`
   width: 2rem;
   height: rem;
+`;
+
+export const ErrorForm = styled.span`
+  width: 100%;
+  color: #ffa00a;
+  margin-top: 0.5rem;
 `;

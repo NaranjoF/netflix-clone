@@ -98,6 +98,30 @@ export const FormContainer = styled.div`
         }
       }
     }
+
+    @media screen and (max-width: 450px) and (min-height: 700px) {
+      width: 350px;
+      padding: 60px 35px 40px;
+    }
+
+    @media screen and (max-width: 330px) {
+      width: 250px;
+      padding: 35px 15px 40px;
+    }
+
+    @media screen and (max-width: 380px) and (min-height: 660px) {
+      width: 350px;
+      padding: 35px 15px 40px;
+    }
+
+    @media screen and (min-width: 300px) and (max-width: 390px) and (min-height: 500px) {
+      width: 350px;
+      padding: 35px 15px 40px;
+    }
+
+    @media screen and (max-width: 900px) and (min-height: 1000px) {
+      margin-bottom: 12rem;
+    }
   }
 `;
 

@@ -8,8 +8,9 @@ import { StyledHome } from "../components/styledComponents/home.elements";
 import { Movie } from "../typings";
 import requests from "../utils/requests";
 import Search from "../components/Search";
-import { useAppDispatch, useAppSelector } from "../hooks";
 import { setNewPage } from "../slices/pageSlice";
+import { useAppSelector, useAppDispatch } from "../hooks";
+import useAuth from "../hooks/useAuth";
 
 interface Props {
   comingSoon: Movie[];
@@ -22,6 +23,7 @@ const Home = ({ comingSoon }: Props) => {
   const [finishedTitle, setFinishedTitle] = useState(false);
   const [searchBar, setSearchBar] = useState(false);
   const loginState = useAppSelector((state) => state.login.value);
+  const logoutState = useAppSelector((state) => state.logout.value);
 
   const setingModal = (state: boolean) => {
     setIsOpenModal(state);
@@ -50,6 +52,8 @@ const Home = ({ comingSoon }: Props) => {
 
   const dispatch = useAppDispatch();
 
+  const { logout } = useAuth();
+
   useEffect(() => {
     const home = homeIndex.current;
 
@@ -61,6 +65,12 @@ const Home = ({ comingSoon }: Props) => {
       home.removeAttribute("style");
     }
   }, [isOpenModal]);
+
+  useEffect(() => {
+    if (finishedTitle && logoutState) {
+      logout();
+    }
+  }, [finishedTitle, logoutState]);
 
   return (
     <StyledHome ref={homeIndex}>

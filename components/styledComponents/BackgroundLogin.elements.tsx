@@ -7,6 +7,11 @@ export const StyledBackground = styled.div`
 
 export const StyledLogin = styled.div`
   width: 100vw;
+  height: 100vh;
   position: relative;
-  background-color: #000;
+`;
+
+export const ContentLoginContainer = styled.div`
+  position: relative;
+  background: #000;
 `;
