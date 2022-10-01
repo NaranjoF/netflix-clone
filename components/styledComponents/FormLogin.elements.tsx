@@ -66,7 +66,7 @@ export const FormContainer = styled.div`
       } */
 
       span {
-        color: red;
+        color: #ffa00a;
         font-size: 0.8rem;
       }
     }

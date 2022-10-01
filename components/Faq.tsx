@@ -92,7 +92,7 @@ export default function Faq() {
             <ArrowIcon />
           </ButtonStarted>
         </FormContainerFaq>
-        {errors.email && <ErrorForm>Please enter a valid email!.</ErrorForm>}
+        {errors.email && <ErrorForm>Please enter a valid email.</ErrorForm>}
       </FormFaq>
     </FaqGeneralContainer>
   );
